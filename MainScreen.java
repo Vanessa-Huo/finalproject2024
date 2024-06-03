@@ -24,11 +24,11 @@ public class MainScreen extends World
         board = new int[rows][cols];
         
         setUp();
-        
+        checkBoard(); 
     }
     
     public void act(){
-        checkBoard();   
+          
     }
     
     public void setUp(){
@@ -70,6 +70,7 @@ public class MainScreen extends World
                             break;
                         case 4:
                             addObject(new YellowTile(),x+j*65,y+i*65);
+                            board[i][j] = 4;
                             break;
                     }
                 }
@@ -77,8 +78,9 @@ public class MainScreen extends World
         }
     }
     public void checkBoard(){
-        for(int j=0; j<board.length;j++){
-            for(int i=0;i<board[j].length;i++){
+        System.out.println();
+        for(int i=0; i<board.length;i++){
+            for(int j=0;j<board[i].length;j++){
                 System.out.print(board[i][j]);
             
             }
