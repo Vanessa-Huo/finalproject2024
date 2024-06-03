@@ -24,6 +24,13 @@ public class TitleScreen extends World
         
         play = new PlayButton();
         addObject(play, getWidth() /  2, getHeight() / 2);
+        ach = new AchievementButton();
+        addObject(ach, getWidth() / 2, (getHeight() / 2) + 100);
+        save = new SaveButton();
+        addObject(save, getWidth() / 2, (getHeight() / 2) + 200);
+        tut = new TutorialButton();
+        addObject(tut, getWidth() / 2, (getHeight() / 2) + 300);
+        
     }
     
     public void act() {

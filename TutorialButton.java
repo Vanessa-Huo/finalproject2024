@@ -15,5 +15,7 @@ public class TutorialButton extends Icon
     public void act()
     {
         setImage("tut.png");
+        GreenfootImage image = getImage();
+        image.scale((int) (image.getWidth()*0.7), (int) (image.getHeight()*0.7));
     }
 }

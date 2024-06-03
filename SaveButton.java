@@ -15,5 +15,7 @@ public class SaveButton extends Icon
     public void act()
     {
         setImage("save.png");
+        GreenfootImage image = getImage();
+        image.scale((int) (image.getWidth()*0.7), (int) (image.getHeight()*0.7));
     }
 }

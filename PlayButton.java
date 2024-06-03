@@ -15,8 +15,7 @@ public class PlayButton extends Icon
     public void act()
     {
         setImage("play.png");
-        // GreenfootImage image = getImage();
-        // image.scale((int)(image.getWidth()*0.9), (int)(image.getHeight()*0.9));
-        
+        GreenfootImage image = getImage();
+        image.scale((int) (image.getWidth()*0.7), (int) (image.getHeight()*0.7));
     }
 }
