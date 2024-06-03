@@ -24,10 +24,11 @@ public class MainScreen extends World
         board = new int[rows][cols];
         
         setUp();
+        
     }
     
     public void act(){
-        
+        checkBoard();   
     }
     
     public void setUp(){
@@ -53,15 +54,19 @@ public class MainScreen extends World
                     switch(chance){
                         case 0:
                             addObject(new RedTile(),x+j*65,y+i*65);
+                            board[i][j] = 0;
                             break;
                         case 1:
                             addObject(new BlueTile(),x+j*65,y+i*65);
+                            board[i][j] = 1;
                             break;
                         case 2:
                             addObject(new GreenTile(),x+j*65,y+i*65);
+                            board[i][j] = 2;
                             break;
                         case 3:
                             addObject(new PinkTile(),x+j*65,y+i*65);
+                            board[i][j] = 3;
                             break;
                         case 4:
                             addObject(new YellowTile(),x+j*65,y+i*65);
@@ -70,5 +75,14 @@ public class MainScreen extends World
                 }
             }
         }
+    }
+    public void checkBoard(){
+        for(int j=0; j<board.length;j++){
+            for(int i=0;i<board[j].length;i++){
+                System.out.print(board[i][j]);
+            
+            }
+            System.out.println();
+        }    
     }
 }
