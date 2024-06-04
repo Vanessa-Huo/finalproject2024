@@ -52,19 +52,19 @@ public class MainScreen extends World
                     int chance = Greenfoot.getRandomNumber(5);
                     switch(chance){
                         case 0:
-                            addObject(new RedTile(),x+j*65,y+i*65);
+                            addObject(new Strawberry(),x+j*65,y+i*65);
                             break;
                         case 1:
-                            addObject(new BlueTile(),x+j*65,y+i*65);
+                            addObject(new Blueberry(),x+j*65,y+i*65);
                             break;
                         case 2:
-                            addObject(new GreenTile(),x+j*65,y+i*65);
+                            addObject(new Pear(),x+j*65,y+i*65);
                             break;
                         case 3:
-                            addObject(new PinkTile(),x+j*65,y+i*65);
+                            addObject(new Peach(),x+j*65,y+i*65);
                             break;
                         case 4:
-                            addObject(new YellowTile(),x+j*65,y+i*65);
+                            addObject(new Pineapple(),x+j*65,y+i*65);
                             break;
                     }
                 }
