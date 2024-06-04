@@ -16,4 +16,8 @@ public class Icon extends Actor
     {
         // Add your action code here.
     }
+    
+    private int classNum(){
+        return 0;
+    }
 }

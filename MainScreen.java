@@ -13,6 +13,7 @@ public class MainScreen extends World
     private int rows, cols;
     private static final int CELL_SIZE = 65;
     private int x, y;
+    private boolean run;
     public MainScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -25,22 +26,31 @@ public class MainScreen extends World
         //board = new int[rows][cols];
         board = new Fruit[rows][cols];
         
+        run = true;
+        
         setUp();
     }
     
     public void act(){
         horizontalCrush();
         verticalCrush();
-        //dropTiles();
+        dropTiles();
     }
     
     private void horizontalCrush(){
         for(int i=0; i<board.length;i++){
             for(int j=0;j<board[i].length-2;j++){
-                if(board[i][j].getClass() == board[i][j + 1].getClass() && board[i][j].getClass() == board[i][j + 2].getClass()){
-                    removeObject(board[i][j]);
-                    removeObject(board[i][j+1]);
-                    removeObject(board[i][j+2]);
+                if(board[i][j] != null && board[i][j + 1] != null && board[i][j + 2] != null){
+                    if(board[i][j].getClass() == board[i][j + 1].getClass() && board[i][j].getClass() == board[i][j + 2].getClass()){
+                        removeObject(board[i][j]);
+                        removeObject(board[i][j+1]);
+                        removeObject(board[i][j+2]);
+                        board[i][j] = null;
+                        board[i][j+1] = null;
+                        board[i][j+2] = null;
+                        //board[i][j]=board[i][j+1]=board[i][j+2]=null;
+                        run=true;
+                    }
                 }
             }
         }
@@ -49,16 +59,52 @@ public class MainScreen extends World
     private void verticalCrush(){
         for(int i=0; i<board.length-2;i++){
             for(int j=0;j<board[i].length;j++){
-                if(board[i][j].getClass() == board[i + 1][j].getClass() && board[i][j].getClass() == board[i + 2][j].getClass()){
-                    removeObject(board[i][j]);
-                    removeObject(board[i+1][j]);
-                    removeObject(board[i+2][j]);
+                if(board[i][j] != null && board[i + 1][j] != null && board[i + 2][j] != null){
+                    if(board[i][j].getClass().equals(board[i + 1][j].getClass()) && board[i][j].getClass().equals(board[i + 2][j].getClass())){
+                        removeObject(board[i][j]);
+                        removeObject(board[i+1][j]);
+                        removeObject(board[i+2][j]);
+                        board[i][j] = null;
+                        board[i+1][j] = null;
+                        board[i+2][j] = null;
+                        run=true;
+                    }
                 }
             }
         }
     }
     
-    private Fruit getRandom(){
+    private void dropFruits() {
+        for (int j = 0; j < cols; j++) {
+            // Start from the bottom of the column and look for empty spaces
+            for (int i = rows - 1; i >= 0; i--) {
+                if (board[i][j] == null) {
+                    // Find the first non-empty tile above the current empty space
+                    for (int k = i - 1; k >= 0; k--) {
+                        if (board[k][j] != null) {
+                            // Move the tile down to the empty space
+                            board[i][j] = board[k][j];
+                            board[k][j] = null;
+                            board[i][j].setLocation(x+j*65, y+i*65);
+                            Greenfoot.delay(1);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        for (int j = 0; j < cols; j++) {
+            for (int i = rows - 1; i >= 0; i--) {
+                if (board[i][j] == null) {
+                    board[i][j] = getRandomFruit();
+                    Greenfoot.delay(1);
+                    addObject(board[i][j], x+j*65, y+i*65);
+                }
+            }
+        }
+    }
+
+    private Fruit getRandomFruit(){
         int chance = Greenfoot.getRandomNumber(5);
         switch(chance){
             case 0:
@@ -72,7 +118,7 @@ public class MainScreen extends World
             case 4:
                 return new Pineapple();
         }
-        return null;
+        return new Strawberry();
     }
     
     private void setUp(){
@@ -88,7 +134,7 @@ public class MainScreen extends World
         }
         for(int i=0; i<board.length;i++){
             for(int j=0;j<board[i].length;j++){
-                board[i][j]=getRandom();
+                board[i][j]=getRandomFruit();
                 addObject(board[i][j],x+j*65,y+i*65);
             }
         }
