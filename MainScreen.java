@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MainScreen extends World
 {
     //private int[][] board;
-    private Tile[][] board;
+    private Fruit[][] board;
     private int rows, cols;
     private static final int CELL_SIZE = 65;
     private int x, y;
@@ -23,7 +23,7 @@ public class MainScreen extends World
         addObject(new Board(rows,cols,CELL_SIZE), 665,360);
         
         //board = new int[rows][cols];
-        board = new Tile[rows][cols];
+        board = new Fruit[rows][cols];
         
         setUp();
     }
@@ -58,19 +58,19 @@ public class MainScreen extends World
         }
     }
     
-    private Tile getRandom(){
+    private Fruit getRandom(){
         int chance = Greenfoot.getRandomNumber(5);
         switch(chance){
             case 0:
-                return new RedTile();
+                return new Strawberry();
             case 1:
-                return new BlueTile();
+                return new Blueberry();
             case 2:
-                return new GreenTile();
+                return new Pear();
             case 3:
-                return new PinkTile();
+                return new Peach();
             case 4:
-                return new YellowTile();
+                return new Pineapple();
         }
         return null;
     }
