@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Selection
+comment0.text=\r\n\ Se\r\n
+comment1.params=actor\ width\ height
+comment1.target=Selection(greenfoot.Actor,\ int,\ int)
+comment1.text=\r\n\ width\ \=\ smallest\ side\r\n
+comment2.params=
+comment2.target=void\ act()
+numComments=3
