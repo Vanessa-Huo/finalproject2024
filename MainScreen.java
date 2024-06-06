@@ -3,6 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class MyWorld here.
  * 
+ * Images for crushing effect: https://www.freepik.com/premium-vector/animated-smoke-explosion-cloud-game-sprite_30653607.htm
+ * 
  * @author (your name) 
  * @version (a version number or a date)
  */
