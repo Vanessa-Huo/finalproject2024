@@ -6,4 +6,9 @@ comment1.target=Selection(greenfoot.Actor,\ int,\ int)
 comment1.text=\r\n\ width\ \=\ smallest\ side\r\n
 comment2.params=
 comment2.target=void\ act()
-numComments=3
+comment3.params=
+comment3.target=void\ followMouse()
+comment4.params=xCoord\ yCoord
+comment4.target=int\ directionToSwitch(int,\ int)
+comment4.text=\r\n\ 0\:\ switch\ up\r\n\ 1\:\ switch\ right\r\n\ 2\:\ switch\ down\r\n\ 3\:\ switch\ left\r\n
+numComments=5

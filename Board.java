@@ -30,7 +30,7 @@ public class Board extends Actor
         
         GreenfootImage gridImage = new GreenfootImage(width+1, height+1);
         
-        gridImage.setColor(Color.WHITE);
+        gridImage.setColor(Color.LIGHT_GRAY);
         gridImage.fillRect(0,0,width,height);
         
         gridImage.setColor(Color.GRAY);
