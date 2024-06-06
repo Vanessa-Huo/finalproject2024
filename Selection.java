@@ -1,25 +1,164 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
- * Se
+ * Selection is a translucent white box that indicates an adjacent tile 
+ * an Actor on a grid can interact with, as selected by the user.
+ * 
+ * It reads mouse input for dragging, and will update its position accordingly.
+ * Possible directions include: one tile up, right, down, or left of its current tile.
+ * 
+ * Interaction of Actor and next tile is customizable via changing the checkKey() method.
+ * 
+ * @author  Megan Lee
+ * @version June 2024
  */
 public class Selection extends Actor
 {
-    private MouseInfo mouse;
     public static final Color TRANSPARENT_WHITE = new Color (255, 255, 255, 80);
-    private GreenfootImage image;
-    private int width, height;
-    private Actor actor;
-    private int initialPosX, initialPosY;
-    private int actCount;
+    
+    private GreenfootImage image;//selection box picture
+    private Actor actor; //target actor
+    private MouseInfo mouse; //mouse of user
+    
+    private int width, height; //dimensions of selection box 
+    private int initialPosX, initialPosY; //initial position of selection box
+    private int actCount;//used at start to set initial position coords
+    private int pos; //current location of selection box; 0 = above, 1 = right, 2 = down, 3 = left
+    
     /**
-     * width = smallest side
+     * A constructor for Selection - specify its associated Actor as well as the width
+     * and height of the selection box (most likely the size of the tile)
+     * 
+     * @param actor     Target Actor
+     * @param width     Width of selection box
+     * @param height    Height of selection box
      */
     public Selection(Actor actor, int width, int height){
         this.actor = actor;
         this.width = width;
         this.height = height;
 
-        image = new GreenfootImage (width, height);
+        image = drawBox ();
+
+        setImage(image);
+
+        actCount = 0;
+    }
+
+    public void act(){
+        //set initial position of selection box at start
+        if(actCount == 1){
+            initialPosX = getX();
+            initialPosY = getY(); 
+        }
+        
+        //
+        followMouse();
+        
+        if(pos != -1){ //has been moved (up, down, right, or left)
+            if(Greenfoot.isKeyDown("Enter")){
+                int newOuterIndex = ((Fruit)actor).getIndexOfSwap(pos,true);
+                int newInnerIndex = ((Fruit)actor).getIndexOfSwap(pos,false);
+                MainScreen world = (MainScreen) getWorld();
+                world.swapFruits(world.getIndex((Fruit)actor, true), world.getIndex((Fruit)actor, true), newOuterIndex, newInnerIndex);
+                world.removeObject(this);
+            }
+        }
+        
+        if(actCount<2) actCount++;
+    }
+    
+
+    
+    /**
+     * 
+     */
+    private void followMouse () {
+        mouse = Greenfoot.getMouseInfo(); //user's mouse
+        int xCoord, yCoord; //mouse coords
+        
+        //cell dimensions to translate to
+        int xMovementFactor = width; 
+        int yMovementFactor = height;
+
+        if (mouse != null){
+            // check for dragging of selection box
+            if(Greenfoot.mouseDragged(this)){
+                //get coords of mouse
+                xCoord = mouse.getX();
+                yCoord = mouse.getY();
+                
+                //determine position of selection box
+                pos = directionToSwitch(xCoord, yCoord);
+                switch(pos){
+                    case 0: //move up
+                        setLocation(initialPosX, initialPosY - yMovementFactor);
+                        break;
+                    case 1: //move right
+                        setLocation(initialPosX + xMovementFactor, initialPosY);
+                        break;
+                    case 2: //move down
+                        setLocation(initialPosX, initialPosY + yMovementFactor);
+                        break;
+                    case 3://move left
+                        setLocation(initialPosX - xMovementFactor, initialPosY);
+                        break;
+                }
+            }
+        }   
+    }
+
+    /**
+     * Determines direction of selection box: the direction (+/- x or +/- y) with the greatest 
+     * magnitude of difference between mouse and target actor's location.
+     * 
+     * Returns a integer value representative of direction of selected tile relative to original:
+     * 0: switch up
+     * 1: switch right
+     * 2: switch down
+     * 3: switch left
+     * 
+     * @param xCoord    Mouse's X-coordinate
+     * @param yCoord    Mouse's Y-coordinate
+     * @return int      A number representing direction of selected tile(0-3)
+     */
+    private int directionToSwitch(int xCoord, int yCoord){
+        int xDisplacement = xCoord - initialPosX;
+        int yDisplacement = yCoord - initialPosY;
+        
+        //horizontal displacement more significant
+        if (Math.abs(xDisplacement) > Math.abs(yDisplacement)){ //
+            //mouse moved leftwards --> left
+            if(xDisplacement < 0){
+                return 3;
+            }
+            //mouse moved rightwards --> right
+            else{
+                return 1;
+            }
+        }
+        //vertical displacement more significant
+        else{
+            //mouse moved higher --> up
+            if(yDisplacement < 0){
+                return 0;
+            }
+            //mouse moved lower --> down
+            else{
+                return 2;
+            }
+        }
+    }
+    
+    private void checkKey(){
+        
+    }
+    /**
+     * Draws a translucent white box with a border at its corners.
+     * 
+     * @return GreenfootImage   A translucent white box
+     */
+    private GreenfootImage drawBox(){
+        GreenfootImage image = new GreenfootImage (width, height);
         //draws selection 
         image.setColor(TRANSPARENT_WHITE);
         image.fillRect(0, 0, width-1, height - 1);
@@ -42,78 +181,7 @@ public class Selection extends Actor
         //bottom right corner
         image.drawLine(width-cornerLength, height-1, width, height-1);
         image.drawLine(width-1, height-1, width-1, height-cornerLength-1);
-
-        setImage(image);
-
-        actCount = 0;
-    }
-
-    public void act(){
-        if(actCount == 1){
-            initialPosX = getX();
-            initialPosY = getY(); 
-        }
-        followMouse();
-        actCount++;
-    }
-
-    private void followMouse () {
-        mouse = Greenfoot.getMouseInfo();
-        int xCoord, yCoord;
-        //Mouse cannot be null
-        if (mouse != null){
-            // Check for a click on selection box
-            if(Greenfoot.mouseDragged(this)){
-                xCoord = mouse.getX();
-                yCoord = mouse.getY();
-                System.out.println(directionToSwitch(xCoord, yCoord));
-                switch(directionToSwitch(xCoord, yCoord)){
-                    case 0:
-                        setLocation(initialPosX, initialPosY-65);
-                        break;
-                    case 1:
-                        setLocation(initialPosX+65, initialPosY);
-                        break;
-                    case 2:
-                        setLocation(initialPosX, initialPosY+65);
-                        break;
-                    case 3:
-                        setLocation(initialPosX-65, initialPosY);
-                        break;
-                }
-                System.out.println(getX() + ", " + getY());
-            }
-        }   
-    }
-
-    /**
-     * 0: switch up
-     * 1: switch right
-     * 2: switch down
-     * 3: switch left
-     */
-    private int directionToSwitch(int xCoord, int yCoord){
-        int xDisplacement = xCoord - initialPosX;
-        int yDisplacement = yCoord - initialPosY;
-        //left or right switch
-        if (Math.abs(xDisplacement) > Math.abs(yDisplacement)){
-            //left
-            if(xDisplacement < 0){
-                return 3;
-            }
-            else{//right
-                return 1;
-            }
-        }
-        //up or down switch
-        else{
-            //up
-            if(yDisplacement < 0){
-                return 0;
-            }
-            else{//down
-                return 2;
-            }
-        }
+        
+        return image;
     }
 }

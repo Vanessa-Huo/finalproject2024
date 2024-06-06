@@ -1,3 +1,8 @@
 #BlueJ class context
 comment0.target=Fruit
-numComments=1
+comment0.text=\r\n\ \r\n\ @author\ Megan\ Lee\r\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=direction\ outerIndexofOther
+comment2.target=int\ getIndexOfSwap(int,\ boolean)
+numComments=3

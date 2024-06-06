@@ -2,6 +2,4 @@
 comment0.target=Blueberry
 comment1.params=
 comment1.target=Blueberry()
-comment2.params=
-comment2.target=void\ resetImage()
-numComments=3
+numComments=2

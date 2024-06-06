@@ -1,14 +1,20 @@
 #BlueJ class context
 comment0.target=Selection
-comment0.text=\r\n\ Se\r\n
+comment0.text=\r\n\ Selection\ is\ a\ translucent\ white\ box\ that\ indicates\ an\ adjacent\ tile\ \r\n\ an\ Actor\ on\ a\ grid\ can\ interact\ with,\ as\ selected\ by\ the\ user.\r\n\ \r\n\ It\ reads\ mouse\ input\ for\ dragging,\ and\ will\ update\ its\ position\ accordingly.\r\n\ Possible\ directions\ include\:\ one\ tile\ up,\ right,\ down,\ or\ left\ of\ its\ current\ tile.\r\n\ \r\n\ Interaction\ of\ Actor\ and\ next\ tile\ is\ customizable\ via\ changing\ the\ checkKey()\ method.\r\n\ \r\n\ @author\ \ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
 comment1.params=actor\ width\ height
 comment1.target=Selection(greenfoot.Actor,\ int,\ int)
-comment1.text=\r\n\ width\ \=\ smallest\ side\r\n
+comment1.text=\r\n\ A\ constructor\ for\ Selection\ -\ specify\ its\ associated\ Actor\ as\ well\ as\ the\ width\r\n\ and\ height\ of\ the\ selection\ box\ (most\ likely\ the\ size\ of\ the\ tile)\r\n\ \r\n\ @param\ actor\ \ \ \ \ Target\ Actor\r\n\ @param\ width\ \ \ \ \ Width\ of\ selection\ box\r\n\ @param\ height\ \ \ \ Height\ of\ selection\ box\r\n
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ followMouse()
+comment3.text=\r\n\ \r\n
 comment4.params=xCoord\ yCoord
 comment4.target=int\ directionToSwitch(int,\ int)
-comment4.text=\r\n\ 0\:\ switch\ up\r\n\ 1\:\ switch\ right\r\n\ 2\:\ switch\ down\r\n\ 3\:\ switch\ left\r\n
-numComments=5
+comment4.text=\r\n\ Determines\ direction\ of\ selection\ box\:\ the\ direction\ (+/-\ x\ or\ +/-\ y)\ with\ the\ greatest\ \r\n\ magnitude\ of\ difference\ between\ mouse\ and\ target\ actor's\ location.\r\n\ \r\n\ Returns\ a\ integer\ value\ representative\ of\ direction\ of\ selected\ tile\ relative\ to\ original\:\r\n\ 0\:\ switch\ up\r\n\ 1\:\ switch\ right\r\n\ 2\:\ switch\ down\r\n\ 3\:\ switch\ left\r\n\ \r\n\ @param\ xCoord\ \ \ \ Mouse's\ X-coordinate\r\n\ @param\ yCoord\ \ \ \ Mouse's\ Y-coordinate\r\n\ @return\ int\ \ \ \ \ \ A\ number\ representing\ direction\ of\ selected\ tile(0-3)\r\n
+comment5.params=
+comment5.target=void\ checkKey()
+comment6.params=
+comment6.target=greenfoot.GreenfootImage\ drawBox()
+comment6.text=\r\n\ Draws\ a\ translucent\ white\ box\ with\ a\ border\ at\ its\ corners.\r\n\ \r\n\ @return\ GreenfootImage\ \ \ A\ translucent\ white\ box\r\n
+numComments=7

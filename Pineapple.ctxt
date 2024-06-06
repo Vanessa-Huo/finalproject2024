@@ -2,6 +2,4 @@
 comment0.target=Pineapple
 comment1.params=
 comment1.target=Pineapple()
-comment2.params=
-comment2.target=void\ resetImage()
-numComments=3
+numComments=2

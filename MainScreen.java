@@ -141,4 +141,80 @@ public class MainScreen extends World
             }
         }
     }
+    
+    private void refreshBoard(){
+        removeObjects(getObjects(Fruit.class));
+        if(cols%2==0){
+            x = 665-(cols/2*CELL_SIZE)+(CELL_SIZE/2);
+        }else{
+            x = 665-(cols/2*CELL_SIZE);
+        }
+        if(rows%2==0){
+            y = 360-(rows/2*CELL_SIZE)+(CELL_SIZE/2);
+        }else{
+            y = 360-(rows/2*CELL_SIZE);
+        }
+        for(int i=0; i<rows;i++){
+            for(int j=0;j<cols;j++){
+                addObject(board[i][j],x+j*65,y+i*65);
+            }
+        }
+    }
+    
+    /**
+     * Returns width of tile
+     * 
+     * @return  Width of cell
+     */
+    public int getTileWidth(){
+        return CELL_SIZE;
+    }
+    
+    /**
+     * Returns height of tile
+     * 
+     * @return  Height of cell
+     */
+    public int getTileHeight(){
+        return CELL_SIZE;
+    }
+    
+    /**
+     * Removes all current selection boxes from world.
+     *@author Megan
+     */
+    public void resetSelection(){
+        removeObjects(getObjects(Selection.class));
+    }
+    
+    /**
+     * get Index of fruit
+     * @author Megan
+     */
+    public int getIndex(Fruit fruit, boolean outerIndex){
+        for(int i=0; i<rows;i++){
+            for(int j=0;j<cols;j++){
+                if(board[i][j] == fruit){
+                    if(outerIndex){
+                        return i;
+                    }
+                    else{
+                        return j;
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+    
+    public void swapFruits(int outerIndex1, int innerIndex1, int outerIndex2, int innerIndex2){
+        System.out.println("Sucessful");
+        Fruit temp = board[outerIndex1][innerIndex1];
+        board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2];
+        board[outerIndex2][innerIndex2] = temp;
+        
+        System.out.println(board[outerIndex1][innerIndex1]);
+        System.out.println(board[outerIndex2][innerIndex2]);
+        refreshBoard();
+    }
 }
