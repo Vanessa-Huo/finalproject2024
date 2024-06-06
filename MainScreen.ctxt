@@ -14,6 +14,7 @@ comment4.text=\n\ Checks\ for\ vertical\ matches\ of\ three\ Fruits\ and\ remove
 comment5.params=
 comment5.target=void\ dropFruits()
 comment5.text=\n\ Drops\ the\ Fruits\ to\ fill\ empty\ spaces\ below\ them\ and\ refills\ the\ board\ with\ new\ Fruits\ at\ the\ top.\n
+comment5.target=Fruit\ getRandom()
 comment6.params=
 comment6.target=Fruit\ getRandomFruit()
 comment6.text=\n\ Creates\ a\ random\ Fruit.\n\ @return\ Fruit\ A\ new\ Fruit\ of\ random\ type.\n
