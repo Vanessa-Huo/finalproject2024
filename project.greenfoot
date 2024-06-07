@@ -36,11 +36,28 @@ dependency8.type=UsesDependency
 dependency9.from=MainScreen
 dependency9.to=Blueberry
 dependency9.type=UsesDependency
+<<<<<<< HEAD
 editor.fx.0.height=0
 editor.fx.0.width=0
 editor.fx.0.x=0
 editor.fx.0.y=0
 height=904
+=======
+editor.fx.0.height=865
+editor.fx.0.width=2230
+editor.fx.0.x=489
+editor.fx.0.y=218
+editor.fx.0.width=1785
+editor.fx.0.x=232
+editor.fx.0.y=227
+editor.fx.0.width=1792
+editor.fx.0.x=0
+editor.fx.0.y=171
+editor.fx.0.width=2230
+editor.fx.0.x=489
+editor.fx.0.y=218
+height=915
+>>>>>>> main
 package.numDependencies=12
 package.numTargets=15
 project.charset=UTF-8

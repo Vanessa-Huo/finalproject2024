@@ -3,8 +3,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * game desc...
  * 
+<<<<<<< HEAD
  * @author Vanessa Huo, Megan Lee
  * @version June 2024
+=======
+ * Images for crushing effect: https://www.freepik.com/premium-vector/animated-smoke-explosion-cloud-game-sprite_30653607.htm
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+>>>>>>> main
  */
 public class MainScreen extends World
 {

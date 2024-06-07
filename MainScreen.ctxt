@@ -1,6 +1,10 @@
 #BlueJ class context
 comment0.target=MainScreen
+<<<<<<< HEAD
 comment0.text=\r\n\ game\ desc...\r\n\ \r\n\ @author\ Vanessa\ Huo,\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
+=======
+comment0.text=\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\n\ \n\ Images\ for\ crushing\ effect\:\ https\://www.freepik.com/premium-vector/animated-smoke-explosion-cloud-game-sprite_30653607.htm\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+>>>>>>> main
 comment1.params=
 comment1.target=MainScreen()
 comment10.params=
