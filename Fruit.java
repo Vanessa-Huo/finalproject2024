@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
+ * Fruit Superclass
  * 
  * @author Megan Lee
  */
@@ -22,16 +23,21 @@ public class Fruit extends Actor
             }
         }
     }
-
-    public int getIndexOfSwap(int direction, boolean outerIndexofOther){
+    
+    /**
+     * @
+     * @param direction A number representing direction of selected tile(0-3)
+     * @param boolean   Return outer (true) or inner (false) index of new
+     * @return int      Outer/inner index of new position
+     */
+    public int getIndexOfSwap(int direction, boolean returnOuterIndex){
         int result = -1;
         int outerIndex, innerIndex;
 
         outerIndex = ((MainScreen)getWorld()).getIndex(this, true);
         innerIndex = ((MainScreen)getWorld()).getIndex(this, false);
 
-        System.out.println("Direction: "+ direction);
-        if(outerIndexofOther){
+        if(returnOuterIndex){
             switch(direction){
                 case 0: //up
                     result = outerIndex-1;
@@ -39,13 +45,14 @@ public class Fruit extends Actor
                 case 1: //right
                     result = outerIndex;
                     break;
-                case 2: //left
-                    result = outerIndex;
-                    break;
-                case 3: //down
+                case 2: //down
                     result = outerIndex+1;
                     break;
+                case 3: //left
+                    result = outerIndex;
+                    break;
             }
+            System.out.println(direction +  ": " + outerIndex + " --> " + result);
         }
         else{
             switch(direction){
@@ -55,13 +62,14 @@ public class Fruit extends Actor
                 case 1: //right
                     result = innerIndex+1;
                     break;
-                case 2: //left
-                    result = innerIndex -1;
-                    break;
-                case 3: //down
+                case 2: //down
                     result = innerIndex;
                     break;
+                case 3: //left
+                    result = innerIndex-1;
+                    break;
             }
+            System.out.println(direction +  ": " + innerIndex + " --> " + result);
         }
         
         return result;

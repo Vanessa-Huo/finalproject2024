@@ -45,32 +45,24 @@ public class Selection extends Actor
     }
 
     public void act(){
+        if(actor == null){
+            getWorld().removeObject(this);
+        }
         //set initial position of selection box at start
         if(actCount == 1){
             initialPosX = getX();
             initialPosY = getY(); 
         }
-        
-        //
         followMouse();
         
-        if(pos != -1){ //has been moved (up, down, right, or left)
-            if(Greenfoot.isKeyDown("Enter")){
-                int newOuterIndex = ((Fruit)actor).getIndexOfSwap(pos,true);
-                int newInnerIndex = ((Fruit)actor).getIndexOfSwap(pos,false);
-                MainScreen world = (MainScreen) getWorld();
-                world.swapFruits(world.getIndex((Fruit)actor, true), world.getIndex((Fruit)actor, true), newOuterIndex, newInnerIndex);
-                world.removeObject(this);
-            }
-        }
+        checkKey("Enter");
         
         if(actCount<2) actCount++;
     }
     
-
-    
     /**
-     * 
+     * Checks for mouse input for dragging.
+     * Will update position of selection box accordingly in the direction of most signficance.
      */
     private void followMouse () {
         mouse = Greenfoot.getMouseInfo(); //user's mouse
@@ -149,9 +141,18 @@ public class Selection extends Actor
         }
     }
     
-    private void checkKey(){
-        
+    private void checkKey(String key){
+        if(pos != -1){ //has been moved (up, down, right, or left)
+            if(Greenfoot.isKeyDown(key)){
+                int newOuterIndex = ((Fruit)actor).getIndexOfSwap(pos,true);
+                int newInnerIndex = ((Fruit)actor).getIndexOfSwap(pos,false);
+                MainScreen world = (MainScreen) getWorld();
+                world.swapFruits(world.getIndex((Fruit)actor, true), world.getIndex((Fruit)actor, false), newOuterIndex, newInnerIndex);
+                world.removeObject(this);
+            }
+        }
     }
+    
     /**
      * Draws a translucent white box with a border at its corners.
      * 

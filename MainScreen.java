@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MyWorld here.
+ * game desc...
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Vanessa Huo, Megan Lee
+ * @version June 2024
  */
 public class MainScreen extends World
 {
@@ -26,7 +26,7 @@ public class MainScreen extends World
         
         run = false;
         
-        setUp();
+        drawBoard(true);
     }
     
     public void act(){
@@ -118,12 +118,15 @@ public class MainScreen extends World
             case 4: return new Pineapple();
         }
         return new Strawberry();
-    }
+    }    
     
     /**
-     * Initializes the board with Fruits.
+     * If hasn't been set up already, initialize fruits. 
+     * 
+     * @param isNew   Initial set up or not
      */
-    private void setUp(){
+    private void drawBoard(boolean isNew){
+        if(!isNew) removeObjects(getObjects(Fruit.class));
         if(cols%2==0){
             x = 665-(cols/2*CELL_SIZE)+(CELL_SIZE/2);
         }else{
@@ -136,26 +139,7 @@ public class MainScreen extends World
         }
         for(int i=0; i<rows;i++){
             for(int j=0;j<cols;j++){
-                board[i][j]=getRandomFruit();
-                addObject(board[i][j],x+j*65,y+i*65);
-            }
-        }
-    }
-    
-    private void refreshBoard(){
-        removeObjects(getObjects(Fruit.class));
-        if(cols%2==0){
-            x = 665-(cols/2*CELL_SIZE)+(CELL_SIZE/2);
-        }else{
-            x = 665-(cols/2*CELL_SIZE);
-        }
-        if(rows%2==0){
-            y = 360-(rows/2*CELL_SIZE)+(CELL_SIZE/2);
-        }else{
-            y = 360-(rows/2*CELL_SIZE);
-        }
-        for(int i=0; i<rows;i++){
-            for(int j=0;j<cols;j++){
+                if(isNew) board[i][j]=getRandomFruit();
                 addObject(board[i][j],x+j*65,y+i*65);
             }
         }
@@ -164,7 +148,7 @@ public class MainScreen extends World
     /**
      * Returns width of tile
      * 
-     * @return  Width of cell
+     * @return  Width of tile
      */
     public int getTileWidth(){
         return CELL_SIZE;
@@ -173,7 +157,7 @@ public class MainScreen extends World
     /**
      * Returns height of tile
      * 
-     * @return  Height of cell
+     * @return  Height of tile
      */
     public int getTileHeight(){
         return CELL_SIZE;
@@ -207,14 +191,24 @@ public class MainScreen extends World
         return 0;
     }
     
+    /**
+     * Swaps positions of two fruits within the 2D array.
+     * Refreshes board to display changes.
+     * 
+     * NOTE: STILL A WORK IN PROGRESS -- MUST IMPLEMENT CHECK WHEHTER POSSIBLE OR NOT
+     * 
+     * @param outerIndex1   Outer index of first fruit
+     * @param innerIndex1   Inner index of first fruit
+     * @param outerIndex2   Outer index of second fruit
+     * @param outerIndex2   Inner index of second fruit
+     * 
+     */
     public void swapFruits(int outerIndex1, int innerIndex1, int outerIndex2, int innerIndex2){
         System.out.println("Sucessful");
         Fruit temp = board[outerIndex1][innerIndex1];
         board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2];
         board[outerIndex2][innerIndex2] = temp;
         
-        System.out.println(board[outerIndex1][innerIndex1]);
-        System.out.println(board[outerIndex2][innerIndex2]);
-        refreshBoard();
+        drawBoard(false);
     }
 }

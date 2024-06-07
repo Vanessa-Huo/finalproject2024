@@ -8,21 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Board extends Actor
 {
-    /**
-     * Act - do whatever the Grid wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    public static final Color OFF_WHITE = new Color (242, 241, 233, 255);
     private GreenfootImage image;
     //private int boardColumns, boardRows;
     private int width;
     private int height;
     private int cellSize = 50;
     
-    public void act()
-    {
-        // Add your action code here.
-        
-    }
     
     public Board(int rows, int cols, int cellSize) {
         width = cols * cellSize;
@@ -30,10 +22,10 @@ public class Board extends Actor
         
         GreenfootImage gridImage = new GreenfootImage(width+1, height+1);
         
-        gridImage.setColor(Color.LIGHT_GRAY);
+        gridImage.setColor(OFF_WHITE);
         gridImage.fillRect(0,0,width,height);
         
-        gridImage.setColor(Color.GRAY);
+        gridImage.setColor(Color.LIGHT_GRAY);
         // Draw the vertical lines
         for (int i = 0; i <= cols; i++) {
             int x = i * cellSize;
