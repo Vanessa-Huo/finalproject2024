@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class TutorialScreen here.
  * 
- * @author (your name) 
+ * @author Anya Shah
  * @version (a version number or a date)
  */
 public class TutorialScreen extends World
@@ -19,12 +19,12 @@ public class TutorialScreen extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 720, 1);
-        setBackground("titleBg.jpg");
+        setBackground("plainBg.png");
         
-        ins = new Instruction();
-        addObject(ins, getWidth() / 2, getHeight() / 2);
+        //ins = new Instruction();
+        //addObject(ins, getWidth() / 2, getHeight() / 2);
         home = new HomeButton();
-        addObject(home, getWidth() / 2, getHeight() / 2);
+        addObject(home, 100, getHeight() - 50);
     }
     public void act() {
         if(Greenfoot.mouseClicked(home)) {

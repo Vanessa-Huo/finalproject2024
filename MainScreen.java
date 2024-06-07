@@ -20,10 +20,17 @@ public class MainScreen extends World
     private static final int CELL_SIZE = 65;
     private int x, y;
     private boolean run;
+    private HomeButton home;
+    
     public MainScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 720, 1); 
+        
+        setBackground("plainBg.png");
+        home = new HomeButton();
+        addObject(home, 100, getHeight() - 50);
+        
         rows = 10;
         cols = 10;
         
@@ -40,6 +47,10 @@ public class MainScreen extends World
         horizontalCrush();
         verticalCrush();
         dropFruits();
+        if(Greenfoot.mouseClicked(home)) {
+            TitleScreen title = new TitleScreen();
+            Greenfoot.setWorld(title);
+        }
     }
     
     /**
