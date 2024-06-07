@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class HomeButton here.
  * 
- * @author (your name) 
+ * @author Anya Shah
  * @version (a version number or a date)
  */
 public class HomeButton extends Icon
@@ -14,6 +14,6 @@ public class HomeButton extends Icon
      */
     public void act()
     {
-        setImage("home.png");
+        setImage("playButton.png");
     }
 }
