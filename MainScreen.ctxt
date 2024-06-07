@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MainScreen
-comment0.text=\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\n\ \n\ Images\ for\ crushing\ effect\:\ https\://www.freepik.com/premium-vector/animated-smoke-explosion-cloud-game-sprite_30653607.htm\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=MainScreen()
 comment2.params=
@@ -14,7 +14,6 @@ comment4.text=\n\ Checks\ for\ vertical\ matches\ of\ three\ Fruits\ and\ remove
 comment5.params=
 comment5.target=void\ dropFruits()
 comment5.text=\n\ Drops\ the\ Fruits\ to\ fill\ empty\ spaces\ below\ them\ and\ refills\ the\ board\ with\ new\ Fruits\ at\ the\ top.\n
-comment5.target=Fruit\ getRandom()
 comment6.params=
 comment6.target=Fruit\ getRandomFruit()
 comment6.text=\n\ Creates\ a\ random\ Fruit.\n\ @return\ Fruit\ A\ new\ Fruit\ of\ random\ type.\n
