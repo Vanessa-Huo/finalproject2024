@@ -5,18 +5,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * 
  * @author Megan Lee
  */
-public class Fruit extends Actor
+public abstract class Fruit extends Actor
 {
     private MouseInfo mouse;
-    protected GreenfootImage image;
+    protected GreenfootImage image, pulseImage;
     private Selection selectBox;
-
+    protected int pulseCount = 0;
+    abstract protected void pulseImage();
+    
     public void act(){
         mouse = Greenfoot.getMouseInfo();
         MainScreen world = (MainScreen)getWorld();
         //Mouse cannot be null
         if (mouse != null){
-            if(Greenfoot.mouseClicked(this)){
+            if(!Selection.isSelecting() && Greenfoot.mouseClicked(this)){
                 ((MainScreen) getWorld()).resetSelection();
                 selectBox = new Selection(this, world.getTileWidth(), world.getTileHeight());
                 getWorld().addObject(selectBox, getX(), getY());
@@ -52,7 +54,6 @@ public class Fruit extends Actor
                     result = outerIndex;
                     break;
             }
-            System.out.println(direction +  ": " + outerIndex + " --> " + result);
         }
         else{
             switch(direction){
@@ -69,9 +70,10 @@ public class Fruit extends Actor
                     result = innerIndex-1;
                     break;
             }
-            System.out.println(direction +  ": " + innerIndex + " --> " + result);
         }
         
         return result;
     }
+    
+    
 }

@@ -19,10 +19,11 @@ public class Selection extends Actor
     private Actor actor; //target actor
     private MouseInfo mouse; //mouse of user
     
+    private static boolean isSelecting;
     private int width, height; //dimensions of selection box 
     private int initialPosX, initialPosY; //initial position of selection box
     private int actCount;//used at start to set initial position coords
-    private int pos; //current location of selection box; 0 = above, 1 = right, 2 = down, 3 = left
+    private int pos; //current location of selection box; -1 = default, 0 = above, 1 = right, 2 = down, 3 = left
     
     /**
      * A constructor for Selection - specify its associated Actor as well as the width
@@ -38,9 +39,10 @@ public class Selection extends Actor
         this.height = height;
 
         image = drawBox ();
-
+        image.setTransparency(0);
         setImage(image);
-
+        
+        pos = -1;
         actCount = 0;
     }
 
@@ -53,6 +55,9 @@ public class Selection extends Actor
             initialPosX = getX();
             initialPosY = getY(); 
         }
+        
+        ((Fruit)actor).pulseImage();
+        
         followMouse();
         
         checkKey("Enter");
@@ -65,6 +70,9 @@ public class Selection extends Actor
      * Will update position of selection box accordingly in the direction of most signficance.
      */
     private void followMouse () {
+        if(image.getTransparency() == 0 && pos != -1){
+            image.setTransparency(255);
+        }
         mouse = Greenfoot.getMouseInfo(); //user's mouse
         int xCoord, yCoord; //mouse coords
         
@@ -75,6 +83,7 @@ public class Selection extends Actor
         if (mouse != null){
             // check for dragging of selection box
             if(Greenfoot.mouseDragged(this)){
+                isSelecting = true;
                 //get coords of mouse
                 xCoord = mouse.getX();
                 yCoord = mouse.getY();
@@ -95,6 +104,10 @@ public class Selection extends Actor
                         setLocation(initialPosX - xMovementFactor, initialPosY);
                         break;
                 }
+            }
+            
+            if(Greenfoot.mouseDragEnded(this)){
+                isSelecting = false;
             }
         }   
     }
@@ -184,5 +197,15 @@ public class Selection extends Actor
         image.drawLine(width-1, height-1, width-1, height-cornerLength-1);
         
         return image;
+    }
+    
+    /**
+     * Returns whether user is currently dragging mouse.
+     * Checked by Actor to ensure end of a drag won't trigger anything.
+     * 
+     * @return boolean  User choosing a tile (true) or not (false)
+     */
+    public static boolean isSelecting(){
+        return isSelecting;
     }
 }

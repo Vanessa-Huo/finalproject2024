@@ -222,7 +222,6 @@ public class MainScreen extends World
      * 
      */
     public void swapFruits(int outerIndex1, int innerIndex1, int outerIndex2, int innerIndex2){
-        System.out.println("Sucessful");
         Fruit temp = board[outerIndex1][innerIndex1];
         board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2];
         board[outerIndex2][innerIndex2] = temp;

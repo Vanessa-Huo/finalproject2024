@@ -8,4 +8,22 @@ public class Peach extends Fruit
         
         setImage(image);
     }
+    
+     protected void pulseImage(){
+        if(pulseCount == 0){
+            pulseImage = new GreenfootImage("peach.png");
+            pulseImage.scale(65,65);
+        }
+
+        if(pulseCount % 20 == 0){
+            if(getImage() == image){
+                setImage(pulseImage);
+            }
+            else{
+                setImage(image);
+            }
+        }
+        
+        pulseCount++;
+    }
 }
