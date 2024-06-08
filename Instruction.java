@@ -14,7 +14,7 @@ public class Instruction extends Icon
      */
     public void act()
     {
-        setImage("instructions.png");
+        //setImage("instructions.png");
         //GreenfootImage image = getImage();
         //image.scale((int) (image.getWidth()*0.7), (int) (image.getHeight()*0.7));
     }
