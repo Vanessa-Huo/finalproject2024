@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MainScreen
-comment0.text=\r\n\ game\ desc...\r\n\ \r\n<<<<<<<\ HEAD\r\n\ @author\ Vanessa\ Huo,\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n\=\=\=\=\=\=\=\r\n\ Images\ for\ crushing\ effect\:\ https\://www.freepik.com/premium-vector/animated-smoke-explosion-cloud-game-sprite_30653607.htm\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n>>>>>>>\ main\r\n
+comment0.text=\r\n\ game\ desc...\r\n\ \r\n\ @author\ Vanessa\ Huo,\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
 comment1.params=
 comment1.target=MainScreen()
 comment10.params=
@@ -8,18 +8,18 @@ comment10.target=void\ resetSelection()
 comment10.text=\r\n\ Removes\ all\ current\ selection\ boxes\ from\ world.\r\n@author\ Megan\r\n
 comment11.params=fruit\ outerIndex
 comment11.target=int\ getIndex(Fruit,\ boolean)
-comment11.text=\r\n\ get\ Index\ of\ fruit\r\n\ @author\ Megan\r\n
+comment11.text=\r\n\ Locates\ and\ returns\ outer\ or\ inner\ index\ of\ a\ fruit\ within\ 2D\ array.\r\n\ \r\n\ @param\ fruit\ \ \ \ \ \ \ \ \ Fruit\ to\ determine\ index\ of\ \r\n\ @param\ outerIndex\ \ \ \ To\ return\ the\ outer\ index\ (true)\ or\ not\ (false)\r\n\ @return\ int\ \ \ \ \ \ \ \ \ \ Outer/Inner\ index\ of\ fruit\r\n
 comment12.params=outerIndex1\ innerIndex1\ outerIndex2\ innerIndex2
 comment12.target=void\ swapFruits(int,\ int,\ int,\ int)
-comment12.text=\r\n\ Swaps\ positions\ of\ two\ fruits\ within\ the\ 2D\ array.\r\n\ Refreshes\ board\ to\ display\ changes.\r\n\ \r\n\ NOTE\:\ STILL\ A\ WORK\ IN\ PROGRESS\ --\ MUST\ IMPLEMENT\ CHECK\ WHEHTER\ POSSIBLE\ OR\ NOT\r\n\ \r\n\ @param\ outerIndex1\ \ \ Outer\ index\ of\ first\ fruit\r\n\ @param\ innerIndex1\ \ \ Inner\ index\ of\ first\ fruit\r\n\ @param\ outerIndex2\ \ \ Outer\ index\ of\ second\ fruit\r\n\ @param\ outerIndex2\ \ \ Inner\ index\ of\ second\ fruit\r\n\ \r\n
+comment12.text=\r\n\ Swaps\ positions\ of\ two\ fruits\ within\ the\ 2D\ array.\r\n\ Refreshes\ board\ to\ display\ changes.\r\n\ \r\n\ @param\ outerIndex1\ \ \ Outer\ index\ of\ first\ fruit\r\n\ @param\ innerIndex1\ \ \ Inner\ index\ of\ first\ fruit\r\n\ @param\ outerIndex2\ \ \ Outer\ index\ of\ second\ fruit\r\n\ @param\ outerIndex2\ \ \ Inner\ index\ of\ second\ fruit\r\n\ \r\n
 comment2.params=
 comment2.target=void\ act()
-comment3.params=
-comment3.target=void\ horizontalCrush()
-comment3.text=\r\n\ Checks\ for\ horizontal\ matches\ of\ three\ Fruits\ and\ removes\ them.\r\n
-comment4.params=
-comment4.target=void\ verticalCrush()
-comment4.text=\r\n\ Checks\ for\ vertical\ matches\ of\ three\ Fruits\ and\ removes\ them.\r\n
+comment3.params=removeCrushes
+comment3.target=boolean\ horizontalCrush(boolean)
+comment3.text=\r\n\ Checks\ for\ horizontal\ matches\ of\ three\ Fruits\ and\ removes\ them.\r\n\ \r\n\ @param\ removeCrushes\ \ \ Remove\ found\ crushes\ (true)\ or\ not\ (false)\r\n\ @return\ boolean\ \ Horizontal\ crush\ was\ found\ (true)\ or\ not\ (false)\r\n
+comment4.params=removeCrushes
+comment4.target=boolean\ verticalCrush(boolean)
+comment4.text=\r\n\ Checks\ for\ vertical\ matches\ of\ three\ Fruits\ and\ can\ remove\ them.\r\n\ \r\n\ @param\ removeCrushes\ \ \ Remove\ found\ crushes\ (true)\ or\ not\ (false)\r\n\ @return\ boolean\ \ \ \ \ \ \ \ Vertical\ crush\ was\ found\ (true)\ or\ not\ (false)\r\n
 comment5.params=
 comment5.target=void\ dropFruits()
 comment5.text=\r\n\ Drops\ the\ Fruits\ to\ fill\ empty\ spaces\ below\ them\ and\ refills\ the\ board\ with\ new\ Fruits\ at\ the\ top.\r\n

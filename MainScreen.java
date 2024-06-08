@@ -3,15 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * game desc...
  * 
-<<<<<<< HEAD
  * @author Vanessa Huo, Megan Lee
  * @version June 2024
-=======
- * Images for crushing effect: https://www.freepik.com/premium-vector/animated-smoke-explosion-cloud-game-sprite_30653607.htm
- * 
- * @author (your name) 
- * @version (a version number or a date)
->>>>>>> main
  */
 public class MainScreen extends World
 {
@@ -21,74 +14,90 @@ public class MainScreen extends World
     private int x, y;
     private boolean run;
     private HomeButton home;
-    
+
     public MainScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 720, 1); 
-        
-        setBackground("plainBg.png");
+
+        setBackground("mainScreen.png");
         home = new HomeButton();
         addObject(home, 100, getHeight() - 50);
-        
+
         rows = 10;
         cols = 10;
-        
+
         addObject(new Board(rows,cols,CELL_SIZE), 665,360);
-        
+
         board = new Fruit[rows][cols];
-        
+
         run = false;
-        
+
         drawBoard(true);
     }
-    
+
     public void act(){
-        horizontalCrush();
-        verticalCrush();
+        horizontalCrush(true);
+        verticalCrush(true);
         dropFruits();
         if(Greenfoot.mouseClicked(home)) {
             TitleScreen title = new TitleScreen();
             Greenfoot.setWorld(title);
         }
     }
-    
+
     /**
      * Checks for horizontal matches of three Fruits and removes them.
+     * 
+     * @param removeCrushes   Remove found crushes (true) or not (false)
+     * @return boolean  Horizontal crush was found (true) or not (false)
      */
-    private void horizontalCrush(){
+    private boolean horizontalCrush(boolean removeCrushes){
+        boolean crushFound = false;
         for(int i=0; i<rows;i++){
             for(int j=0;j<cols-2;j++){
                 if(board[i][j] != null && board[i][j + 1] != null && board[i][j + 2] != null){
                     if(board[i][j].getClass() == board[i][j + 1].getClass() && board[i][j].getClass() == board[i][j + 2].getClass()){
-                        removeObject(board[i][j]);
-                        removeObject(board[i][j+1]);
-                        removeObject(board[i][j+2]);
-                        board[i][j] =  board[i][j+1] =  board[i][j+2] = null;
+                        if(removeCrushes){
+                            removeObject(board[i][j]);
+                            removeObject(board[i][j+1]);
+                            removeObject(board[i][j+2]);
+                            board[i][j] =  board[i][j+1] =  board[i][j+2] = null;
+                        }
+                        crushFound = true;
                     }
                 }
             }
         }
+        return crushFound;
     }
-    
+
     /**
-     * Checks for vertical matches of three Fruits and removes them.
+     * Checks for vertical matches of three Fruits and can remove them.
+     * 
+     * @param removeCrushes   Remove found crushes (true) or not (false)
+     * @return boolean        Vertical crush was found (true) or not (false)
      */
-    private void verticalCrush(){
+    private boolean verticalCrush(boolean removeCrushes){
+        boolean crushFound = false;
         for(int i=0; i<rows-2;i++){
             for(int j=0;j<cols;j++){
                 if(board[i][j] != null && board[i + 1][j] != null && board[i + 2][j] != null){
                     if(board[i][j].getClass().equals(board[i + 1][j].getClass()) && board[i][j].getClass().equals(board[i + 2][j].getClass())){
-                        removeObject(board[i][j]);
-                        removeObject(board[i+1][j]);
-                        removeObject(board[i+2][j]);
-                        board[i][j] = board[i+1][j] = board[i+2][j] = null;
+                        if(removeCrushes){
+                            removeObject(board[i][j]);
+                            removeObject(board[i+1][j]);
+                            removeObject(board[i+2][j]);
+                            board[i][j] = board[i+1][j] = board[i+2][j] = null;
+                        }
+                        crushFound = true;
                     }
                 }
             }
         }
+        return crushFound;
     }
-    
+
     /**
      * Drops the Fruits to fill empty spaces below them and refills the board with new Fruits at the top.
      */
@@ -137,7 +146,7 @@ public class MainScreen extends World
         }
         return new Strawberry();
     }    
-    
+
     /**
      * If hasn't been set up already, initialize fruits. 
      * 
@@ -162,7 +171,7 @@ public class MainScreen extends World
             }
         }
     }
-    
+
     /**
      * Returns width of tile
      * 
@@ -171,7 +180,7 @@ public class MainScreen extends World
     public int getTileWidth(){
         return CELL_SIZE;
     }
-    
+
     /**
      * Returns height of tile
      * 
@@ -180,7 +189,7 @@ public class MainScreen extends World
     public int getTileHeight(){
         return CELL_SIZE;
     }
-    
+
     /**
      * Removes all current selection boxes from world.
      *@author Megan
@@ -188,10 +197,13 @@ public class MainScreen extends World
     public void resetSelection(){
         removeObjects(getObjects(Selection.class));
     }
-    
+
     /**
-     * get Index of fruit
-     * @author Megan
+     * Locates and returns outer or inner index of a fruit within 2D array.
+     * 
+     * @param fruit         Fruit to determine index of 
+     * @param outerIndex    To return the outer index (true) or not (false)
+     * @return int          Outer/Inner index of fruit
      */
     public int getIndex(Fruit fruit, boolean outerIndex){
         for(int i=0; i<rows;i++){
@@ -208,12 +220,10 @@ public class MainScreen extends World
         }
         return 0;
     }
-    
+
     /**
      * Swaps positions of two fruits within the 2D array.
      * Refreshes board to display changes.
-     * 
-     * NOTE: STILL A WORK IN PROGRESS -- MUST IMPLEMENT CHECK WHEHTER POSSIBLE OR NOT
      * 
      * @param outerIndex1   Outer index of first fruit
      * @param innerIndex1   Inner index of first fruit
@@ -225,7 +235,15 @@ public class MainScreen extends World
         Fruit temp = board[outerIndex1][innerIndex1];
         board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2];
         board[outerIndex2][innerIndex2] = temp;
-        
-        drawBoard(false);
+
+        //if switch made a crush possible
+        if(horizontalCrush(false) || verticalCrush(false)){
+            resetSelection();
+            drawBoard(false);
+        }
+        else{ //if switch cannot form a crush
+            board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
+            board[outerIndex1][innerIndex1] = temp;
+        }
     }
 }

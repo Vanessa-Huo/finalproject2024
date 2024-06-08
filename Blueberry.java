@@ -1,5 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+/**
+ * 
+ * @author Megan Lee
+ */
 public class Blueberry extends Fruit
 {
     public Blueberry(){

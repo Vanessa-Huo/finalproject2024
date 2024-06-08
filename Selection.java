@@ -14,17 +14,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Selection extends Actor
 {
     public static final Color TRANSPARENT_WHITE = new Color (255, 255, 255, 80);
-    
+
     private GreenfootImage image;//selection box picture
     private Actor actor; //target actor
     private MouseInfo mouse; //mouse of user
-    
+
     private static boolean isSelecting;
     private int width, height; //dimensions of selection box 
     private int initialPosX, initialPosY; //initial position of selection box
     private int actCount;//used at start to set initial position coords
     private int pos; //current location of selection box; -1 = default, 0 = above, 1 = right, 2 = down, 3 = left
-    
+
     /**
      * A constructor for Selection - specify its associated Actor as well as the width
      * and height of the selection box (most likely the size of the tile)
@@ -41,30 +41,33 @@ public class Selection extends Actor
         image = drawBox ();
         image.setTransparency(0);
         setImage(image);
-        
+
         pos = -1;
         actCount = 0;
     }
 
     public void act(){
-        if(actor == null){
+        if(actor.getWorld() == null){
+            System.out.println("gone");
             getWorld().removeObject(this);
         }
-        //set initial position of selection box at start
-        if(actCount == 1){
-            initialPosX = getX();
-            initialPosY = getY(); 
+        else{
+            //set initial position of selection box at start
+            if(actCount == 1){
+                initialPosX = getX();
+                initialPosY = getY(); 
+            }
+
+            checkKey("Enter");
+            
+            ((Fruit)actor).pulseImage();
+
+            followMouse();
+
+            if(actCount<2) actCount++;
         }
-        
-        ((Fruit)actor).pulseImage();
-        
-        followMouse();
-        
-        checkKey("Enter");
-        
-        if(actCount<2) actCount++;
     }
-    
+
     /**
      * Checks for mouse input for dragging.
      * Will update position of selection box accordingly in the direction of most signficance.
@@ -75,7 +78,7 @@ public class Selection extends Actor
         }
         mouse = Greenfoot.getMouseInfo(); //user's mouse
         int xCoord, yCoord; //mouse coords
-        
+
         //cell dimensions to translate to
         int xMovementFactor = width; 
         int yMovementFactor = height;
@@ -87,7 +90,7 @@ public class Selection extends Actor
                 //get coords of mouse
                 xCoord = mouse.getX();
                 yCoord = mouse.getY();
-                
+
                 //determine position of selection box
                 pos = directionToSwitch(xCoord, yCoord);
                 switch(pos){
@@ -105,7 +108,7 @@ public class Selection extends Actor
                         break;
                 }
             }
-            
+
             if(Greenfoot.mouseDragEnded(this)){
                 isSelecting = false;
             }
@@ -129,7 +132,7 @@ public class Selection extends Actor
     private int directionToSwitch(int xCoord, int yCoord){
         int xDisplacement = xCoord - initialPosX;
         int yDisplacement = yCoord - initialPosY;
-        
+
         //horizontal displacement more significant
         if (Math.abs(xDisplacement) > Math.abs(yDisplacement)){ //
             //mouse moved leftwards --> left
@@ -153,7 +156,7 @@ public class Selection extends Actor
             }
         }
     }
-    
+
     private void checkKey(String key){
         if(pos != -1){ //has been moved (up, down, right, or left)
             if(Greenfoot.isKeyDown(key)){
@@ -165,7 +168,7 @@ public class Selection extends Actor
             }
         }
     }
-    
+
     /**
      * Draws a translucent white box with a border at its corners.
      * 
@@ -195,10 +198,10 @@ public class Selection extends Actor
         //bottom right corner
         image.drawLine(width-cornerLength, height-1, width, height-1);
         image.drawLine(width-1, height-1, width-1, height-cornerLength-1);
-        
+
         return image;
     }
-    
+
     /**
      * Returns whether user is currently dragging mouse.
      * Checked by Actor to ensure end of a drag won't trigger anything.
