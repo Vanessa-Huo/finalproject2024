@@ -13,7 +13,7 @@ public class BackButton extends Icon
     }
     public void act()
     {
-         if (Greenfoot.mouseClicked(this))
+        if (Greenfoot.mouseClicked(this))
         {
             TutorialScreen.switchNext(); //Switches back to previous screen
         }

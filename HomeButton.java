@@ -11,7 +11,11 @@ public class HomeButton extends Icon
     public HomeButton(){
         setImage("homeButton.png");
     }
+    
     public void act(){
-        
+        if (Greenfoot.mouseClicked(this))
+        {
+            Greenfoot.setWorld(new TitleScreen());
+        }
     }
 }

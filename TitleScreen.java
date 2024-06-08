@@ -30,16 +30,5 @@ public class TitleScreen extends World
     }
 
     public void act() {
-        if(Greenfoot.mouseClicked(play)) {
-            MainScreen game = new MainScreen();
-            Greenfoot.setWorld(game);
-        }
-        if(Greenfoot.mouseClicked(tut)) {
-            TutorialScreen instructions = new TutorialScreen();
-            Greenfoot.setWorld(instructions);
-        }
-        if(Greenfoot.mouseClicked(ach)) {
-
-        }
     }
 }

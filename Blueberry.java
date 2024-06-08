@@ -12,6 +12,8 @@ public class Blueberry extends Fruit
         image = new GreenfootImage("blueberry.png");
         image.scale(56,56);
         setImage(image);
+        
+        pulseCount = 0;
     }
 
     protected void pulseImage(){

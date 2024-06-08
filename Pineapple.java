@@ -13,6 +13,8 @@ public class Pineapple extends Fruit
         image = new GreenfootImage("pineapple.png");
         image.scale(56,56);
         setImage(image);
+        
+        pulseCount = 0;
     }
     
      protected void pulseImage(){

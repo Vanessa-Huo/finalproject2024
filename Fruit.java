@@ -9,8 +9,9 @@ public abstract class Fruit extends Actor
 {
     private MouseInfo mouse;
     protected GreenfootImage image, pulseImage;
-    private Selection selectBox;
-    protected int pulseCount = 0;
+    protected Selection selectBox;
+    protected int pulseCount;
+    
     abstract protected void pulseImage();
     
     public void act(){

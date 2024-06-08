@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class TutorialButton here.
  * 
  * @author Anya Shah
- * @version (a version number or a date)
+ * @version June 2024
  */
 public class TutorialButton extends Icon
 {
@@ -12,6 +12,9 @@ public class TutorialButton extends Icon
         setImage("tutorialButton.png");
     }
     public void act(){
-        
+        if (Greenfoot.mouseClicked(this))
+        {
+            Greenfoot.setWorld(new TutorialScreen());
+        }
     }
 }
