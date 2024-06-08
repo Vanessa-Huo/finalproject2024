@@ -19,7 +19,7 @@ public class TutorialScreen extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 720, 1);
-        setBackground("plainBg.png");
+        setBackground("plainBG.png");
         
         //ins = new Instruction();
         //addObject(ins, getWidth() / 2, getHeight() / 2);

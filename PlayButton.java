@@ -11,7 +11,4 @@ public class PlayButton extends Icon
     public PlayButton(){
         setImage("playButton.png");
     }
-    public void act(){
-        
-    }
 }

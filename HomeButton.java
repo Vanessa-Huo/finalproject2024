@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class HomeButton extends Icon
 {
     public HomeButton(){
-        setImage("playButton.png");
+        setImage("homeButton.png");
     }
     public void act(){
         

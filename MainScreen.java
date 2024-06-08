@@ -20,7 +20,7 @@ public class MainScreen extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 720, 1); 
 
-        setBackground("mainScreen.png");
+        setBackground("plainBG.png");
         home = new HomeButton();
         addObject(home, 100, getHeight() - 50);
 
