@@ -8,13 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MainScreen extends World
 {
-    private Fruit[][] board;
+    private static Fruit[][] board;
     private int rows, cols;
     private static final int CELL_SIZE = 65;
     private int x, y;
     private boolean run;
     private HomeButton home;
-
+    private int score; 
+    
     public MainScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -34,38 +35,58 @@ public class MainScreen extends World
         run = false;
 
         drawBoard(true);
+        
+        text();
+        //addObject(scoreBar, 100,330);
     }
 
     public void act(){
-        horizontalCrush(true);
-        verticalCrush(true);
         dropFruits();
         if(Greenfoot.mouseClicked(home)) {
             TitleScreen title = new TitleScreen();
             Greenfoot.setWorld(title);
         }
+        crushFive(true);
+        crushFour(true);
+        crushThree(true);
+        dropFruits();
+    }
+    
+    public void text(){
+        addObject(new Label("Time",50),100,80);
+        addObject(new Label("Score",50),100,280);
+        addObject(new Label("Booster",50),100,480);
     }
 
     /**
-     * Checks for horizontal matches of three Fruits and removes them.
+     * Checks for horizontal and vertical matches of three Fruits and removes them.
      * 
      * @param removeCrushes   Remove found crushes (true) or not (false)
-     * @return boolean  Horizontal crush was found (true) or not (false)
+     * @return boolean  crush was found (true) or not (false)
      */
-    private boolean horizontalCrush(boolean removeCrushes){
+    private boolean crushThree(boolean removeCrushes){
         boolean crushFound = false;
         for(int i=0; i<rows;i++){
             for(int j=0;j<cols-2;j++){
-                if(board[i][j] != null && board[i][j + 1] != null && board[i][j + 2] != null){
-                    if(board[i][j].getClass() == board[i][j + 1].getClass() && board[i][j].getClass() == board[i][j + 2].getClass()){
-                        if(removeCrushes){
-                            removeObject(board[i][j]);
-                            removeObject(board[i][j+1]);
-                            removeObject(board[i][j+2]);
-                            board[i][j] =  board[i][j+1] =  board[i][j+2] = null;
-                        }
-                        crushFound = true;
+                int length = getMatchLength(i, j, 0, 1);
+                if (length == 3) {
+                    if(removeCrushes){
+                        removeCrush(i, j, 0, 1, length);
+                        j += length - 1; // Skip the already checked candies
                     }
+                    crushFound = true;
+                }
+            }
+        }
+        for(int i=0; i<rows-2;i++){
+            for(int j=0;j<cols;j++){
+                int length = getMatchLength(i, j, 1, 0);
+                if (length == 3) {
+                    if(removeCrushes){
+                        removeCrush(i, j, 1, 0, length);
+                        i += length - 1; // Skip the already checked candies
+                    }
+                    crushFound = true;
                 }
             }
         }
@@ -73,31 +94,75 @@ public class MainScreen extends World
     }
 
     /**
-     * Checks for vertical matches of three Fruits and can remove them.
+     * Checks for horizontal and vertical matches of four Fruits and removes them.
      * 
      * @param removeCrushes   Remove found crushes (true) or not (false)
-     * @return boolean        Vertical crush was found (true) or not (false)
+     * @return boolean  crush was found (true) or not (false)
      */
-    private boolean verticalCrush(boolean removeCrushes){
+    private boolean crushFour(boolean removeCrushes){
         boolean crushFound = false;
-        for(int i=0; i<rows-2;i++){
-            for(int j=0;j<cols;j++){
-                if(board[i][j] != null && board[i + 1][j] != null && board[i + 2][j] != null){
-                    if(board[i][j].getClass().equals(board[i + 1][j].getClass()) && board[i][j].getClass().equals(board[i + 2][j].getClass())){
-                        if(removeCrushes){
-                            removeObject(board[i][j]);
-                            removeObject(board[i+1][j]);
-                            removeObject(board[i+2][j]);
-                            board[i][j] = board[i+1][j] = board[i+2][j] = null;
-                        }
-                        crushFound = true;
+        for(int i=0; i<rows;i++){
+            for(int j=0;j<cols-3;j++){
+                int length = getMatchLength(i, j, 0, 1);
+                if (length == 4) {
+                    if(removeCrushes){
+                        removeCrush(i, j, 0, 1, length);
+                        j += length - 1; // Skip the already checked candies
                     }
+                    crushFound = true;
+                }
+            }
+        }
+        for(int i=0; i<rows-3;i++){
+            for(int j=0;j<cols;j++){
+                int length = getMatchLength(i, j, 1, 0);
+                if (length == 4) {
+                    if(removeCrushes){
+                        removeCrush(i, j, 1, 0, length);
+                        i += length - 1; // Skip the already checked candies
+                    }
+                    crushFound = true;
                 }
             }
         }
         return crushFound;
     }
-
+    
+    /**
+     * Checks for matches of five or more Fruits and removes them.
+     * 
+     * @param removeCrushes   Remove found crushes (true) or not (false)
+     * @return boolean  crush was found (true) or not (false)
+     */
+    private boolean crushFive(boolean removeCrushes){
+        boolean crushFound = false;
+        for(int i=0; i<rows;i++){
+            for(int j=0;j<cols-4;j++){
+                int length = getMatchLength(i, j, 0, 1);
+                if (length >= 5) {
+                    if(removeCrushes){
+                        removeCrush(i, j, 0, 1, length);
+                        j += length - 1; // Skip the already checked candies
+                    }
+                    crushFound = true;
+                }
+            }
+        }
+        for(int i=0; i<rows-4;i++){
+            for(int j=0;j<cols;j++){
+                int length = getMatchLength(i, j, 1, 0);
+                if (length >= 5) {
+                    if(removeCrushes){
+                        removeCrush(i, j, 1, 0, length);
+                        i += length - 1; // Skip the already checked candies
+                    }
+                    crushFound = true;
+                }
+            }
+        }
+        return crushFound;
+    }
+    
     /**
      * Drops the Fruits to fill empty spaces below them and refills the board with new Fruits at the top.
      */
@@ -145,7 +210,42 @@ public class MainScreen extends World
             case 4: return new Pineapple();
         }
         return new Strawberry();
-    }    
+    }  
+    
+    /**
+     * A method that gives the length of a match starting from position (i, j) in the given direction (di, dj).
+     * 
+     * @param i     The row index to start the match check
+     * @param j     The column index to start the match check
+     * @param di    The row direction. 0 for horizontal check and 1 for vertical check
+     * @param dj    The col direction. 1 for horizontal check and 0 for vertical check
+     * @return      The length of the match (three, four, five or more)
+     */
+    private int getMatchLength(int i, int j, int di, int dj) {
+        int length = 1;
+        while (i + length * di < rows && j + length * dj < cols && board[i][j] != null && board[i + length * di][j + length * dj]!= null 
+        && board[i][j].getClass().equals(board[i + length * di][j + length * dj].getClass())){
+            length++;
+        }
+        return length;
+    }
+
+    /**
+     * Removes the match starting from the specified position (i, j) in the given direction (di, dj).
+     * 
+     * @param i     The row index to start removing
+     * @param j     The column index to start removing
+     * @param di    The row direction. 0 for horizontal check and 1 for vertical check
+     * @param dj    The col direction. 1 for horizontal check and 0 for vertical check
+     * @param length    The number of fruits to remove (length of the match)
+     */
+    private void removeCrush(int i, int j, int di, int dj, int length) {
+        for (int k = 0; k < length; k++) {
+            removeObject(board[i + k * di][j + k * dj]);
+            board[i + k * di][j + k * dj] = null;
+        }
+        score += length;
+    }
 
     /**
      * If hasn't been set up already, initialize fruits. 
@@ -237,7 +337,7 @@ public class MainScreen extends World
         board[outerIndex2][innerIndex2] = temp;
 
         //if switch made a crush possible
-        if(horizontalCrush(false) || verticalCrush(false)){
+        if(crushFour(false) || crushThree(false) || crushFive(false)){
             resetSelection();
             drawBoard(false);
         }
