@@ -45,7 +45,7 @@ public class MainScreen extends World
         scoreLabel.setFillColor(Color.BLACK);
         addObject(timer, 170, 150);
         addObject(scoreLabel, 170, 350);
-        setUp();
+       
 
         drawBoard(true);
 
@@ -81,7 +81,7 @@ public class MainScreen extends World
                             removeObject(board[i][j]);
                             removeObject(board[i][j+1]);
                             removeObject(board[i][j+2]);
-                            board[i][j] =  board[i][j+1] =  board[i][j+2] = null;as
+                            board[i][j] =  board[i][j+1] =  board[i][j+2] = null;
                             score += 3;
                         }
                         crushFound = true;
