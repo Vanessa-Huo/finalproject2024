@@ -15,6 +15,9 @@ public class MainScreen extends World
     private static final int CELL_SIZE = 65;
     private int x, y;
     private boolean run;
+    Timer timer;
+    Label scoreLabel;
+    int score = 0;
     public MainScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -28,6 +31,11 @@ public class MainScreen extends World
         
         run = false;
         
+        timer = new Timer();
+        scoreLabel = new Label(score, 80);
+        scoreLabel.setFillColor(Color.BLACK);
+        addObject(timer, 170, 150);
+        addObject(scoreLabel, 170, 350);
         setUp();
     }
     
@@ -35,6 +43,7 @@ public class MainScreen extends World
         horizontalCrush();
         verticalCrush();
         dropFruits();
+        scoreLabel.setValue(score);
     }
     
     /**
@@ -49,6 +58,7 @@ public class MainScreen extends World
                         removeObject(board[i][j+1]);
                         removeObject(board[i][j+2]);
                         board[i][j] =  board[i][j+1] =  board[i][j+2] = null;
+                        score += 3;
                     }
                 }
             }
@@ -67,6 +77,7 @@ public class MainScreen extends World
                         removeObject(board[i+1][j]);
                         removeObject(board[i+2][j]);
                         board[i][j] = board[i+1][j] = board[i+2][j] = null;
+                        score += 3;
                     }
                 }
             }
