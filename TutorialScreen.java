@@ -1,35 +1,60 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TutorialScreen here.
+ * Provides user with a "slideshow" of how to play the game.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Megan Lee
+ * @version June 2024
  */
 public class TutorialScreen extends World
 {
-    private Instruction ins;
-    private HomeButton home;
+    //GreenfootImage[] instructions = new GreenfootImage[3]; //Images of different instruction panels 
+    public static int currentScreen = 0; //Track current screen displayed
+    
+    public TutorialScreen(){
+        super(1024, 720, 1); 
+        prepare();
+    }
     
     /**
-     * Constructor for objects of class TutorialScreen.
-     * 
+     * Add buttons, assign instructon panel images to array.
      */
-    public TutorialScreen()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1024, 720, 1);
-        setBackground("titleBg.jpg");
-        
-        ins = new Instruction();
-        addObject(ins, getWidth() / 2, getHeight() / 2);
-        home = new HomeButton();
-        addObject(home, getWidth() / 2, getHeight() / 2);
-    }
-    public void act() {
-        if(Greenfoot.mouseClicked(home)) {
-            TitleScreen title = new TitleScreen();
-            Greenfoot.setWorld(title);
+    public void prepare() {
+        for(int i=0; i<3;i++) {
+            //instructions[i] = new GreenfootImage("images/howtoplay" + (i+1) + ".jpg");
+            //instructions[i].scale(600,400);
         }
+        
+        BackButton backBtn = new BackButton();
+        addObject(backBtn, getWidth()/2 - 100, getHeight()-100);
+        
+        NextButton nextBtn = new NextButton();
+        addObject(nextBtn, getWidth()/2 + 100, getHeight()-100);
+        
+        HomeButton homeBtn = new HomeButton();
+        addObject(homeBtn, 100, getHeight() - 50);
+        //setBackground(instructions[currentScreen]);
+    }
+    
+    /**
+     * Switch back to previous screen.
+     */
+    public static void switchBack(){
+        if(currentScreen>0){
+            currentScreen--;
+        }
+    }
+    
+    /**
+     * Switch forward to next screen.
+     */
+    public static void switchNext(){
+        if(currentScreen<2) {
+            currentScreen++;
+        }
+    }
+    
+    public void act(){
+        //setBackground(instructions[currentScreen]);
     }
 }
