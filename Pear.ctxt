@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Pear
-comment0.text=\r\n\ Pear\ is\ a\ type\ of\ fruit.\r\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Pears.\r\n\ \r\n\ @author\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
+comment0.text=\n\ Pear\ is\ a\ type\ of\ fruit.\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Pears.\n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=Pear()
 comment2.params=
