@@ -21,7 +21,6 @@ public class MainScreen extends World
     //int score = 0;
 
     private HomeButton home;
-    private int score; 
     private GreenfootImage[] explode = new GreenfootImage[3];
     private int animCounter, animDelay, animIndex, maxIndex;
     private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES }
@@ -53,6 +52,12 @@ public class MainScreen extends World
         drawBoard(true);
 
         text();
+        
+        animCounter = 0;
+        maxIndex = explode.length;
+        //Greenfoot.setSpeed(70); // Set the speed to 70 out of 100
+
+        state = GameState.CHECK_MATCHES;
     }
 
     public void act(){
@@ -67,25 +72,6 @@ public class MainScreen extends World
         //Play
         run = true;
         scoreLabel.setValue(score);
-        crushFive(true);
-        crushFour(true);
-        crushThree(true);
-        dropFruits();
-        //addObject(scoreBar, 100,330);
-
-    public void act(){
-        dropFruits();
-        scoreLabel.setValue(score);
-        if(Greenfoot.mouseClicked(home)) {
-        animCounter = 0;
-        maxIndex = explode.length;
-        //Greenfoot.setSpeed(70); // Set the speed to 70 out of 100
-        
-        state = GameState.CHECK_MATCHES;
-    }
-
-    public void act()
-    {
         switch (state) {
             case CHECK_MATCHES:
                 if (crushFive(true) || crushFour(true) || crushThree(true)) {
@@ -94,26 +80,25 @@ public class MainScreen extends World
                     dropFruits();
                 }
                 break;
-                
             case REMOVE_MATCHES:
                 triggerExplosions();
                 state = GameState.PLAY_EXPLOSION;
                 break;
-                
             case PLAY_EXPLOSION:
                 if (getObjects(Explosion.class).isEmpty()) {
                     state = GameState.FILL_SPACES;
                 }
                 break;
-                
             case FILL_SPACES:
                 dropFruits();
                 state = GameState.CHECK_MATCHES;
                 break;
         }
-
+        crushFive(true);
+        crushFour(true);
+        crushThree(true);
+        dropFruits();
         if (Greenfoot.mouseClicked(home)) {
-
             TitleScreen title = new TitleScreen();
             Greenfoot.setWorld(title);
         }
@@ -317,9 +302,6 @@ public class MainScreen extends World
         }
         return new SBlueberry();
     }
-    
-        return new Strawberry();
-    }  
 
     /**
      * A method that gives the length of a match starting from position (i, j) in the given direction (di, dj).
@@ -473,8 +455,8 @@ public class MainScreen extends World
         }
         return 0;
     }
-
-  
+    
+    /**
      * Swaps positions of two fruits within the 2D array.
      * Refreshes board to display changes.
      * 
@@ -488,7 +470,6 @@ public class MainScreen extends World
         Fruit temp = board[outerIndex1][innerIndex1];
         board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2];
         board[outerIndex2][innerIndex2] = temp;
-
         //if switch made a crush possible
         if(crushFour(false) || crushThree(false) || crushFive(false)){
             resetSelection();
