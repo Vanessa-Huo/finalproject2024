@@ -19,7 +19,6 @@ public class MainScreen extends World
     int score = 0;
 
     private HomeButton home;
-    private int score; 
     
     public MainScreen()
     {    
@@ -89,16 +88,6 @@ public class MainScreen extends World
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
                         j += length - 1; // Skip the already checked candies
-                if(board[i][j] != null && board[i][j + 1] != null && board[i][j + 2] != null){
-                    if(board[i][j].getClass() == board[i][j + 1].getClass() && board[i][j].getClass() == board[i][j + 2].getClass()){
-                        if(removeCrushes){
-                            removeObject(board[i][j]);
-                            removeObject(board[i][j+1]);
-                            removeObject(board[i][j+2]);
-                            board[i][j] =  board[i][j+1] =  board[i][j+2] = null;
-                            score += 3;
-                        }
-                        crushFound = true;
                     }
                     crushFound = true;
                 }
@@ -131,22 +120,13 @@ public class MainScreen extends World
             for(int j=0;j<cols-3;j++){
                 int length = getMatchLength(i, j, 0, 1);
                 if (length == 4) {
+                    Fruit temp = checkFruit(board[i][j]);
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
                         j += length - 1; // Skip the already checked candies
-        for(int i=0; i<rows-2;i++){
-            for(int j=0;j<cols;j++){
-                if(board[i][j] != null && board[i + 1][j] != null && board[i + 2][j] != null){
-                    if(board[i][j].getClass().equals(board[i + 1][j].getClass()) && board[i][j].getClass().equals(board[i + 2][j].getClass())){
-                        if(removeCrushes){
-                            removeObject(board[i][j]);
-                            removeObject(board[i+1][j]);
-                            removeObject(board[i+2][j]);
-                            board[i][j] = board[i+1][j] = board[i+2][j] = null;
-                            score += 3;
-                        }
-                        crushFound = true;
                     }
+                    board[i][j]=temp;
+                    addObject(board[i][j], x+j*65, y+i*65);
                     crushFound = true;
                 }
             }
@@ -155,10 +135,13 @@ public class MainScreen extends World
             for(int j=0;j<cols;j++){
                 int length = getMatchLength(i, j, 1, 0);
                 if (length == 4) {
+                    Fruit temp = checkFruit(board[i][j]);
                     if(removeCrushes){
                         removeCrush(i, j, 1, 0, length);
                         i += length - 1; // Skip the already checked candies
                     }
+                    board[i][j]=temp;
+                    addObject(board[i][j], x+j*65, y+i*65);
                     crushFound = true;
                 }
             }
@@ -178,10 +161,13 @@ public class MainScreen extends World
             for(int j=0;j<cols-4;j++){
                 int length = getMatchLength(i, j, 0, 1);
                 if (length >= 5) {
+                    Fruit temp = checkFruit(board[i][j]);
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
                         j += length - 1; // Skip the already checked candies
                     }
+                    board[i][j]=temp;
+                    addObject(board[i][j], x+j*65, y+i*65);
                     crushFound = true;
                 }
             }
@@ -190,10 +176,13 @@ public class MainScreen extends World
             for(int j=0;j<cols;j++){
                 int length = getMatchLength(i, j, 1, 0);
                 if (length >= 5) {
+                    Fruit temp = checkFruit(board[i][j]);
                     if(removeCrushes){
                         removeCrush(i, j, 1, 0, length);
                         i += length - 1; // Skip the already checked candies
                     }
+                    board[i][j]=temp;
+                    addObject(board[i][j], x+j*65, y+i*65);
                     crushFound = true;
                 }
             }
@@ -241,14 +230,30 @@ public class MainScreen extends World
     private Fruit getRandomFruit(){
         int chance = Greenfoot.getRandomNumber(5);
         switch(chance){
-            case 0: return new Strawberry();
-            case 1: return new Blueberry();
+            case 0: return new Blueberry();
+            case 1: return new Peach();
             case 2: return new Pear();
-            case 3: return new Peach();
-            case 4: return new Pineapple();
+            case 3: return new Pineapple();
+            case 4: return new Strawberry();
         }
-        return new Strawberry();
-    }  
+        return new Blueberry();
+    } 
+    
+    private Fruit checkFruit(Fruit fruit){
+        int result = 0;
+        if(fruit instanceof Blueberry){
+            return new SpecialBlue();
+        }else if(fruit instanceof Peach){
+            return new SpecialPeach();
+        }else if(fruit instanceof Pear){
+            return new SpecialPear();
+        }else if(fruit instanceof Pineapple){
+            return new SpecialPineapple();
+        }else if(fruit instanceof Strawberry){
+            return new SpecialStrawberry();
+        }
+        return new SpecialBlue();
+    }
     
     /**
      * A method that gives the length of a match starting from position (i, j) in the given direction (di, dj).
