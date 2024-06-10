@@ -16,10 +16,10 @@ public class MainScreen extends World
 
     Timer timer;
     Label scoreLabel;
-    int score = 0;
+    private int score = 0;
 
     private HomeButton home;
-    private int score; 
+    
     
     public MainScreen()
     {    
@@ -89,16 +89,6 @@ public class MainScreen extends World
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
                         j += length - 1; // Skip the already checked candies
-                if(board[i][j] != null && board[i][j + 1] != null && board[i][j + 2] != null){
-                    if(board[i][j].getClass() == board[i][j + 1].getClass() && board[i][j].getClass() == board[i][j + 2].getClass()){
-                        if(removeCrushes){
-                            removeObject(board[i][j]);
-                            removeObject(board[i][j+1]);
-                            removeObject(board[i][j+2]);
-                            board[i][j] =  board[i][j+1] =  board[i][j+2] = null;
-                            score += 3;
-                        }
-                        crushFound = true;
                     }
                     crushFound = true;
                 }
@@ -134,18 +124,6 @@ public class MainScreen extends World
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
                         j += length - 1; // Skip the already checked candies
-        for(int i=0; i<rows-2;i++){
-            for(int j=0;j<cols;j++){
-                if(board[i][j] != null && board[i + 1][j] != null && board[i + 2][j] != null){
-                    if(board[i][j].getClass().equals(board[i + 1][j].getClass()) && board[i][j].getClass().equals(board[i + 2][j].getClass())){
-                        if(removeCrushes){
-                            removeObject(board[i][j]);
-                            removeObject(board[i+1][j]);
-                            removeObject(board[i+2][j]);
-                            board[i][j] = board[i+1][j] = board[i+2][j] = null;
-                            score += 3;
-                        }
-                        crushFound = true;
                     }
                     crushFound = true;
                 }
