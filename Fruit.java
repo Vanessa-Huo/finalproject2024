@@ -13,8 +13,6 @@ public abstract class Fruit extends Actor
     protected int pulseCount;
     protected int specialCount;
     
-    abstract protected void pulseImage();
-    
     public void act(){
         mouse = Greenfoot.getMouseInfo();
         MainScreen world = (MainScreen)getWorld();
@@ -32,6 +30,18 @@ public abstract class Fruit extends Actor
         return specialCount;
     }
     
+    protected void pulseImage(){
+        if(pulseCount % 20 == 0){
+            if(getImage() == image){
+                setImage(pulseImage);
+            }
+            else{
+                setImage(image);
+            }
+        }
+        
+        pulseCount++;
+    }
     /**
      * @
      * @param direction A number representing direction of selected tile(0-3)

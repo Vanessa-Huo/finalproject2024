@@ -280,9 +280,6 @@ public class MainScreen extends World
             return new SpecialStrawberry();
         }
         return new SpecialBlue();
-    }
-    
-        return new Strawberry();
     }  
 
     /**
