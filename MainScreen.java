@@ -12,11 +12,12 @@ public class MainScreen extends World
     private int rows, cols;
     private static final int CELL_SIZE = 65;
     private int x, y;
+    
     private boolean run;
+    private int score;
 
     Timer timer;
     Label scoreLabel;
-    int score = 0;
 
     private HomeButton home;
     
@@ -37,7 +38,6 @@ public class MainScreen extends World
         board = new Fruit[rows][cols];
 
         run = false;
-
         
         timer = new Timer();
         scoreLabel = new Label(score, 80);
@@ -45,20 +45,23 @@ public class MainScreen extends World
         addObject(timer, 170, 150);
         addObject(scoreLabel, 170, 350);
        
-
         drawBoard(true);
         
         text();
-        //addObject(scoreBar, 100,330);
     }
 
     public void act(){
-        dropFruits();
-        scoreLabel.setValue(score);
-        if(Greenfoot.mouseClicked(home)) {
-            TitleScreen title = new TitleScreen();
-            Greenfoot.setWorld(title);
+        //Setup
+        while(crushThree(true) && run==false){
+            crushFive(true);
+            crushFour(true);
+            crushThree(true);
+            dropFruits();
+            score = 0;
         }
+        //Play
+        run = true;
+        scoreLabel.setValue(score);
         crushFive(true);
         crushFour(true);
         crushThree(true);
@@ -202,9 +205,9 @@ public class MainScreen extends World
                             //Move the tile down to the empty space
                             board[i][j] = board[k][j];
                             board[k][j] = null;
-                            Greenfoot.delay(2);
+                            delay(2);
                             board[i][j].setLocation(x+j*65, y+i*65);
-                            Greenfoot.delay(2);
+                            delay(2);
                             break;
                         }
                     }
@@ -215,10 +218,16 @@ public class MainScreen extends World
             for (int i = rows - 1; i >= 0; i--) {
                 if (board[i][j] == null) {
                     board[i][j] = getRandomFruit();
-                    Greenfoot.delay(2);
+                    delay(2);
                     addObject(board[i][j], x+j*65, y+i*65);
                 }
             }
+        }
+    }
+    
+    private void delay(int x){
+        if(run){
+            Greenfoot.delay(x);
         }
     }
 
