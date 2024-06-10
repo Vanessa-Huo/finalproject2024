@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=NextButton
+comment0.text=\n\ NextButton\ is\ a\ button\ used\ by\ the\ user\ to\ navigate\ instruction\ screen.\ \n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
+comment1.params=
+comment1.target=NextButton()
+comment2.params=
+comment2.target=void\ act()
+numComments=3
