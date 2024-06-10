@@ -55,6 +55,10 @@ public class MainScreen extends World
         text();
         //addObject(scoreBar, 100,330);
 
+    public void act(){
+        dropFruits();
+        scoreLabel.setValue(score);
+        if(Greenfoot.mouseClicked(home)) {
         animCounter = 0;
         maxIndex = explode.length;
         //Greenfoot.setSpeed(70); // Set the speed to 70 out of 100
@@ -91,6 +95,7 @@ public class MainScreen extends World
         }
 
         if (Greenfoot.mouseClicked(home)) {
+
             TitleScreen title = new TitleScreen();
             Greenfoot.setWorld(title);
         }
@@ -150,7 +155,7 @@ public class MainScreen extends World
             for(int j=0;j<cols-3;j++){
                 int length = getMatchLength(i, j, 0, 1);
                 if (length == 4) {
-                    Fruit temp = checkFruit(board[i][j]);
+                    Fruit temp = getSpecialFruit(board[i][j]);
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
                         j += length - 1;
@@ -165,7 +170,7 @@ public class MainScreen extends World
             for(int j=0;j<cols;j++){
                 int length = getMatchLength(i, j, 1, 0);
                 if (length == 4) {
-                    Fruit temp = checkFruit(board[i][j]);
+                    Fruit temp = getSpecialFruit(board[i][j]);
                     if(removeCrushes){
                         removeCrush(i, j, 1, 0, length);
                         i += length - 1;
@@ -191,7 +196,7 @@ public class MainScreen extends World
             for(int j=0;j<cols-4;j++){
                 int length = getMatchLength(i, j, 0, 1);
                 if (length >= 5) {
-                    Fruit temp = checkFruit(board[i][j]);
+                    Fruit temp = getSpecialFruit(board[i][j]);
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
                         j += length - 1;
@@ -206,7 +211,7 @@ public class MainScreen extends World
             for(int j=0;j<cols;j++){
                 int length = getMatchLength(i, j, 1, 0);
                 if (length >= 5) {
-                    Fruit temp = checkFruit(board[i][j]);
+                    Fruit temp = getSpecialFruit(board[i][j]);
                     if(removeCrushes){
                         removeCrush(i, j, 1, 0, length);
                         i += length - 1;
@@ -231,8 +236,9 @@ public class MainScreen extends World
                         if (board[k][j] != null) {
                             board[i][j] = board[k][j];
                             board[k][j] = null;
-                            Greenfoot.delay(1);
+                            Greenfoot.delay(2);
                             board[i][j].setLocation(x+j*65, y+i*65);
+                            Greenfoot.delay(2);
                             break;
                         }
                     }
@@ -243,7 +249,7 @@ public class MainScreen extends World
             for (int i = rows - 1; i >= 0; i--) {
                 if (board[i][j] == null) {
                     board[i][j] = getRandomFruit();
-                    Greenfoot.delay(1);
+                    Greenfoot.delay(2);
                     addObject(board[i][j], x+j*65, y+i*65);
                 }
             }
@@ -262,24 +268,30 @@ public class MainScreen extends World
             case 2: return new Pear();
             case 3: return new Pineapple();
             case 4: return new Strawberry();
+            default: return new Blueberry();
         }
-        return new Blueberry();
     } 
     
-    private Fruit checkFruit(Fruit fruit){
-        int result = 0;
+    /**
+     * Creates a special fruit that has the same type as given fruit.
+     * Given Peach will return a SpecialPeach
+     * 
+     * @param fruit     Given fruit
+     * @return Fruit A new SpecialFruit.
+     */
+    private Fruit getSpecialFruit(Fruit fruit){
         if(fruit instanceof Blueberry){
-            return new SpecialBlue();
+            return new SBlueberry();
         }else if(fruit instanceof Peach){
-            return new SpecialPeach();
+            return new SPeach();
         }else if(fruit instanceof Pear){
-            return new SpecialPear();
+            return new SPear();
         }else if(fruit instanceof Pineapple){
-            return new SpecialPineapple();
+            return new SPineapple();
         }else if(fruit instanceof Strawberry){
-            return new SpecialStrawberry();
+            return new SStrawberry();
         }
-        return new SpecialBlue();
+        return new SBlueberry();
     }
     
         return new Strawberry();
@@ -297,7 +309,7 @@ public class MainScreen extends World
     private int getMatchLength(int i, int j, int di, int dj) {
         int length = 1;
         while (i + length * di < rows && j + length * dj < cols && board[i][j] != null && board[i + length * di][j + length * dj]!= null 
-        && board[i][j].getClass().equals(board[i + length * di][j + length * dj].getClass())){
+        && isSameClass(board[i][j], board[i + length * di][j + length * dj])){
             length++;
         }
         return length;
@@ -314,10 +326,54 @@ public class MainScreen extends World
      */
     private void removeCrush(int i, int j, int di, int dj, int length) {
         for (int k = 0; k < length; k++) {
-            removeObject(board[i + k * di][j + k * dj]);
-            board[i + k * di][j + k * dj] = null;
+            if(board[i + k * di][j + k * dj]!=null && board[i + k * di][j + k * dj].getFruitNum()==1){
+                //If this is a special fruit, remove all fruits that are in the same row and col
+                removeAll(i, j);
+            }else{
+                removeObject(board[i + k * di][j + k * dj]);
+                board[i + k * di][j + k * dj] = null;
+            }
         }
         score += length;
+    }
+    
+    /**
+     * Removes all fruits in the given row i and column j.
+     * 
+     * @param i     The row index to remove
+     * @param j     The column index to remove
+     */
+    private void removeAll(int i, int j){
+        for(int x=0; x<cols;x++){
+            if(board[i][x]!=null){
+                removeObject(board[i][x]);
+                board[i][x] = null;
+            }
+        }
+        for(int x=0; x<rows;x++){
+            if(board[x][j]!=null){
+                removeObject(board[x][j]);
+                board[x][j] = null;
+            }
+        }
+    }
+    
+    /**
+     * Check if two objects are in the same class (include subclass).
+     * 
+     * @param i     First fruit
+     * @param j     Second fruit
+     * @return boolean     Return "true" if they are in the same class
+     */
+    private boolean isSameClass(Fruit one, Fruit two){
+        boolean result = false;
+        if(one.getClass().equals(two.getClass()))result=true;
+        else if(one instanceof Blueberry && two instanceof Blueberry)result=true;
+        else if(one instanceof Peach && two instanceof Peach)result=true;
+        else if(one instanceof Pear && two instanceof Pear)result=true;
+        else if(one instanceof Pineapple && two instanceof Pineapple)result=true;
+        else if(one instanceof Strawberry && two instanceof Strawberry)result = true;
+        return result;
     }
 
     /**
@@ -394,7 +450,7 @@ public class MainScreen extends World
         return 0;
     }
 
-    /**
+  
      * Swaps positions of two fruits within the 2D array.
      * Refreshes board to display changes.
      * 

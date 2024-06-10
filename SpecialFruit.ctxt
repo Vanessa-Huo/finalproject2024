@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=SpecialFruit
+comment0.text=\n\ Write\ a\ description\ of\ class\ SpecialFruit\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\n\ Act\ -\ do\ whatever\ the\ SpecialFruit\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment2.params=fruitNum
+comment2.target=SpecialFruit(int)
+comment3.params=
+comment3.target=void\ pulseImage()
+numComments=4

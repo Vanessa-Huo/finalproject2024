@@ -12,11 +12,10 @@ public class Pear extends Fruit
         image = new GreenfootImage("pear.png");
         image.scale(56,56);    
         setImage(image);
-        
         pulseCount = 0;
     }
     
-     protected void pulseImage(){
+    protected void pulseImage(){
         if(pulseCount == 0){
             pulseImage = new GreenfootImage("pear.png");
             pulseImage.scale(65,65);
