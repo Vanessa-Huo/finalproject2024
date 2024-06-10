@@ -1,7 +1,9 @@
 #BlueJ class context
-comment0.target=SpecialBlue
+comment0.target=SBlueberry
 comment0.text=\n\ Write\ a\ description\ of\ class\ SpecialBlue\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
-comment1.target=SpecialBlue()
+comment1.target=SBlueberry()
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ SpecialBlue\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-numComments=2
+comment2.params=
+comment2.target=void\ pulseImage()
+numComments=3

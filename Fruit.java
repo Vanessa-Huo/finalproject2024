@@ -11,7 +11,7 @@ public abstract class Fruit extends Actor
     protected GreenfootImage image, pulseImage;
     protected Selection selectBox;
     protected int pulseCount;
-    protected int specialCount;
+    protected int fruitNum = 0;
     
     abstract protected void pulseImage();
     
@@ -28,8 +28,10 @@ public abstract class Fruit extends Actor
         }
     }
     
-    public int getSpecialCount(){
-        return specialCount;
+    public void removeAll(){
+        if(this==null){
+            
+        }
     }
     
     /**
@@ -77,9 +79,10 @@ public abstract class Fruit extends Actor
                     break;
             }
         }
-        
         return result;
     }
     
-    
+    public int getFruitNum(){
+        return fruitNum;
+    }
 }
