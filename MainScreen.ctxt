@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MainScreen
-comment0.text=\n\ game\ desc...\n\ \n\ @author\ Vanessa\ Huo,\ Megan\ Lee\n\ @version\ June\ 2024\n
+comment0.text=\n\ game\ desc...\n\ \n\ @author\ Vanessa\ Huo,\ Megan\ Lee,\ Luke\ Xiao\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=MainScreen()
 comment10.params=i\ j\ di\ dj\ length
@@ -24,6 +24,8 @@ comment15.text=\n\ Locates\ and\ returns\ outer\ or\ inner\ index\ of\ a\ fruit\
 comment16.params=outerIndex1\ innerIndex1\ outerIndex2\ innerIndex2
 comment16.target=void\ swapFruits(int,\ int,\ int,\ int)
 comment16.text=\n\ Swaps\ positions\ of\ two\ fruits\ within\ the\ 2D\ array.\n\ Refreshes\ board\ to\ display\ changes.\n\ \n\ @param\ outerIndex1\ \ \ Outer\ index\ of\ first\ fruit\n\ @param\ innerIndex1\ \ \ Inner\ index\ of\ first\ fruit\n\ @param\ outerIndex2\ \ \ Outer\ index\ of\ second\ fruit\n\ @param\ outerIndex2\ \ \ Inner\ index\ of\ second\ fruit\n\ \n
+comment17.params=
+comment17.target=void\ triggerExplosions()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
@@ -46,4 +48,4 @@ comment8.text=\n\ Creates\ a\ random\ Fruit.\n\ @return\ Fruit\ A\ new\ Fruit\ o
 comment9.params=i\ j\ di\ dj
 comment9.target=int\ getMatchLength(int,\ int,\ int,\ int)
 comment9.text=\n\ A\ method\ that\ gives\ the\ length\ of\ a\ match\ starting\ from\ position\ (i,\ j)\ in\ the\ given\ direction\ (di,\ dj).\n\ \n\ @param\ i\ \ \ \ \ The\ row\ index\ to\ start\ the\ match\ check\n\ @param\ j\ \ \ \ \ The\ column\ index\ to\ start\ the\ match\ check\n\ @param\ di\ \ \ \ The\ row\ direction.\ 0\ for\ horizontal\ check\ and\ 1\ for\ vertical\ check\n\ @param\ dj\ \ \ \ The\ col\ direction.\ 1\ for\ horizontal\ check\ and\ 0\ for\ vertical\ check\n\ @return\ \ \ \ \ \ The\ length\ of\ the\ match\ (three,\ four,\ five\ or\ more)\n
-numComments=17
+numComments=18
