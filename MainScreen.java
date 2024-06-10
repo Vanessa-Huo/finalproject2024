@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * game desc...
  * 
- * @author Vanessa Huo, Megan Lee
+ * @author Vanessa Huo, Megan Lee, Luke Xiao
  * @version June 2024
  */
 public class MainScreen extends World
@@ -16,10 +16,14 @@ public class MainScreen extends World
 
     Timer timer;
     Label scoreLabel;
-    int score = 0;
+    //int score = 0;
 
     private HomeButton home;
-    
+    private int score; 
+    private GreenfootImage[] explode = new GreenfootImage[3];
+    private int animCounter, animDelay, animIndex, maxIndex;
+    private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES }
+    private GameState state;
     public MainScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -47,27 +51,53 @@ public class MainScreen extends World
        
 
         drawBoard(true);
-        
+
         text();
         //addObject(scoreBar, 100,330);
+
+        animCounter = 0;
+        maxIndex = explode.length;
+        //Greenfoot.setSpeed(70); // Set the speed to 70 out of 100
+        
+        state = GameState.CHECK_MATCHES;
     }
 
-    public void act(){
-        dropFruits();
+    public void act()
+    {
+        switch (state) {
+            case CHECK_MATCHES:
+                if (crushFive(true) || crushFour(true) || crushThree(true)) {
+                    state = GameState.REMOVE_MATCHES;
+                } else {
+                    dropFruits();
+                }
+                break;
+                
+            case REMOVE_MATCHES:
+                triggerExplosions();
+                state = GameState.PLAY_EXPLOSION;
+                break;
+                
+            case PLAY_EXPLOSION:
+                if (getObjects(Explosion.class).isEmpty()) {
+                    state = GameState.FILL_SPACES;
+                }
+                break;
+                
+            case FILL_SPACES:
+                dropFruits();
+                state = GameState.CHECK_MATCHES;
+                break;
+        }
 
-        scoreLabel.setValue(score);
-
-        if(Greenfoot.mouseClicked(home)) {
+        if (Greenfoot.mouseClicked(home)) {
             TitleScreen title = new TitleScreen();
             Greenfoot.setWorld(title);
         }
-        crushFive(true);
-        crushFour(true);
-        crushThree(true);
-        dropFruits();
     }
-    
-    public void text(){
+
+    public void text()
+    {
         addObject(new Label("Time",50),100,80);
         addObject(new Label("Score",50),100,280);
         addObject(new Label("Booster",50),100,480);
@@ -87,7 +117,7 @@ public class MainScreen extends World
                 if (length == 3) {
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
-                        j += length - 1; // Skip the already checked candies
+                        j += length - 1;
                     }
                     crushFound = true;
                 }
@@ -99,7 +129,7 @@ public class MainScreen extends World
                 if (length == 3) {
                     if(removeCrushes){
                         removeCrush(i, j, 1, 0, length);
-                        i += length - 1; // Skip the already checked candies
+                        i += length - 1;
                     }
                     crushFound = true;
                 }
@@ -123,7 +153,7 @@ public class MainScreen extends World
                     Fruit temp = checkFruit(board[i][j]);
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
-                        j += length - 1; // Skip the already checked candies
+                        j += length - 1;
                     }
                     board[i][j]=temp;
                     addObject(board[i][j], x+j*65, y+i*65);
@@ -138,7 +168,7 @@ public class MainScreen extends World
                     Fruit temp = checkFruit(board[i][j]);
                     if(removeCrushes){
                         removeCrush(i, j, 1, 0, length);
-                        i += length - 1; // Skip the already checked candies
+                        i += length - 1;
                     }
                     board[i][j]=temp;
                     addObject(board[i][j], x+j*65, y+i*65);
@@ -148,7 +178,7 @@ public class MainScreen extends World
         }
         return crushFound;
     }
-    
+
     /**
      * Checks for matches of five or more Fruits and removes them.
      * 
@@ -164,7 +194,7 @@ public class MainScreen extends World
                     Fruit temp = checkFruit(board[i][j]);
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
-                        j += length - 1; // Skip the already checked candies
+                        j += length - 1;
                     }
                     board[i][j]=temp;
                     addObject(board[i][j], x+j*65, y+i*65);
@@ -179,7 +209,7 @@ public class MainScreen extends World
                     Fruit temp = checkFruit(board[i][j]);
                     if(removeCrushes){
                         removeCrush(i, j, 1, 0, length);
-                        i += length - 1; // Skip the already checked candies
+                        i += length - 1;
                     }
                     board[i][j]=temp;
                     addObject(board[i][j], x+j*65, y+i*65);
@@ -189,19 +219,16 @@ public class MainScreen extends World
         }
         return crushFound;
     }
-    
+
     /**
      * Drops the Fruits to fill empty spaces below them and refills the board with new Fruits at the top.
      */
     private void dropFruits() {
         for (int j = 0; j < cols; j++) {
-            // Start from the bottom of the column and look for empty spaces
             for (int i = rows - 1; i >= 0; i--) {
                 if (board[i][j] == null) {
-                    // Find the first non-empty tile above the current empty space
                     for (int k = i - 1; k >= 0; k--) {
                         if (board[k][j] != null) {
-                            //Move the tile down to the empty space
                             board[i][j] = board[k][j];
                             board[k][j] = null;
                             Greenfoot.delay(1);
@@ -255,6 +282,9 @@ public class MainScreen extends World
         return new SpecialBlue();
     }
     
+        return new Strawberry();
+    }  
+
     /**
      * A method that gives the length of a match starting from position (i, j) in the given direction (di, dj).
      * 
@@ -387,6 +417,17 @@ public class MainScreen extends World
         else{ //if switch cannot form a crush
             board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
             board[outerIndex1][innerIndex1] = temp;
+        }
+    }
+    
+    private void triggerExplosions() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (board[i][j] == null) {
+                    Explosion explosion = new Explosion();
+                    addObject(explosion, x + j * 65, y + i * 65);
+                }
+            }
         }
     }
 }
