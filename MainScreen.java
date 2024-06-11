@@ -26,9 +26,6 @@ public class MainScreen extends World
     private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES }
     private GameState state;
 
-    private HomeButton home;
-    private int score; 
-
     public MainScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -282,7 +279,6 @@ public class MainScreen extends World
             case 4: return new Strawberry();
             default: return new Blueberry();
         }
-        return new Strawberry();
     }
 
     /**
