@@ -10,10 +10,19 @@ public class TutorialScreen extends World
 {
     //GreenfootImage[] instructions = new GreenfootImage[3]; //Images of different instruction panels 
     public static int currentScreen = 0; //Track current screen displayed
-    
+    private PlayButton play; // TEMP
+    private HomeButton home; // TEMP
     public TutorialScreen(){
         super(1024, 720, 1); 
-        prepare();
+        //prepare();
+        /**
+         * TEMP
+         */
+        setBackground("tempInstructions.png");
+        play = new PlayButton();
+        addObject(play, 330, 600);
+        home = new HomeButton();
+        addObject(home, 330, 700);
     }
     
     /**
@@ -56,5 +65,17 @@ public class TutorialScreen extends World
     
     public void act(){
         //setBackground(instructions[currentScreen]);
+        
+        /**
+         * TEMP
+         */
+        if(Greenfoot.mouseClicked(play)) {
+            MainScreen main = new MainScreen();
+            Greenfoot.setWorld(main);
+        }
+        if(Greenfoot.mouseClicked(home)) {
+            TitleScreen title = new TitleScreen();
+            Greenfoot.setWorld(title);
+        }
     }
 }

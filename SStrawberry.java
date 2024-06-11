@@ -13,7 +13,7 @@ public class SStrawberry extends Strawberry
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public SStrawberry(){
-        image = new GreenfootImage("button-red.png");
+        image = new GreenfootImage("strawberryStripe.png");
         image.scale(56,56);
         fruitNum = 1;
         setImage(image);

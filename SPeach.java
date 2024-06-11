@@ -13,7 +13,7 @@ public class SPeach extends Peach
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public SPeach(){
-        image = new GreenfootImage("button-purple.png");
+        image = new GreenfootImage("peachStripe.png");
         image.scale(56,56);
         fruitNum = 1;
         setImage(image);

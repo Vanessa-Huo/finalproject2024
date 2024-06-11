@@ -13,7 +13,7 @@ public class SBlueberry extends Blueberry
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public SBlueberry(){
-        image = new GreenfootImage("button-blue.png");
+        image = new GreenfootImage("blueberryStripe.png");
         image.scale(56,56);
         fruitNum = 1;
         setImage(image);

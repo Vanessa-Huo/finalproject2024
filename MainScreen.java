@@ -22,6 +22,7 @@ public class MainScreen extends World
     //int score = 0;
 
     private HomeButton home;
+    private TutorialButton tut;
     private GreenfootImage[] explode = new GreenfootImage[3];
     private int animCounter, animDelay, animIndex, maxIndex;
     private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES }
@@ -35,6 +36,8 @@ public class MainScreen extends World
         setBackground("plainBG.png");
         home = new HomeButton();
         addObject(home, 100, getHeight() - 50);
+        tut = new TutorialButton();
+        addObject(tut, 250, getHeight() - 50);
 
         rows = 10;
         cols = 10;
@@ -103,6 +106,10 @@ public class MainScreen extends World
         if (Greenfoot.mouseClicked(home)) {
             TitleScreen title = new TitleScreen();
             Greenfoot.setWorld(title);
+        }
+        if(Greenfoot.mouseClicked(tut)) {
+            TutorialScreen ins = new TutorialScreen();
+            Greenfoot.setWorld(ins);
         }
     }
 
