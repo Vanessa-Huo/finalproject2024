@@ -25,6 +25,7 @@ public class MainScreen extends World
     private int animCounter, animDelay, animIndex, maxIndex;
     private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES }
     private GameState state;
+    
     public MainScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -283,9 +284,6 @@ public class MainScreen extends World
             return new SpecialStrawberry();
         }
         return new SpecialBlue();
-    }
-    
-        return new Strawberry();
     }  
 
     /**
@@ -432,5 +430,12 @@ public class MainScreen extends World
                 }
             }
         }
+    }
+    
+    public int getRows(){
+        return rows;
+    }
+    public int getColumns(){
+        return cols;
     }
 }

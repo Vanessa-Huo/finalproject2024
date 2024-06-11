@@ -10,15 +10,15 @@ public class Board extends Actor
 {
     public static final Color OFF_WHITE = new Color (242, 241, 233, 255);
     private GreenfootImage image;
-    //private int boardColumns, boardRows;
-    private int width;
-    private int height;
+    private int width, height;
+    
     private int cellSize = 50;
     
     
     public Board(int rows, int cols, int cellSize) {
         width = cols * cellSize;
         height = rows * cellSize;
+        
         
         GreenfootImage gridImage = new GreenfootImage(width+1, height+1);
         
