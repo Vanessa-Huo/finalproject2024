@@ -12,11 +12,10 @@ public class Peach extends Fruit
         image = new GreenfootImage("peach.png");
         image.scale(56,56);
         setImage(image);
-        
         pulseCount = 0;
     }
     
-     protected void pulseImage(){
+    protected void pulseImage(){
         if(pulseCount == 0){
             pulseImage = new GreenfootImage("peach.png");
             pulseImage.scale(65,65);

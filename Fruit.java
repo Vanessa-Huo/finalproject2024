@@ -11,6 +11,7 @@ public abstract class Fruit extends Actor
     protected GreenfootImage image, pulseImage;
     protected Selection selectBox;
     protected int pulseCount;
+    protected int fruitNum = 0;
     
     abstract protected void pulseImage();
     
@@ -24,6 +25,12 @@ public abstract class Fruit extends Actor
                 selectBox = new Selection(this, world.getTileWidth(), world.getTileHeight());
                 getWorld().addObject(selectBox, getX(), getY());
             }
+        }
+    }
+    
+    public void removeAll(){
+        if(this==null){
+            
         }
     }
     
@@ -72,9 +79,10 @@ public abstract class Fruit extends Actor
                     break;
             }
         }
-        
         return result;
     }
     
-    
+    public int getFruitNum(){
+        return fruitNum;
+    }
 }
