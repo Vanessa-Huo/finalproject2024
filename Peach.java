@@ -12,35 +12,20 @@ public class Peach extends Fruit
         image = new GreenfootImage("peach.png");
         image.scale(56,56);
         setImage(image);
-        
+
+        pulseImage = new GreenfootImage("peach.png");
+        pulseImage.scale(65,65);
+
         pulseCount = 0;
     }
-    
-    protected void pulseImage(){
-        if(pulseCount == 0){
-            pulseImage = new GreenfootImage("peach.png");
-            pulseImage.scale(65,65);
-        }
 
-        if(pulseCount % 20 == 0){
-            if(getImage() == image){
-                setImage(pulseImage);
-            }
-            else{
-                setImage(image);
-            }
-        }
-        
-        pulseCount++;
-    }
-    
     private void specialFruit1(){
         image = new GreenfootImage("homeButton.png"); //replace with special fruit image
         image.scale(56,56);
         setImage(image);
         specialCount = 1;
     }
-    
+
     private void specialFruit2(){
         image = new GreenfootImage("backButton.png"); //replace with special fruit image
         image.scale(56,56);

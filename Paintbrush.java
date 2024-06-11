@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Paintbrush here.
+ * When Paintbrush is used, the user can select three fruits to paint stripes on.
+ * 
  * 
  * @author (your name) 
  * @version (a version number or a date)
