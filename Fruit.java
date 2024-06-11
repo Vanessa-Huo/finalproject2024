@@ -11,6 +11,7 @@ public abstract class Fruit extends Actor
     protected GreenfootImage image, pulseImage;
     protected Selection selectBox;
     protected int pulseCount;
+    protected int specialCount;
     
     protected void pulseImage(){
         if(pulseCount == 0){
@@ -41,6 +42,10 @@ public abstract class Fruit extends Actor
                 getWorld().addObject(selectBox, getX(), getY());
             }
         }
+    }
+    
+    public int getSpecialCount(){
+        return specialCount;
     }
     
     /**

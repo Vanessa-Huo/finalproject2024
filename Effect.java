@@ -10,5 +10,7 @@ public abstract class Effect extends Actor
 {
     protected int duration;
     
-    
+    public Effect(int duration){
+        
+    }
 }
