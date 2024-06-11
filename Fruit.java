@@ -86,10 +86,6 @@ public abstract class Fruit extends Actor
         return fruitNum;
     }
     
-    public int getSpecialCount(){
-        return specialCount;
-    }
-    
     public void resetImage(){
         setImage(image);
     }
