@@ -157,18 +157,31 @@ public class Selection extends Actor
         }
     }
 
+    /**
+     * If a tile is selected and confirm key pressed, initializes the fruit swap.
+     * 
+     * @param key   Key to confirm selection
+     */
     private void checkKey(String key){
         if(pos != -1){ //has been moved (up, down, right, or left)
             if(Greenfoot.isKeyDown(key)){
                 int newOuterIndex = ((Fruit)actor).getIndexOfSwap(pos,true);
                 int newInnerIndex = ((Fruit)actor).getIndexOfSwap(pos,false);
+                
                 MainScreen world = (MainScreen) getWorld();
                 world.swapFruits(world.getIndex((Fruit)actor, true), world.getIndex((Fruit)actor, false), newOuterIndex, newInnerIndex);
+                
                 world.removeObject(this);
             }
         }
     }
-
+    
+    /**
+     * Selected Actor will change to its original image. 
+     */
+    public void resetPulse(){
+        ((Fruit) actor).setPulseCount(0);
+    }
     /**
      * Draws a translucent white box with a border at its corners.
      * 

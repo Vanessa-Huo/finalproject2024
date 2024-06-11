@@ -14,7 +14,8 @@ public class AchievementButton extends Icon
     public void act(){
         if (Greenfoot.mouseClicked(this))
         {
-            Greenfoot.setWorld(new AchievementScreen());
+            AchievementScreen world = new AchievementScreen();
+            Greenfoot.setWorld(world);
         }
     }
 }

@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 //import java.awt.Color;
 /**
- * Write a description of class Grid here.
+ * Grid to visually organize the fruits into a game board. 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Vanessa Huo
+ * @version June 2024
  */
 public class Board extends Actor
 {

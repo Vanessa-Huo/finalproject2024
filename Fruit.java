@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Fruit Superclass
+ * Fruit Superclass.
  * 
  * @author Megan Lee
  */
@@ -12,7 +12,23 @@ public abstract class Fruit extends Actor
     protected Selection selectBox;
     protected int pulseCount;
     
-    abstract protected void pulseImage();
+    protected void pulseImage(){
+        if(pulseCount == 0){
+            pulseImage = new GreenfootImage(pulseImage);
+            pulseImage.scale(65,65);
+        }
+
+        if(pulseCount % 20 == 0){
+            if(getImage() == image){
+                setImage(pulseImage);
+            }
+            else{
+                setImage(image);
+            }
+        }
+        
+        pulseCount++;
+    }
     
     public void act(){
         mouse = Greenfoot.getMouseInfo();
@@ -28,7 +44,7 @@ public abstract class Fruit extends Actor
     }
     
     /**
-     * @
+     * 
      * @param direction A number representing direction of selected tile(0-3)
      * @param boolean   Return outer (true) or inner (false) index of new
      * @return int      Outer/inner index of new position
@@ -76,5 +92,10 @@ public abstract class Fruit extends Actor
         return result;
     }
     
-    
+    /**
+     * 
+     */
+    public void setPulseCount(int count){
+        pulseCount = 0;
+    }
 }

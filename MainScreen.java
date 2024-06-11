@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * game desc...
@@ -52,6 +53,9 @@ public class MainScreen extends World
         dropFruits();
     }
     
+    /**
+     * TEMPORARY BEFORE ART
+     */
     public void text(){
         addObject(new Label("Time",50),100,80);
         addObject(new Label("Score",50),100,280);
@@ -62,7 +66,7 @@ public class MainScreen extends World
      * Checks for horizontal and vertical matches of three Fruits and removes them.
      * 
      * @param removeCrushes   Remove found crushes (true) or not (false)
-     * @return boolean  crush was found (true) or not (false)
+     * @return boolean  Crush was found (true) or not (false)
      */
     private boolean crushThree(boolean removeCrushes){
         boolean crushFound = false;
@@ -97,7 +101,7 @@ public class MainScreen extends World
      * Checks for horizontal and vertical matches of four Fruits and removes them.
      * 
      * @param removeCrushes   Remove found crushes (true) or not (false)
-     * @return boolean  crush was found (true) or not (false)
+     * @return boolean  Crush was found (true) or not (false)
      */
     private boolean crushFour(boolean removeCrushes){
         boolean crushFound = false;
@@ -132,7 +136,7 @@ public class MainScreen extends World
      * Checks for matches of five or more Fruits and removes them.
      * 
      * @param removeCrushes   Remove found crushes (true) or not (false)
-     * @return boolean  crush was found (true) or not (false)
+     * @return boolean  Crush was found (true) or not (false)
      */
     private boolean crushFive(boolean removeCrushes){
         boolean crushFound = false;
@@ -248,6 +252,7 @@ public class MainScreen extends World
     }
 
     /**
+     * Adds fruits onto board.
      * If hasn't been set up already, initialize fruits. 
      * 
      * @param isNew   Initial set up or not
@@ -292,7 +297,6 @@ public class MainScreen extends World
 
     /**
      * Removes all current selection boxes from world.
-     *@author Megan
      */
     public void resetSelection(){
         removeObjects(getObjects(Selection.class));
