@@ -18,6 +18,7 @@ public class MainScreen extends World
 
     Timer timer;
     Label scoreLabel;
+
     //int score = 0;
 
     private HomeButton home;
@@ -490,5 +491,8 @@ public class MainScreen extends World
                 }
             }
         }
+    }
+    public void stopped(){
+        
     }
 }
