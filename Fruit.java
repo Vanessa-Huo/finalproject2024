@@ -94,7 +94,7 @@ public abstract class Fruit extends Actor
     /**
      * 
      */
-    public void setPulseCount(int count){
-        pulseCount = 0;
+    public void resetImage(){
+        setImage(image);
     }
 }

@@ -8,5 +8,4 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Effect extends Actor
 {
-    protected int duration;
 }
