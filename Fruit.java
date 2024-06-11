@@ -18,9 +18,9 @@ public abstract class Fruit extends Actor
         MainScreen world = (MainScreen)getWorld();
         //Mouse cannot be null
         if (mouse != null){
-            if(Greenfoot.mouseClicked(this)) System.out.println("clicked: " + Greenfoot.mouseClicked(this) + ", isSeleciting: " + Selection.isSelecting());
+            //if(Greenfoot.mouseClicked(this)) System.out.println("clicked: " + Greenfoot.mouseClicked(this) + ", isSeleciting: " + Selection.isSelecting());
             if(!Selection.isSelecting() && Greenfoot.mouseClicked(this)){
-                System.out.println("new");
+                //System.out.println("new");
                 world.resetSelection();
                 selectBox = new Selection(this, world.getTileSize(), world.getTileSize());
                 getWorld().addObject(selectBox, getX(), getY());

@@ -62,7 +62,11 @@ public class MainScreen extends World
         
         state = GameState.CHECK_MATCHES;
     }
-
+    
+    public void started(){
+        Selection.setSelecting(false);
+    }
+    
     public void act()
     {
         switch (state) {
@@ -89,6 +93,11 @@ public class MainScreen extends World
                 dropFruits();
                 state = GameState.CHECK_MATCHES;
                 break;
+        }
+        
+        if(getObjects(Selection.class).size() == 0){
+            //System.out.println("none detected");
+            Selection.setSelecting(false);
         }
     }
     
@@ -404,12 +413,18 @@ public class MainScreen extends World
 
         //if switch made a crush possible
         if(crushFour(false) || crushThree(false) || crushFive(false)){
-            System.out.println(state);
-            if(getObjects(Fruit.class).size() == cols*rows){
+            //System.out.println(state);
+            if(getObjects(Fruit.class).size() >= cols*rows){
+                //System.out.println("resetted");
                 resetSelection();
+                
                 drawBoard(false);
+                //System.out.println(Selection.isSelecting());
             }
             else{
+                board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
+                board[outerIndex1][innerIndex1] = temp;
+                dropFruits();
                 swapFruits(outerIndex1, innerIndex1, outerIndex2, innerIndex2);
             }
         }

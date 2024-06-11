@@ -62,7 +62,7 @@ public class Selection extends Actor
     }
     
     public void act(){
-        System.out.println(isSelecting);
+        //System.out.println(isSelecting);
         if(actor.getWorld() == null){
             getWorld().removeObject(this);
         }
