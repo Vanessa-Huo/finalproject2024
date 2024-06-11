@@ -15,7 +15,7 @@ public class Strawberry extends Fruit
         
         pulseImage = new GreenfootImage("strawberry.png");
         pulseImage.scale(65,65);
-            
+        
         pulseCount = 0;
     }
 }

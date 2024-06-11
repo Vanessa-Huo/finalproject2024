@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Fruit Superclass
+ * Fruit Superclass.
  * 
  * @author Megan Lee
  */
@@ -43,7 +43,7 @@ public abstract class Fruit extends Actor
         pulseCount++;
     }
     /**
-     * @
+     * 
      * @param direction A number representing direction of selected tile(0-3)
      * @param boolean   Return outer (true) or inner (false) index of new
      * @return int      Outer/inner index of new position
@@ -91,5 +91,10 @@ public abstract class Fruit extends Actor
         return result;
     }
     
-    
+    /**
+     * 
+     */
+    public void setPulseCount(int count){
+        pulseCount = 0;
+    }
 }

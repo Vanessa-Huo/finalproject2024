@@ -24,6 +24,7 @@ public class Selection extends Actor
     private int initialPosX, initialPosY; //initial position of selection box
     private int actCount;//used at start to set initial position coords
     private int pos; //current location of selection box; -1 = default, 0 = above, 1 = right, 2 = down, 3 = left
+    private boolean topEdge, rightEdge, bottomEdge, leftEdge;
 
     /**
      * A constructor for Selection - specify its associated Actor as well as the width
@@ -37,15 +38,26 @@ public class Selection extends Actor
         this.actor = actor;
         this.width = width;
         this.height = height;
-
+        
         image = drawBox ();
         image.setTransparency(0);
         setImage(image);
-
+        
         pos = -1;
         actCount = 0;
     }
-
+    
+    public void addedToWorld(World world){
+        MainScreen mainScreen = (MainScreen) world;
+        int rowNumber = mainScreen.getIndex((Fruit) actor, true) + 1;
+        int columnNumber = mainScreen.getIndex((Fruit) actor, false) + 1;
+        
+        topEdge = rowNumber == 1;
+        rightEdge = columnNumber == mainScreen.getRows();
+        bottomEdge = rowNumber  == mainScreen.getColumns();
+        leftEdge = columnNumber  == 1;
+    }
+    
     public void act(){
         if(actor.getWorld() == null){
             System.out.println("gone");
@@ -95,16 +107,16 @@ public class Selection extends Actor
                 pos = directionToSwitch(xCoord, yCoord);
                 switch(pos){
                     case 0: //move up
-                        setLocation(initialPosX, initialPosY - yMovementFactor);
+                        if(!topEdge) setLocation(initialPosX, initialPosY - yMovementFactor);
                         break;
                     case 1: //move right
-                        setLocation(initialPosX + xMovementFactor, initialPosY);
+                        if(!rightEdge)setLocation(initialPosX + xMovementFactor, initialPosY);
                         break;
                     case 2: //move down
-                        setLocation(initialPosX, initialPosY + yMovementFactor);
+                        if(!bottomEdge)setLocation(initialPosX, initialPosY + yMovementFactor);
                         break;
                     case 3://move left
-                        setLocation(initialPosX - xMovementFactor, initialPosY);
+                        if(!leftEdge)setLocation(initialPosX - xMovementFactor, initialPosY);
                         break;
                 }
             }
@@ -157,18 +169,31 @@ public class Selection extends Actor
         }
     }
 
+    /**
+     * If a tile is selected and confirm key pressed, initializes the fruit swap.
+     * 
+     * @param key   Key to confirm selection
+     */
     private void checkKey(String key){
         if(pos != -1){ //has been moved (up, down, right, or left)
             if(Greenfoot.isKeyDown(key)){
                 int newOuterIndex = ((Fruit)actor).getIndexOfSwap(pos,true);
                 int newInnerIndex = ((Fruit)actor).getIndexOfSwap(pos,false);
+                
                 MainScreen world = (MainScreen) getWorld();
                 world.swapFruits(world.getIndex((Fruit)actor, true), world.getIndex((Fruit)actor, false), newOuterIndex, newInnerIndex);
+                
                 world.removeObject(this);
             }
         }
     }
-
+    
+    /**
+     * Selected Actor will change to its original image. 
+     */
+    public void resetPulse(){
+        ((Fruit) actor).setPulseCount(0);
+    }
     /**
      * Draws a translucent white box with a border at its corners.
      * 
