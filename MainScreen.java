@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * game desc...
@@ -27,10 +28,9 @@ public class MainScreen extends World
     private int animCounter, animDelay, animIndex, maxIndex;
     private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES }
     private GameState state;
-
+    
     public MainScreen()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 720, 1); 
 
         setBackground("plainBG.png");
@@ -63,6 +63,10 @@ public class MainScreen extends World
         //Greenfoot.setSpeed(70); // Set the speed to 70 out of 100
 
         state = GameState.CHECK_MATCHES;
+    }
+
+    public void started(){
+        Selection.setSelecting(false);
     }
 
     public void act(){
@@ -103,16 +107,16 @@ public class MainScreen extends World
         crushFour(true);
         crushThree(true);
         dropFruits();
-        if (Greenfoot.mouseClicked(home)) {
-            TitleScreen title = new TitleScreen();
-            Greenfoot.setWorld(title);
-        }
-        if(Greenfoot.mouseClicked(tut)) {
-            TutorialScreen ins = new TutorialScreen();
-            Greenfoot.setWorld(ins);
+
+        if(getObjects(Selection.class).size() == 0){
+            //System.out.println("none detected");
+            Selection.setSelecting(false);
         }
     }
-
+    
+    /**
+     * TEMPORARY BEFORE ART
+     */
     public void text(){
         addObject(new Label("Time",50),100,80);
         addObject(new Label("Score",50),100,280);
@@ -123,7 +127,7 @@ public class MainScreen extends World
      * Checks for horizontal and vertical matches of three Fruits and removes them.
      * 
      * @param removeCrushes   Remove found crushes (true) or not (false)
-     * @return boolean  crush was found (true) or not (false)
+     * @return boolean  Crush was found (true) or not (false)
      */
     private boolean crushThree(boolean removeCrushes) {
         boolean crushFound = false;
@@ -158,7 +162,7 @@ public class MainScreen extends World
      * Checks for horizontal and vertical matches of four Fruits and removes them.
      * 
      * @param removeCrushes   Remove found crushes (true) or not (false)
-     * @return boolean  crush was found (true) or not (false)
+     * @return boolean  Crush was found (true) or not (false)
      */
     private boolean crushFour(boolean removeCrushes){
         boolean crushFound = false;
@@ -199,7 +203,7 @@ public class MainScreen extends World
      * Checks for matches of five or more Fruits and removes them.
      * 
      * @param removeCrushes   Remove found crushes (true) or not (false)
-     * @return boolean  crush was found (true) or not (false)
+     * @return boolean  Crush was found (true) or not (false)
      */
     private boolean crushFive(boolean removeCrushes){
         boolean crushFound = false;
@@ -391,6 +395,7 @@ public class MainScreen extends World
     }
 
     /**
+     * Adds fruits onto board.
      * If hasn't been set up already, initialize fruits. 
      * 
      * @param isNew   Initial set up or not
@@ -416,29 +421,26 @@ public class MainScreen extends World
     }
 
     /**
-     * Returns width of tile
+     * Returns width/height of tile
      * 
-     * @return  Width of tile
+     * @return  size of tile
      */
-    public int getTileWidth(){
-        return CELL_SIZE;
-    }
-
-    /**
-     * Returns height of tile
-     * 
-     * @return  Height of tile
-     */
-    public int getTileHeight(){
+    public int getTileSize(){
         return CELL_SIZE;
     }
 
     /**
      * Removes all current selection boxes from world.
-     *@author Megan
      */
     public void resetSelection(){
-        removeObjects(getObjects(Selection.class));
+        ArrayList<Selection> selections = (ArrayList<Selection>) getObjects(Selection.class);
+        
+        for(Selection s : selections){
+            s.resetFruitImage();
+        }
+        
+        Selection.setSelecting(false);
+        removeObjects(selections);
     }
 
     /**
@@ -480,8 +482,20 @@ public class MainScreen extends World
         board[outerIndex2][innerIndex2] = temp;
         //if switch made a crush possible
         if(crushFour(false) || crushThree(false) || crushFive(false)){
-            resetSelection();
-            drawBoard(false);
+            //System.out.println(state);
+            if(getObjects(Fruit.class).size() >= cols*rows){
+                //System.out.println("resetted");
+                resetSelection();
+                
+                drawBoard(false);
+                //System.out.println(Selection.isSelecting());
+            }
+            else{
+                board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
+                board[outerIndex1][innerIndex1] = temp;
+                dropFruits();
+                swapFruits(outerIndex1, innerIndex1, outerIndex2, innerIndex2);
+            }
         }
         else{ //if switch cannot form a crush
             board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
@@ -501,5 +515,13 @@ public class MainScreen extends World
     }
     public void stopped(){
         
+    }
+    
+    public int getRows(){
+        return rows;
+    }
+    
+    public int getColumns(){
+        return cols;
     }
 }

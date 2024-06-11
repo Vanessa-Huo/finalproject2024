@@ -15,7 +15,8 @@ public class PlayButton extends Icon
     public void act(){
         if (Greenfoot.mouseClicked(this))
         {
-            Greenfoot.setWorld(new MainScreen());
+            MainScreen world = new MainScreen();
+            Greenfoot.setWorld(world);
         }
     }
 }
