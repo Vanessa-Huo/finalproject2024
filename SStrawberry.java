@@ -21,7 +21,7 @@ public class SStrawberry extends Strawberry
     
     protected void pulseImage(){
         if(pulseCount == 0){
-            pulseImage = new GreenfootImage("button-red.png");
+            pulseImage = new GreenfootImage("strawberryStripe.png");
             pulseImage.scale(65,65);
         }
 

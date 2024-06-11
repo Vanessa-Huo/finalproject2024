@@ -21,7 +21,7 @@ public class SPineapple extends Pineapple
     
     protected void pulseImage(){
         if(pulseCount == 0){
-            pulseImage = new GreenfootImage("button-yellow.png");
+            pulseImage = new GreenfootImage("pineappleStripe.png");
             pulseImage.scale(65,65);
         }
 

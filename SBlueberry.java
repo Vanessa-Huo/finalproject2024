@@ -21,7 +21,7 @@ public class SBlueberry extends Blueberry
     
     protected void pulseImage(){
         if(pulseCount == 0){
-            pulseImage = new GreenfootImage("button-blue.png");
+            pulseImage = new GreenfootImage("blueberryStripe.png");
             pulseImage.scale(65,65);
         }
 

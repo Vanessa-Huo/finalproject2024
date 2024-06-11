@@ -21,7 +21,7 @@ public class SPear extends Pear
     
     protected void pulseImage(){
         if(pulseCount == 0){
-            pulseImage = new GreenfootImage("button-green.png");
+            pulseImage = new GreenfootImage("pearStripe.png");
             pulseImage.scale(65,65);
         }
 

@@ -21,7 +21,7 @@ public class SPeach extends Peach
     
     protected void pulseImage(){
         if(pulseCount == 0){
-            pulseImage = new GreenfootImage("button-purple.png");
+            pulseImage = new GreenfootImage("peachStripe.png");
             pulseImage.scale(65,65);
         }
 
