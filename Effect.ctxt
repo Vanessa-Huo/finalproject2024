@@ -1,6 +1,4 @@
 #BlueJ class context
 comment0.target=Effect
-comment0.text=\n\ Superclass\ for\ Effects.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=duration
-comment1.target=Effect(int)
-numComments=2
+comment0.text=\r\n\ Superclass\ for\ Effects.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+numComments=1

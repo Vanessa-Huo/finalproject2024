@@ -191,9 +191,10 @@ public class Selection extends Actor
     /**
      * Selected Actor will change to its original image. 
      */
-    public void resetPulse(){
-        ((Fruit) actor).setPulseCount(0);
+    public void resetFruitImage(){
+        ((Fruit) actor).resetImage();
     }
+    
     /**
      * Draws a translucent white box with a border at its corners.
      * 

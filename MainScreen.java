@@ -369,7 +369,11 @@ public class MainScreen extends World
      * Removes all current selection boxes from world.
      */
     public void resetSelection(){
-        removeObjects(getObjects(Selection.class));
+        ArrayList<Selection> selections = (ArrayList<Selection>) getObjects(Selection.class);
+        for(Selection s : selections){
+            s.resetFruitImage();
+        }
+        removeObjects(selections);
     }
 
     /**
