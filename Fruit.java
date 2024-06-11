@@ -18,30 +18,16 @@ public abstract class Fruit extends Actor
         MainScreen world = (MainScreen)getWorld();
         //Mouse cannot be null
         if (mouse != null){
+            if(Greenfoot.mouseClicked(this)) System.out.println("clicked: " + Greenfoot.mouseClicked(this) + ", isSeleciting: " + Selection.isSelecting());
             if(!Selection.isSelecting() && Greenfoot.mouseClicked(this)){
-                ((MainScreen) getWorld()).resetSelection();
+                System.out.println("new");
+                world.resetSelection();
                 selectBox = new Selection(this, world.getTileSize(), world.getTileSize());
                 getWorld().addObject(selectBox, getX(), getY());
             }
         }
     }
     
-    public int getSpecialCount(){
-        return specialCount;
-    }
-    
-    protected void pulseImage(){
-        if(pulseCount % 20 == 0){
-            if(getImage() == image){
-                setImage(pulseImage);
-            }
-            else{
-                setImage(image);
-            }
-        }
-        
-        pulseCount++;
-    }
     /**
      * 
      * @param direction A number representing direction of selected tile(0-3)
@@ -91,10 +77,24 @@ public abstract class Fruit extends Actor
         return result;
     }
     
-    /**
-     * 
-     */
+    public int getSpecialCount(){
+        return specialCount;
+    }
+    
     public void resetImage(){
         setImage(image);
+    }
+    
+    protected void pulseImage(){
+        if(pulseCount % 20 == 0){
+            if(getImage() == image){
+                setImage(pulseImage);
+            }
+            else{
+                setImage(image);
+            }
+        }
+        
+        pulseCount++;
     }
 }

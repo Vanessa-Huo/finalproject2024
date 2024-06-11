@@ -13,8 +13,12 @@ public class SpecialStrawberry extends Strawberry
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public SpecialStrawberry(){
-        image = new GreenfootImage("button-red.png");
+        image = new GreenfootImage("strawberryStripe.png");
         image.scale(56,56);
+        
+        pulseImage = new GreenfootImage("strawberryStripe.png");
+        pulseImage.scale(65,65);
+        
         setImage(image);
     }
 }

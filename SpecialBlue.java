@@ -13,8 +13,12 @@ public class SpecialBlue extends Blueberry
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public SpecialBlue(){
-        image = new GreenfootImage("button-blue.png");
+        image = new GreenfootImage("blueberryStripe.png");
         image.scale(56,56);
+        
+        pulseImage = new GreenfootImage("blueberryStripe.png");
+        pulseImage.scale(56,56);
+        
         setImage(image);
     }
 }

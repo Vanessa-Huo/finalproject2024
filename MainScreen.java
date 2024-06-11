@@ -90,11 +90,6 @@ public class MainScreen extends World
                 state = GameState.CHECK_MATCHES;
                 break;
         }
-
-        if (Greenfoot.mouseClicked(home)) {
-            TitleScreen title = new TitleScreen();
-            Greenfoot.setWorld(title);
-        }
     }
     
     /**
@@ -360,9 +355,12 @@ public class MainScreen extends World
      */
     public void resetSelection(){
         ArrayList<Selection> selections = (ArrayList<Selection>) getObjects(Selection.class);
+        
         for(Selection s : selections){
             s.resetFruitImage();
         }
+        
+        Selection.setSelecting(false);
         removeObjects(selections);
     }
 
@@ -406,8 +404,14 @@ public class MainScreen extends World
 
         //if switch made a crush possible
         if(crushFour(false) || crushThree(false) || crushFive(false)){
-            resetSelection();
-            drawBoard(false);
+            System.out.println(state);
+            if(getObjects(Fruit.class).size() == cols*rows){
+                resetSelection();
+                drawBoard(false);
+            }
+            else{
+                swapFruits(outerIndex1, innerIndex1, outerIndex2, innerIndex2);
+            }
         }
         else{ //if switch cannot form a crush
             board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            

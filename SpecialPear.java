@@ -13,8 +13,12 @@ public class SpecialPear extends Pear
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public SpecialPear(){
-        image = new GreenfootImage("button-green.png");
+        image = new GreenfootImage("pearStripe.png");
         image.scale(56,56);
+        
+        pulseImage = new GreenfootImage("pearStripe.png");
+        pulseImage.scale(65,65);
+        
         setImage(image);
     }
 }

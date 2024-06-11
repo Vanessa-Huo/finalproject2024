@@ -62,8 +62,8 @@ public class Selection extends Actor
     }
     
     public void act(){
+        System.out.println(isSelecting);
         if(actor.getWorld() == null){
-            System.out.println("gone");
             getWorld().removeObject(this);
         }
         else{
@@ -72,13 +72,12 @@ public class Selection extends Actor
                 initialPosX = getX();
                 initialPosY = getY(); 
             }
-
             checkKey("Enter");
             
             ((Fruit)actor).pulseImage();
 
             followMouse();
-
+            
             if(actCount<2) actCount++;
         }
     }
@@ -179,13 +178,15 @@ public class Selection extends Actor
      */
     private void checkKey(String key){
         if(pos != -1){ //has been moved (up, down, right, or left)
+            MainScreen world = (MainScreen) getWorld();
             if(Greenfoot.isKeyDown(key)){
                 int newOuterIndex = ((Fruit)actor).getIndexOfSwap(pos,true);
                 int newInnerIndex = ((Fruit)actor).getIndexOfSwap(pos,false);
                 
-                MainScreen world = (MainScreen) getWorld();
+                
                 world.swapFruits(world.getIndex((Fruit)actor, true), world.getIndex((Fruit)actor, false), newOuterIndex, newInnerIndex);
                 
+                isSelecting = false;
                 world.removeObject(this);
             }
         }
@@ -239,5 +240,14 @@ public class Selection extends Actor
      */
     public static boolean isSelecting(){
         return isSelecting;
+    }
+    
+    /**
+     * Sets isSelecting value
+     * 
+     * @param isSelectingNow is selection box in use (true) or not (false)
+     */
+    public static void setSelecting(boolean isSelectingNow){
+        isSelecting = isSelectingNow;
     }
 }

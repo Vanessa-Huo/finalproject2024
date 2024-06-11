@@ -13,8 +13,12 @@ public class SpecialPeach extends Peach
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public SpecialPeach(){
-        image = new GreenfootImage("button-purple.png");
+        image = new GreenfootImage("peachStripe.png");
         image.scale(56,56);
+        
+        pulseImage = new GreenfootImage("peachStripe.png");
+        pulseImage.scale(65,65);
+        
         setImage(image);
     }
 }

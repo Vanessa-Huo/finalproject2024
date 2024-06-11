@@ -13,8 +13,12 @@ public class SpecialPineapple extends Pineapple
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public SpecialPineapple(){
-        image = new GreenfootImage("button-yellow.png");
+        image = new GreenfootImage("pineappleStripe.png");
         image.scale(56,56);
+        
+        pulseImage = new GreenfootImage("pineappleStripe.png");
+        pulseImage.scale(65,65);
+        
         setImage(image);
     }
 }

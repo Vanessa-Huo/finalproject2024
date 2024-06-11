@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Paintbrush extends Effect
+public class Paintbrush extends Boosters
 {
     private MouseInfo mouse;
     private boolean isActive;
