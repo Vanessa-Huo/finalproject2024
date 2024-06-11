@@ -28,7 +28,6 @@ public class MainScreen extends World
     
     public MainScreen()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 720, 1); 
 
         setBackground("plainBG.png");
@@ -348,20 +347,11 @@ public class MainScreen extends World
     }
 
     /**
-     * Returns width of tile
+     * Returns width/height of tile
      * 
-     * @return  Width of tile
+     * @return  size of tile
      */
-    public int getTileWidth(){
-        return CELL_SIZE;
-    }
-
-    /**
-     * Returns height of tile
-     * 
-     * @return  Height of tile
-     */
-    public int getTileHeight(){
+    public int getTileSize(){
         return CELL_SIZE;
     }
 
@@ -435,6 +425,7 @@ public class MainScreen extends World
     public int getRows(){
         return rows;
     }
+    
     public int getColumns(){
         return cols;
     }

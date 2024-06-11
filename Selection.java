@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
- * Selection is a translucent white box that indicates an adjacent tile 
+ * Selection is a white frame that indicates an adjacent tile 
  * an Actor on a grid can interact with, as selected by the user.
  * 
  * It reads mouse input for dragging, and will update its position accordingly.
@@ -39,7 +39,10 @@ public class Selection extends Actor
         this.width = width;
         this.height = height;
         
-        image = drawBox ();
+        //uncomment below for built-in image
+        //image = drawBox ();
+        
+        image = new GreenfootImage("selectBorder.png");
         image.setTransparency(0);
         setImage(image);
         

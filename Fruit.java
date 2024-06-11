@@ -20,7 +20,7 @@ public abstract class Fruit extends Actor
         if (mouse != null){
             if(!Selection.isSelecting() && Greenfoot.mouseClicked(this)){
                 ((MainScreen) getWorld()).resetSelection();
-                selectBox = new Selection(this, world.getTileWidth(), world.getTileHeight());
+                selectBox = new Selection(this, world.getTileSize(), world.getTileSize());
                 getWorld().addObject(selectBox, getX(), getY());
             }
         }
