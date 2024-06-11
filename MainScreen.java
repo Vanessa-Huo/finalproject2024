@@ -16,11 +16,10 @@ public class MainScreen extends World
 
     Timer timer;
     Label scoreLabel;
-    int score = 0;
 
     private HomeButton home;
     private int score; 
-    
+
     public MainScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -39,16 +38,13 @@ public class MainScreen extends World
 
         run = false;
 
-        
         timer = new Timer();
         scoreLabel = new Label(score, 80);
         scoreLabel.setFillColor(Color.BLACK);
         addObject(timer, 170, 150);
         addObject(scoreLabel, 170, 350);
-       
 
         drawBoard(true);
-        
         text();
         //addObject(scoreBar, 100,330);
     }
@@ -67,7 +63,7 @@ public class MainScreen extends World
         crushThree(true);
         dropFruits();
     }
-    
+
     public void text(){
         addObject(new Label("Time",50),100,80);
         addObject(new Label("Score",50),100,280);
@@ -80,7 +76,7 @@ public class MainScreen extends World
      * @param removeCrushes   Remove found crushes (true) or not (false)
      * @return boolean  crush was found (true) or not (false)
      */
-    private boolean crushThree(boolean removeCrushes){
+    private boolean crushThree(boolean removeCrushes) {
         boolean crushFound = false;
         for(int i=0; i<rows;i++){
             for(int j=0;j<cols-2;j++){
@@ -89,16 +85,6 @@ public class MainScreen extends World
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
                         j += length - 1; // Skip the already checked candies
-                if(board[i][j] != null && board[i][j + 1] != null && board[i][j + 2] != null){
-                    if(board[i][j].getClass() == board[i][j + 1].getClass() && board[i][j].getClass() == board[i][j + 2].getClass()){
-                        if(removeCrushes){
-                            removeObject(board[i][j]);
-                            removeObject(board[i][j+1]);
-                            removeObject(board[i][j+2]);
-                            board[i][j] =  board[i][j+1] =  board[i][j+2] = null;
-                            score += 3;
-                        }
-                        crushFound = true;
                     }
                     crushFound = true;
                 }
@@ -134,18 +120,6 @@ public class MainScreen extends World
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
                         j += length - 1; // Skip the already checked candies
-        for(int i=0; i<rows-2;i++){
-            for(int j=0;j<cols;j++){
-                if(board[i][j] != null && board[i + 1][j] != null && board[i + 2][j] != null){
-                    if(board[i][j].getClass().equals(board[i + 1][j].getClass()) && board[i][j].getClass().equals(board[i + 2][j].getClass())){
-                        if(removeCrushes){
-                            removeObject(board[i][j]);
-                            removeObject(board[i+1][j]);
-                            removeObject(board[i+2][j]);
-                            board[i][j] = board[i+1][j] = board[i+2][j] = null;
-                            score += 3;
-                        }
-                        crushFound = true;
                     }
                     crushFound = true;
                 }
@@ -165,7 +139,7 @@ public class MainScreen extends World
         }
         return crushFound;
     }
-    
+
     /**
      * Checks for matches of five or more Fruits and removes them.
      * 
@@ -200,7 +174,7 @@ public class MainScreen extends World
         }
         return crushFound;
     }
-    
+
     /**
      * Drops the Fruits to fill empty spaces below them and refills the board with new Fruits at the top.
      */
@@ -248,8 +222,8 @@ public class MainScreen extends World
             case 4: return new Pineapple();
         }
         return new Strawberry();
-    }  
-    
+    }
+
     /**
      * A method that gives the length of a match starting from position (i, j) in the given direction (di, dj).
      * 
