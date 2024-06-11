@@ -30,5 +30,6 @@ public class TitleScreen extends World
     }
 
     public void act() {
+        
     }
 }

@@ -25,6 +25,10 @@ public class MainScreen extends World
     private int animCounter, animDelay, animIndex, maxIndex;
     private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES }
     private GameState state;
+
+    private HomeButton home;
+    private int score; 
+
     public MainScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -42,7 +46,7 @@ public class MainScreen extends World
         board = new Fruit[rows][cols];
 
         run = false;
-        
+
         timer = new Timer();
         scoreLabel = new Label(score, 80);
         scoreLabel.setFillColor(Color.BLACK);
@@ -104,8 +108,7 @@ public class MainScreen extends World
         }
     }
 
-    public void text()
-    {
+    public void text(){
         addObject(new Label("Time",50),100,80);
         addObject(new Label("Score",50),100,280);
         addObject(new Label("Booster",50),100,480);
@@ -117,7 +120,7 @@ public class MainScreen extends World
      * @param removeCrushes   Remove found crushes (true) or not (false)
      * @return boolean  crush was found (true) or not (false)
      */
-    private boolean crushThree(boolean removeCrushes){
+    private boolean crushThree(boolean removeCrushes) {
         boolean crushFound = false;
         for(int i=0; i<rows;i++){
             for(int j=0;j<cols-2;j++){
@@ -125,7 +128,7 @@ public class MainScreen extends World
                 if (length == 3) {
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
-                        j += length - 1;
+                        j += length - 1; // Skip the already checked candies
                     }
                     crushFound = true;
                 }
@@ -161,7 +164,7 @@ public class MainScreen extends World
                     Fruit temp = getSpecialFruit(board[i][j]);
                     if(removeCrushes){
                         removeCrush(i, j, 0, 1, length);
-                        j += length - 1;
+                        j += length - 1; // Skip the already checked candies
                     }
                     board[i][j]=temp;
                     addObject(board[i][j], x+j*65, y+i*65);
@@ -279,8 +282,9 @@ public class MainScreen extends World
             case 4: return new Strawberry();
             default: return new Blueberry();
         }
-    } 
-    
+        return new Strawberry();
+    }
+
     /**
      * Creates a special fruit that has the same type as given fruit.
      * Given Peach will return a SpecialPeach
