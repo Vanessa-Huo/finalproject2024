@@ -52,10 +52,10 @@ public class Selection extends Actor
         int rowNumber = mainScreen.getIndex((Fruit) actor, true) + 1;
         int columnNumber = mainScreen.getIndex((Fruit) actor, false) + 1;
         
-        topEdge = rowNumber == 0;
+        topEdge = rowNumber == 1;
         rightEdge = columnNumber == mainScreen.getRows();
         bottomEdge = rowNumber  == mainScreen.getColumns();
-        leftEdge = columnNumber  == 0;
+        leftEdge = columnNumber  == 1;
     }
     
     public void act(){
