@@ -19,6 +19,11 @@ public class Timer extends Actor
     private void updateImage()
     {
         //Generates an image for the label, can be replaced with other images
-        setImage(new GreenfootImage("" + timer/55, 80, Color.BLACK, Color.WHITE));
+        GreenfootImage label = new GreenfootImage(200, 100);
+       
+        label.setColor(Color.BLACK);
+        label.setFont(new Font("SansSerif", true, false, 70));
+        label.drawString(Integer.toString(timer/55), 60, 80);        
+        setImage(label);
     }
 }

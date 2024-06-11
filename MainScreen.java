@@ -26,6 +26,7 @@ public class MainScreen extends World
     private int animCounter, animDelay, animIndex, maxIndex;
     private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES }
     private GameState state;
+    
 
     public MainScreen()
     {    
@@ -492,5 +493,8 @@ public class MainScreen extends World
                 }
             }
         }
+    }
+    public void stopped(){
+        
     }
 }
