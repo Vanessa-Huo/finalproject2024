@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
-
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
 /**
  * game desc...
  * 
@@ -15,7 +17,7 @@ public class MainScreen extends World
     private int x, y;
     
     private boolean run;
-    private int score;
+    private int score = 0;
 
     Timer timer;
     Label scoreLabel;
@@ -28,6 +30,8 @@ public class MainScreen extends World
     private int animCounter, animDelay, animIndex, maxIndex;
     private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES }
     private GameState state;
+    
+    PrintWriter out;
     
     public MainScreen()
     {    
@@ -60,13 +64,22 @@ public class MainScreen extends World
         
         animCounter = 0;
         maxIndex = explode.length;
-        //Greenfoot.setSpeed(70); // Set the speed to 70 out of 100
-
+        //Greenfoot.setSpeed(70); // Set the speed to 7 0 out of 100
+        
         state = GameState.CHECK_MATCHES;
+        
     }
 
     public void started(){
         Selection.setSelecting(false);
+        try{
+            FileWriter scores = new FileWriter("Scores.txt", true);
+            out = new PrintWriter(scores);
+            
+        } catch(IOException e){
+            System.out.println("IO exception");
+        }
+        run = true;
     }
 
     public void act(){
@@ -79,7 +92,7 @@ public class MainScreen extends World
             score = 0;
         }
         //Play
-        run = true;
+        
         scoreLabel.setValue(score);
         switch (state) {
             case CHECK_MATCHES:
@@ -112,6 +125,13 @@ public class MainScreen extends World
         if(getObjects(Selection.class).size() == 0){
             //System.out.println("none detected");
             Selection.setSelecting(false);
+        }
+        if(timer.done){
+            endScreen();
+        }
+        if(!run){
+            out.println(score);
+            out.close();
         }
     }
     
@@ -567,6 +587,11 @@ public class MainScreen extends World
         }
     }
     
+    private void endScreen(){
+        run = false;
+        EndScreen a = new EndScreen();
+        addObject(a, getWidth()/2, getHeight()/2);
+    }
     public int getRows(){
         return rows;
     }

@@ -3,7 +3,7 @@ import greenfoot.*;
 public class Timer extends Actor
 {
     private int timer = 55*60; //about 60 seconds
- 
+    public boolean done = false;
     public Timer()
     {
         updateImage();
@@ -12,12 +12,13 @@ public class Timer extends Actor
     public void act()
     {
         timer--;
-        if (timer % 55 == 0) updateImage();
+        if ((timer % 55 == 0) && !done) updateImage();
         if (timer < 1) {
             //Greenfoot.stop();
             Greenfoot.delay(15);
-            EndingScreen end = new EndingScreen();
-            Greenfoot.setWorld(end);
+            //EndingScreen end = new EndingScreen();
+            //Greenfoot.setWorld(end);
+            done = true;
         }
     }
      
