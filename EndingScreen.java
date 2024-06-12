@@ -21,7 +21,7 @@ public class EndingScreen extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 720, 1);
         
-        setBackground("plainBG.png");
+        setBackground("gameOverScreen.png");
         home = new HomeButton();
         addObject(home, ((int) halfWidth / 2) + 80, 570);
         ach = new AchievementButton();
