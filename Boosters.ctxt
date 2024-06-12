@@ -1,13 +1,6 @@
 #BlueJ class context
 comment0.target=Boosters
-
-comment0.text=\n\ Write\ a\ description\ of\ class\ Boosters\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Booster\ superclass.\ \n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ Boosters\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-
-comment0.text=\r\n\ Booster\ superclass.\ \r\n\ \r\n\ @author\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
-comment1.params=
-comment1.target=void\ act()
-
 numComments=2
