@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Watermelon extends Fruit
+public class Watermelon extends Boosters
 {
     /**
      * Act - do whatever the Watermelon wants to do. This method is called whenever
@@ -18,12 +18,12 @@ public class Watermelon extends Fruit
     
     public Watermelon(boolean first){
         image = new GreenfootImage("watermelonBomb.png");
-        image.scale(56,56);
+        image.scale(67,67);
         setImage(image);
         this.first=first;
-        
+
         pulseImage = new GreenfootImage("watermelonBomb.png");
-        pulseImage.scale(65,65);
+        pulseImage.scale(76,76);
         
         pulseCount = 0;
     }
@@ -35,7 +35,6 @@ public class Watermelon extends Fruit
             dragging = true;
         }
         if(dragging){
-            followMouse();
             if (Greenfoot.mouseClicked(null) && Greenfoot.getMouseInfo().getActor() instanceof Fruit) {
                 replaceFruit();
             }
@@ -49,6 +48,7 @@ public class Watermelon extends Fruit
             world.replace(clickedFruit, new Watermelon(false));
             //getWorld().removeObject(temp);
             dragging = false;
+            setImage(image);
         }
     }
     

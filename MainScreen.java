@@ -55,8 +55,8 @@ public class MainScreen extends World
         timer = new Timer();
         scoreLabel = new Label(score, 80);
         scoreLabel.setFillColor(Color.BLACK);
-        addObject(timer, 170, 150);
-        addObject(scoreLabel, 170, 350);
+        addObject(timer, 170, 130);
+        addObject(scoreLabel, 170, 270);
        
         drawBoard(true);
 
@@ -117,9 +117,9 @@ public class MainScreen extends World
      * TEMPORARY BEFORE ART
      */
     public void text(){
-        addObject(new Label("Time",50),100,80);
-        addObject(new Label("Score",50),100,280);
-        addObject(new Label("Booster",50),100,480);
+        addObject(new Label("Time",50),100,60);
+        addObject(new Label("Score",50),100,200);
+        addObject(new Label("Booster",50),120,340);
     }
 
     /**
@@ -490,7 +490,7 @@ public class MainScreen extends World
                 addObject(board[i][j],x+j*65,y+i*65);
             }
         }
-        addObject(melon, 100,550);
+        addObject(melon, 75,420);
     }
 
     /**
