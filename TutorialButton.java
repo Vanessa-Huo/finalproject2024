@@ -3,19 +3,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class TutorialButton here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Anya Shah
+ * @version June 2024
  */
 public class TutorialButton extends Icon
 {
-    /**
-     * Act - do whatever the TutorialButton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        setImage("tut.png");
-        GreenfootImage image = getImage();
-        image.scale((int) (image.getWidth()*0.7), (int) (image.getHeight()*0.7));
+    public TutorialButton(){
+        setImage("tutorialButton.png");
+    }
+    public void act(){
+        if (Greenfoot.mouseClicked(this))
+        {
+            TutorialScreen world = new TutorialScreen();
+            Greenfoot.setWorld(world);
+        }
     }
 }

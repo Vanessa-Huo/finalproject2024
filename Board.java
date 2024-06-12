@@ -1,39 +1,31 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 //import java.awt.Color;
 /**
- * Write a description of class Grid here.
+ * Grid to visually organize the fruits into a game board. 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Vanessa Huo
+ * @version June 2024
  */
 public class Board extends Actor
 {
-    /**
-     * Act - do whatever the Grid wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    public static final Color OFF_WHITE = new Color (242, 241, 233, 255);
     private GreenfootImage image;
-    //private int boardColumns, boardRows;
-    private int width;
-    private int height;
+    private int width, height;
+    
     private int cellSize = 50;
     
-    public void act()
-    {
-        // Add your action code here.
-        
-    }
     
     public Board(int rows, int cols, int cellSize) {
         width = cols * cellSize;
         height = rows * cellSize;
         
+        
         GreenfootImage gridImage = new GreenfootImage(width+1, height+1);
         
-        gridImage.setColor(Color.WHITE);
+        gridImage.setColor(OFF_WHITE);
         gridImage.fillRect(0,0,width,height);
         
-        gridImage.setColor(Color.GRAY);
+        gridImage.setColor(Color.LIGHT_GRAY);
         // Draw the vertical lines
         for (int i = 0; i <= cols; i++) {
             int x = i * cellSize;

@@ -1,3 +1,17 @@
 #BlueJ class context
 comment0.target=Fruit
-numComments=1
+comment0.text=\r\n\ Fruit\ Superclass.\r\n\ \r\n\ @author\ Megan\ Lee\r\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ removeAll()
+comment3.params=direction\ returnOuterIndex
+comment3.target=int\ getIndexOfSwap(int,\ boolean)
+comment3.text=\r\n\ \r\n\ @param\ direction\ A\ number\ representing\ direction\ of\ selected\ tile(0-3)\r\n\ @param\ boolean\ \ \ Return\ outer\ (true)\ or\ inner\ (false)\ index\ of\ new\r\n\ @return\ int\ \ \ \ \ \ Outer/inner\ index\ of\ new\ position\r\n
+comment4.params=
+comment4.target=int\ getFruitNum()
+comment5.params=
+comment5.target=void\ resetImage()
+comment6.params=
+comment6.target=void\ pulseImage()
+numComments=7

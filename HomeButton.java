@@ -3,17 +3,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class HomeButton here.
  * 
- * @author (your name) 
+ * @author Anya Shah
  * @version (a version number or a date)
  */
 public class HomeButton extends Icon
 {
-    /**
-     * Act - do whatever the HomeButton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        setImage("home.png");
+    public HomeButton(){
+        setImage("homeButton.png");
+    }
+    
+    public void act(){
+        if (Greenfoot.mouseClicked(this))
+        {
+            TitleScreen world = new TitleScreen();
+            Greenfoot.setWorld(world);
+        }
     }
 }
