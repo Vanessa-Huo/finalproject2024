@@ -13,6 +13,7 @@ public class SPear extends Pear
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public SPear(){
+
         image = new GreenfootImage("pearStripe.png");
         image.scale(56,56);
         
