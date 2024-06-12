@@ -183,10 +183,10 @@ public class Selection extends Actor
                 int newOuterIndex = ((Fruit)actor).getIndexOfSwap(pos,true);
                 int newInnerIndex = ((Fruit)actor).getIndexOfSwap(pos,false);
                 
-                
                 world.swapFruits(world.getIndex((Fruit)actor, true), world.getIndex((Fruit)actor, false), newOuterIndex, newInnerIndex);
                 
                 isSelecting = false;
+                
                 world.removeObject(this);
             }
         }

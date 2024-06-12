@@ -12,6 +12,7 @@ public class MainScreen extends World
     private static Fruit[][] board;
     private int rows, cols;
     private static final int CELL_SIZE = 65;
+    private int booster1, booster2;
     private int x, y;
     
     private boolean run;
@@ -19,12 +20,14 @@ public class MainScreen extends World
 
     Timer timer;
     Label scoreLabel;
+    Watermelon melon;
 
     //int score = 0;
 
     private HomeButton home;
     private TutorialButton tut;
     private GreenfootImage[] explode = new GreenfootImage[3];
+    
     private int animCounter, animDelay, animIndex, maxIndex;
     private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES }
     private GameState state;
@@ -38,6 +41,7 @@ public class MainScreen extends World
         addObject(home, 100, getHeight() - 50);
         tut = new TutorialButton();
         addObject(tut, 250, getHeight() - 50);
+        melon = new Watermelon(true);
 
         rows = 10;
         cols = 10;
@@ -83,7 +87,7 @@ public class MainScreen extends World
         scoreLabel.setValue(score);
         switch (state) {
             case CHECK_MATCHES:
-                if (crushFive(true) || crushFour(true) || crushThree(true)) {
+                if (crushFive(true) || crushFour(true) || crushThree(true) || watermelonBomb()) {
                     state = GameState.REMOVE_MATCHES;
                 } else {
                     dropFruits();
@@ -103,12 +107,6 @@ public class MainScreen extends World
                 state = GameState.CHECK_MATCHES;
                 break;
         }
-        /*
-        crushFive(true);
-        crushFour(true);
-        crushThree(true);
-        dropFruits();
-        */
         if(getObjects(Selection.class).size() == 0){
             //System.out.println("none detected");
             Selection.setSelecting(false);
@@ -224,6 +222,27 @@ public class MainScreen extends World
                         removeCrush(i, j, 1, 0, length);
                         board[i][j]=temp;
                         addObject(board[i][j], x+j*65, y+i*65);
+                    }
+                    crushFound = true;
+                }
+            }
+        }
+        return crushFound;
+    }
+    
+    private boolean watermelonBomb(){
+        boolean crushFound = false;
+        for(int i=0; i<rows;i++){
+            for(int j=0;j<cols;j++){
+                if(board[i][j] instanceof Watermelon){
+                    for(int x = i-1;x<=i+1;x++){
+                        for(int y = j-1;y<=j+1;y++){
+                            if(x>=0 && x<rows && y>=0 && y<cols && board[x][y]!=null){
+                                removeObject(board[x][y]);
+                                board[x][y]=null;
+                                score++;
+                            }
+                        }
                     }
                     crushFound = true;
                 }
@@ -471,6 +490,7 @@ public class MainScreen extends World
                 addObject(board[i][j],x+j*65,y+i*65);
             }
         }
+        addObject(melon, 100,550);
     }
 
     /**
@@ -517,6 +537,22 @@ public class MainScreen extends World
             }
         }
         return 0;
+    }
+    
+    /**
+     * Stores the indexes of the first first within 2D array. 
+     * Remove the first fruit and replace it with the second fruit at the same position within 2D array.
+     * 
+     * @param oldOne     Fruit that needs to be replaced 
+     * @param newOne     New fruit that replaces the old one
+     */
+    public void replace(Fruit oldOne, Fruit newOne){
+        int one = getIndex(oldOne,true);
+        int two = getIndex(oldOne,false);
+        removeObject(oldOne);
+        board[one][two] = null;
+        board[one][two] = newOne;
+        addObject(board[one][two],x+two*65,y+one*65);
     }
     
     /**
