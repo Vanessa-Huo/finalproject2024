@@ -1,26 +1,25 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SpecialPeach here.
+ * Write a description of class BBlueberry here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SPeach extends Peach
+public class BBlueberry extends Blueberry
 {
     /**
-     * Act - do whatever the SpecialPeach wants to do. This method is called whenever
+     * Act - do whatever the BBlueberry wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public SPeach(){
-        image = new GreenfootImage("peachStripe.png");
+    public BBlueberry(){
+        image = new GreenfootImage("button-blue.png");
         image.scale(56,56);
         
-        pulseImage = new GreenfootImage("peachStripe.png");
+        pulseImage = new GreenfootImage("button-blue.png");
         pulseImage.scale(65,65);
         
-        fruitNum = 1;
+        fruitNum = 2;
         setImage(image);
     }
-
 }
