@@ -13,9 +13,9 @@ public class BPeach extends Peach
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public BPeach(){
-        image = new GreenfootImage("button-purple.png");
+        image = new GreenfootImage("polkadotPeach.png");
         image.scale(56,56);
-        pulseImage = new GreenfootImage("button-purple.png");
+        pulseImage = new GreenfootImage("polkadotPeach.png");
         pulseImage.scale(65,65);
         fruitNum = 2;
         setImage(image);

@@ -13,9 +13,9 @@ public class BPineapple extends Pineapple
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public BPineapple(){
-        image = new GreenfootImage("button-yellow.png");
+        image = new GreenfootImage("polkadotPineapple.png");
         image.scale(56,56);
-        pulseImage = new GreenfootImage("button-yellow.png");
+        pulseImage = new GreenfootImage("polkadotPineapple.png");
         pulseImage.scale(65,65);
         fruitNum = 2;
         setImage(image);
