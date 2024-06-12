@@ -15,25 +15,9 @@ public class BStrawberry extends Strawberry
     public BStrawberry(){
         image = new GreenfootImage("button-red.png");
         image.scale(56,56);
+        pulseImage = new GreenfootImage("button-red.png");
+        pulseImage.scale(65,65);
         fruitNum = 2;
         setImage(image);
-    }
-    
-    protected void pulseImage(){
-        if(pulseCount == 0){
-            pulseImage = new GreenfootImage("button-red.png");
-            pulseImage.scale(65,65);
-        }
-
-        if(pulseCount % 20 == 0){
-            if(getImage() == image){
-                setImage(pulseImage);
-            }
-            else{
-                setImage(image);
-            }
-        }
-        
-        pulseCount++;
     }
 }

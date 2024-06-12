@@ -4,6 +4,4 @@ comment0.text=\n\ Write\ a\ description\ of\ class\ BBlueberry\ here.\n\ \n\ @au
 comment1.params=
 comment1.target=BBlueberry()
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ BBlueberry\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-comment2.params=
-comment2.target=void\ pulseImage()
-numComments=3
+numComments=2
