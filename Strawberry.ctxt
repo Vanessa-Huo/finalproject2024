@@ -3,6 +3,4 @@ comment0.target=Strawberry
 comment0.text=\n\ Strawberry\ is\ a\ type\ of\ fruit.\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Strawberry.\n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=Strawberry()
-comment2.params=
-comment2.target=void\ pulseImage()
-numComments=3
+numComments=2

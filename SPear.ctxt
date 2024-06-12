@@ -4,6 +4,4 @@ comment0.text=\n\ Write\ a\ description\ of\ class\ SpecialPear\ here.\n\ \n\ @a
 comment1.params=
 comment1.target=SPear()
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ SpecialPear\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-comment2.params=
-comment2.target=void\ pulseImage()
-numComments=3
+numComments=2

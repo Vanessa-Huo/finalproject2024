@@ -15,25 +15,11 @@ public class SStrawberry extends Strawberry
     public SStrawberry(){
         image = new GreenfootImage("strawberryStripe.png");
         image.scale(56,56);
+        
+        pulseImage = new GreenfootImage("strawberryStripe.png");
+        pulseImage.scale(65,65);
+        
         fruitNum = 1;
         setImage(image);
-    }
-    
-    protected void pulseImage(){
-        if(pulseCount == 0){
-            pulseImage = new GreenfootImage("strawberryStripe.png");
-            pulseImage.scale(65,65);
-        }
-
-        if(pulseCount % 20 == 0){
-            if(getImage() == image){
-                setImage(pulseImage);
-            }
-            else{
-                setImage(image);
-            }
-        }
-        
-        pulseCount++;
     }
 }

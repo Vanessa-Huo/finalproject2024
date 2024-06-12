@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Fruit Superclass
+ * Fruit Superclass.
  * 
  * @author Megan Lee
  */
@@ -12,25 +12,24 @@ public abstract class Fruit extends Actor
     protected Selection selectBox;
     protected int pulseCount;
     protected int fruitNum = 0;
-    
-    abstract protected void pulseImage();
-    
-    
+
     public void act(){
         mouse = Greenfoot.getMouseInfo();
         MainScreen world = (MainScreen)getWorld();
         //Mouse cannot be null
         if (mouse != null){
+            //if(Greenfoot.mouseClicked(this)) System.out.println("clicked: " + Greenfoot.mouseClicked(this) + ", isSeleciting: " + Selection.isSelecting());
             if(!Selection.isSelecting() && Greenfoot.mouseClicked(this)){
-                ((MainScreen) getWorld()).resetSelection();
-                selectBox = new Selection(this, world.getTileWidth(), world.getTileHeight());
+                //System.out.println("new");
+                world.resetSelection();
+                selectBox = new Selection(this, world.getTileSize(), world.getTileSize());
                 getWorld().addObject(selectBox, getX(), getY());
             }
         }
     }
     
     /**
-     * @
+     * 
      * @param direction A number representing direction of selected tile(0-3)
      * @param boolean   Return outer (true) or inner (false) index of new
      * @return int      Outer/inner index of new position
@@ -79,5 +78,21 @@ public abstract class Fruit extends Actor
     
     public int getFruitNum(){
         return fruitNum;
+    }
+    
+    public void resetImage(){
+        setImage(image);
+    }
+    
+    protected void pulseImage(){
+        if(pulseCount % 20 == 0){
+            if(getImage() == image){
+                setImage(pulseImage);
+            }
+            else{
+                setImage(image);
+            }
+        }
+        pulseCount++;
     }
 }

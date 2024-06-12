@@ -1,13 +1,15 @@
 #BlueJ class context
 comment0.target=Fruit
-comment0.text=\n\ Fruit\ Superclass\n\ \n\ @author\ Megan\ Lee\n
+comment0.text=\n\ Fruit\ Superclass.\n\ \n\ @author\ Megan\ Lee\n
 comment1.params=
-comment1.target=void\ pulseImage()
-comment2.params=
-comment2.target=void\ act()
-comment3.params=direction\ returnOuterIndex
-comment3.target=int\ getIndexOfSwap(int,\ boolean)
-comment3.text=\n\ @\n\ @param\ direction\ A\ number\ representing\ direction\ of\ selected\ tile(0-3)\n\ @param\ boolean\ \ \ Return\ outer\ (true)\ or\ inner\ (false)\ index\ of\ new\n\ @return\ int\ \ \ \ \ \ Outer/inner\ index\ of\ new\ position\n
+comment1.target=void\ act()
+comment2.params=direction\ returnOuterIndex
+comment2.target=int\ getIndexOfSwap(int,\ boolean)
+comment2.text=\n\ \n\ @param\ direction\ A\ number\ representing\ direction\ of\ selected\ tile(0-3)\n\ @param\ boolean\ \ \ Return\ outer\ (true)\ or\ inner\ (false)\ index\ of\ new\n\ @return\ int\ \ \ \ \ \ Outer/inner\ index\ of\ new\ position\n
+comment3.params=
+comment3.target=int\ getFruitNum()
 comment4.params=
-comment4.target=int\ getFruitNum()
-numComments=5
+comment4.target=void\ resetImage()
+comment5.params=
+comment5.target=void\ pulseImage()
+numComments=6
