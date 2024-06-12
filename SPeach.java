@@ -33,7 +33,6 @@ public class SPeach extends Peach
                 setImage(image);
             }
         }
-        
         pulseCount++;
     }
 }

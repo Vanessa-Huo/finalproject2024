@@ -67,7 +67,7 @@ public class MainScreen extends World
 
     public void act(){
         //Setup
-        while(crushThree(true) && run==false){
+        while(run==false && crushThree(true)){
             crushFive(true);
             crushFour(true);
             crushThree(true);
@@ -99,18 +99,12 @@ public class MainScreen extends World
                 state = GameState.CHECK_MATCHES;
                 break;
         }
+        /*
         crushFive(true);
         crushFour(true);
         crushThree(true);
         dropFruits();
-        if (Greenfoot.mouseClicked(home)) {
-            TitleScreen title = new TitleScreen();
-            Greenfoot.setWorld(title);
-        }
-        if(Greenfoot.mouseClicked(tut)) {
-            TutorialScreen ins = new TutorialScreen();
-            Greenfoot.setWorld(ins);
-        }
+        */
     }
 
     public void text(){
@@ -129,11 +123,10 @@ public class MainScreen extends World
         boolean crushFound = false;
         for(int i=0; i<rows;i++){
             for(int j=0;j<cols-2;j++){
-                int length = getMatchLength(i, j, 0, 1);
-                if (length == 3) {
+                if (getMatchLength(i, j, 0, 1) == 3) {
                     if(removeCrushes){
-                        removeCrush(i, j, 0, 1, length);
-                        j += length - 1; // Skip the already checked candies
+                        removeCrush(i, j, 0, 1, 3);
+                        //i += length - 1;
                     }
                     crushFound = true;
                 }
@@ -141,11 +134,9 @@ public class MainScreen extends World
         }
         for(int i=0; i<rows-2;i++){
             for(int j=0;j<cols;j++){
-                int length = getMatchLength(i, j, 1, 0);
-                if (length == 3) {
+                if (getMatchLength(i, j, 1, 0) == 3) {
                     if(removeCrushes){
-                        removeCrush(i, j, 1, 0, length);
-                        i += length - 1;
+                        removeCrush(i, j, 1, 0, 3);
                     }
                     crushFound = true;
                 }
@@ -164,30 +155,26 @@ public class MainScreen extends World
         boolean crushFound = false;
         for(int i=0; i<rows;i++){
             for(int j=0;j<cols-3;j++){
-                int length = getMatchLength(i, j, 0, 1);
-                if (length == 4) {
-                    Fruit temp = getSpecialFruit(board[i][j]);
+                if (getMatchLength(i, j, 0, 1) == 4) {
                     if(removeCrushes){
-                        removeCrush(i, j, 0, 1, length);
-                        j += length - 1; // Skip the already checked candies
+                        Fruit test = getSpecialFruit(board[i][j]);
+                        removeCrush(i, j, 0, 1, 4);
+                        board[i][j]=test;
+                        addObject(board[i][j], x+j*65, y+i*65);
                     }
-                    board[i][j]=temp;
-                    addObject(board[i][j], x+j*65, y+i*65);
                     crushFound = true;
                 }
             }
         }
         for(int i=0; i<rows-3;i++){
             for(int j=0;j<cols;j++){
-                int length = getMatchLength(i, j, 1, 0);
-                if (length == 4) {
-                    Fruit temp = getSpecialFruit(board[i][j]);
+                if (getMatchLength(i, j, 1, 0) == 4) {
                     if(removeCrushes){
-                        removeCrush(i, j, 1, 0, length);
-                        i += length - 1;
+                        Fruit test = getSpecialFruit(board[i][j]);
+                        removeCrush(i, j, 1, 0, 4);
+                        board[i][j]=test;
+                        addObject(board[i][j], x+j*65, y+i*65);
                     }
-                    board[i][j]=temp;
-                    addObject(board[i][j], x+j*65, y+i*65);
                     crushFound = true;
                 }
             }
@@ -207,13 +194,12 @@ public class MainScreen extends World
             for(int j=0;j<cols-4;j++){
                 int length = getMatchLength(i, j, 0, 1);
                 if (length >= 5) {
-                    Fruit temp = getSpecialFruit(board[i][j]);
                     if(removeCrushes){
+                        Fruit temp = getBombFruit(board[i][j]);
                         removeCrush(i, j, 0, 1, length);
-                        j += length - 1;
+                        board[i][j]=temp;
+                        addObject(board[i][j], x+j*65, y+i*65);
                     }
-                    board[i][j]=temp;
-                    addObject(board[i][j], x+j*65, y+i*65);
                     crushFound = true;
                 }
             }
@@ -222,13 +208,12 @@ public class MainScreen extends World
             for(int j=0;j<cols;j++){
                 int length = getMatchLength(i, j, 1, 0);
                 if (length >= 5) {
-                    Fruit temp = getSpecialFruit(board[i][j]);
                     if(removeCrushes){
+                        Fruit temp = getBombFruit(board[i][j]);
                         removeCrush(i, j, 1, 0, length);
-                        i += length - 1;
+                        board[i][j]=temp;
+                        addObject(board[i][j], x+j*65, y+i*65);
                     }
-                    board[i][j]=temp;
-                    addObject(board[i][j], x+j*65, y+i*65);
                     crushFound = true;
                 }
             }
@@ -247,9 +232,9 @@ public class MainScreen extends World
                         if (board[k][j] != null) {
                             board[i][j] = board[k][j];
                             board[k][j] = null;
-                            delay(2);
+                            delay(1);
                             board[i][j].setLocation(x+j*65, y+i*65);
-                            delay(2);
+                            delay(1);
                             break;
                         }
                     }
@@ -260,7 +245,7 @@ public class MainScreen extends World
             for (int i = rows - 1; i >= 0; i--) {
                 if (board[i][j] == null) {
                     board[i][j] = getRandomFruit();
-                    delay(2);
+                    delay(1);
                     addObject(board[i][j], x+j*65, y+i*65);
                 }
             }
@@ -278,8 +263,7 @@ public class MainScreen extends World
      * @return Fruit A new Fruit of random type.
      */
     private Fruit getRandomFruit(){
-        int chance = Greenfoot.getRandomNumber(5);
-        switch(chance){
+        switch(Greenfoot.getRandomNumber(5)){
             case 0: return new Blueberry();
             case 1: return new Peach();
             case 2: return new Pear();
@@ -296,19 +280,40 @@ public class MainScreen extends World
      * @param fruit     Given fruit
      * @return Fruit A new SpecialFruit.
      */
-    private Fruit getSpecialFruit(Fruit fruit){
-        if(fruit instanceof Blueberry){
+    private Fruit getSpecialFruit(Fruit x){
+        if(x instanceof Blueberry){
             return new SBlueberry();
-        }else if(fruit instanceof Peach){
+        }else if(x instanceof Peach){
             return new SPeach();
-        }else if(fruit instanceof Pear){
+        }else if(x instanceof Pear){
             return new SPear();
-        }else if(fruit instanceof Pineapple){
+        }else if(x instanceof Pineapple){
             return new SPineapple();
-        }else if(fruit instanceof Strawberry){
+        }else if(x instanceof Strawberry){
             return new SStrawberry();
         }
         return new SBlueberry();
+    }
+    
+    /**
+     * Creates a bomb fruit that has the same type as given fruit.
+     * 
+     * @param fruit     Given fruit
+     * @return Fruit A new BombFruit.
+     */
+    private Fruit getBombFruit(Fruit y){
+        if(y instanceof Blueberry){
+            return new BBlueberry();
+        }else if(y instanceof Peach){
+            return new BPeach();
+        }else if(y instanceof Pear){
+            return new BPear();
+        }else if(y instanceof Pineapple){
+            return new BPineapple();
+        }else if(y instanceof Strawberry){
+            return new BStrawberry();
+        }
+        return new BBlueberry();
     }
 
     /**
@@ -318,7 +323,7 @@ public class MainScreen extends World
      * @param j     The column index to start the match check
      * @param di    The row direction. 0 for horizontal check and 1 for vertical check
      * @param dj    The col direction. 1 for horizontal check and 0 for vertical check
-     * @return      The length of the match (three, four, five or more)
+     * @return      The length of the match (three, four, five)
      */
     private int getMatchLength(int i, int j, int di, int dj) {
         int length = 1;
@@ -340,9 +345,12 @@ public class MainScreen extends World
      */
     private void removeCrush(int i, int j, int di, int dj, int length) {
         for (int k = 0; k < length; k++) {
-            if(board[i + k * di][j + k * dj]!=null && board[i + k * di][j + k * dj].getFruitNum()==1){
+            if(board[i + k * di][j + k * dj]!=null && board[i + k * di][j + k * dj].getFruitNum()==2){
+                //If this is a bomb fruit, remove all fruits in same type
+                removeSameColor(i + k * di,j + k * dj);
+            }else if(board[i + k * di][j + k * dj]!=null && board[i + k * di][j + k * dj].getFruitNum()==1){
                 //If this is a special fruit, remove all fruits that are in the same row and col
-                removeAll(i, j);
+                removeRowCol(i + k * di,j + k * dj);
             }else{
                 removeObject(board[i + k * di][j + k * dj]);
                 board[i + k * di][j + k * dj] = null;
@@ -352,12 +360,49 @@ public class MainScreen extends World
     }
     
     /**
+     * Removes all the fruits that have the type as fruit at board[i][j]
+     * 
+     * @param i     The row index
+     * @param j     The column index
+     */
+    private void removeSameColor(int i, int j){         
+        if(board[i][j] instanceof Blueberry){
+            clearFruit(Blueberry.class);
+        }else if(board[i][j] instanceof Peach){
+            clearFruit(Peach.class);
+        }else if(board[i][j] instanceof Pear){
+            clearFruit(Pear.class);
+        }else if(board[i][j] instanceof Pineapple){
+            clearFruit(Pineapple.class);
+        }else if(board[i][j] instanceof Strawberry){
+            clearFruit(Strawberry.class);
+        }
+        score+=5;
+    }
+    
+    /**
+     * Clears the specified type of fruit from the board by setting their positions to null.
+     * 
+     * @param fruitClass the class type of the fruit to be cleared from the board
+     */
+    private void clearFruit(Class<?> fruitClass) {
+        for (int x = 0; x < rows; x++) {
+            for (int y = 0; y < cols; y++) {
+                if (fruitClass.isInstance(board[x][y])) {
+                    removeObject(board[x][y]);
+                    board[x][y] = null;
+                }
+            }
+        }
+    }
+    
+    /**
      * Removes all fruits in the given row i and column j.
      * 
      * @param i     The row index to remove
      * @param j     The column index to remove
      */
-    private void removeAll(int i, int j){
+    private void removeRowCol(int i, int j){
         for(int x=0; x<cols;x++){
             if(board[i][x]!=null){
                 removeObject(board[i][x]);
@@ -370,6 +415,7 @@ public class MainScreen extends World
                 board[x][j] = null;
             }
         }
+        score+=3;
     }
     
     /**
@@ -498,8 +544,5 @@ public class MainScreen extends World
                 }
             }
         }
-    }
-    public void stopped(){
-        
     }
 }

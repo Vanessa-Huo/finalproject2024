@@ -15,6 +15,7 @@ public abstract class Fruit extends Actor
     
     abstract protected void pulseImage();
     
+    
     public void act(){
         mouse = Greenfoot.getMouseInfo();
         MainScreen world = (MainScreen)getWorld();
@@ -25,12 +26,6 @@ public abstract class Fruit extends Actor
                 selectBox = new Selection(this, world.getTileWidth(), world.getTileHeight());
                 getWorld().addObject(selectBox, getX(), getY());
             }
-        }
-    }
-    
-    public void removeAll(){
-        if(this==null){
-            
         }
     }
     
