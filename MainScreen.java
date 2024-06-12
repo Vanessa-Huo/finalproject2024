@@ -589,8 +589,15 @@ public class MainScreen extends World
     
     private void endScreen(){
         run = false;
+        Label endScore = new Label(score, 100);
         EndScreen a = new EndScreen();
         addObject(a, getWidth()/2, getHeight()/2);
+        addObject(endScore, getWidth()/2, getHeight()/2 - 100);
+        HomeButton home = new HomeButton();
+        addObject(home, getWidth()/2 - 100, 500);
+        AchievementButton ach = new AchievementButton();
+        addObject(ach, getWidth()/2 + 100, 500);
+        
     }
     public int getRows(){
         return rows;

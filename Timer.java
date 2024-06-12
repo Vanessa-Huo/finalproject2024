@@ -21,7 +21,7 @@ public class Timer extends Actor
             done = true;
         }
     }
-     
+    
     private void updateImage()
     {
         //Generates an image for the label, can be replaced with other images
