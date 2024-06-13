@@ -11,8 +11,8 @@ public class ExplosionFour extends Actor
 {
     private GreenfootImage[] images;
     private int currentImage;
+    private double delay;
     private int delayCounter;
-    private static final int FRAME_DELAY = 2; // Controls the speed of the animation
 
     public ExplosionFour() {
         images = new GreenfootImage[10]; // Adjust the number of images accordingly
@@ -27,7 +27,7 @@ public class ExplosionFour extends Actor
     public void act() 
     {
         delayCounter++;
-        if (delayCounter >= FRAME_DELAY) {
+        if (delayCounter >= delay) {
             delayCounter = 0;
             currentImage++;
             if (currentImage < images.length) {
