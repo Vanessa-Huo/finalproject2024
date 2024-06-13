@@ -1,5 +1,8 @@
 import greenfoot.*;
-
+/**
+ * @author Rick Li
+ * @version June 2024
+ */
 public class Timer extends Actor
 {
     private int timer = 55*60; //about 60 seconds

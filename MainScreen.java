@@ -13,11 +13,26 @@ import java.io.IOException;
  *     an entire row and column. Matching five fruits will create a spotted bomb fruit. When matched, it 
  *     clears all fruits of that color from the board. 
  * <P> Boosters are activated after player reaches LEVEL 1. The number of boosters player gets for next round 
- *     depends on the points scored in previous around. Boosters that are not used in this round will be saved 
+ *     depends on the points scored in previous round. Boosters that are not used in this round will be saved 
  *     for next round. Watermelon Bomb will clear all the fruits within a 3x3 range around it. Paintbrush will turn 
  *     a selected fruit to a special striped fruit of that color. 
- * 
- * @author Vanessa Huo, Megan Lee, Luke Xiao, Anya Shah, Gennie Won, Rick Li
+ * <p>
+ * <h2> Image Credits </h2>
+ * <li> Fruits: <a href="https://www.freepik.com/free-vector/fruits-collection-cartoon-vector-icon-illustration-food-nature-icon-concept-isolated-premium-vector_46969946.htm#query=fruit&position=1&from_view=keyword&track=sph&uuid=f98d553c-3c26-43e8-820e-608d5958922c">Image by catalyststuff on Freepik</a>
+ * <li> Trophy: <a href="https://www.iconexperience.com/g_collection/icons/?icon=trophy">Image by G-Collection on IconExperience</a>
+ * <li> Question mark: <a href="https://www.vecteezy.com/vector-art/26434406-question-mark-help-support-icon-vector-isolated-on-circle-background">Question mark, help support icon vector isolated on circle background Vectors by Vecteezy</a>
+ * <li> Save: <a href="https://cdn.iconscout.com/icon/free/png-256/free-save-1779882-1518534.png?f=webp">Image by IconScout</a>
+ * <li> Bomb: <a href="https://www.freepik.com/free-vector/bomb-floating-cartoon-vector-icon-illustration-object-holiday-icon-concept-isolated-flat_38270886.htm#query=cartoon%20bomb&position=27&from_view=keyword&track=ais_user&uuid=85de0172-f070-4146-bd2e-711ed18bb0fe">Image by catalyststuff on Freepik</a>
+ * <li> Watermelon: <a href="https://www.vectorstock.com/royalty-free-vector/part-of-watermelon-vector-45364331">Image by Brgfx on VectorStock</a>
+ * <li> Mouse cursor: <a href="https://en.m.wikipedia.org/wiki/File:Mouse-cursor-hand-pointer.svg">Image by Lordalpha1 on Wikipedia</a>
+ * <p>
+ * <h2> Sound Credits </h2>
+ * <li> Background music: <a href="https://pixabay.com/sound-effects/light-tune-no1-14485/">Sound by Pixabay</a>
+ * <li> Swishing sound: <a href="https://pixabay.com/sound-effects/swing-whoosh-weapon-4-189820/">Sound by floraphonic on Pixabay</a>
+ * <li> Clicking sound 1: <a href="https://pixabay.com/sound-effects/button-124476/">Sound by Pixabay</a>
+ * <li> Clicking sound 2: <a href="https://pixabay.com/sound-effects/sound-1-167181/">Sound by Sub_0987654321 on Pixabay</a>
+ * <li> Explosion: <a href="https://pixabay.com/sound-effects/explosion-91872/">Sound by Pixabay</a>
+ * @author Vanessa Huo, Megan Lee, Rick Li, Anya Shah, Gennie Won, Luke Xiao
  * @version June 2024
  */
 public class MainScreen extends World
@@ -238,12 +253,11 @@ public class MainScreen extends World
     /**
      * Determines the size of the board according to current level. 
      * As level increases, the size of the board also increases. 
-     * 
      */
     private void boardSetUp(){
         if(LEVEL==0){
             rows = 5;
-            cols = 5;
+            cols = 6;
         }else if(LEVEL==1){
             rows = 7;
             cols = 6;

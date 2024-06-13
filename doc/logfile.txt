@@ -1,6 +1,6 @@
 Class documentation
 <---- javadoc command: ---->
-javadoc
+C:\Program Files\Greenfoot\jdk\bin\javadoc.exe
 -author
 -version
 -nodeprecated
@@ -13,16 +13,16 @@ javadoc
 -source
 17
 -classpath
-/Applications/Greenfoot.app/Contents/Java/greenfoot.jar:/Applications/Greenfoot.app/Contents/Java/bluejcore.jar:/Applications/Greenfoot.app/Contents/Java/javafx-base-20.0.1.jar:/Applications/Greenfoot.app/Contents/Java/javafx-graphics-20.0.1.jar:/Applications/Greenfoot.app/Contents/Java/javafx-controls-20.0.1.jar:/Applications/Greenfoot.app/Contents/Java/javafx-fxml-20.0.1-mac.jar:/Applications/Greenfoot.app/Contents/Java/javafx-controls-20.0.1-mac.jar:/Applications/Greenfoot.app/Contents/Java/javafx-web-20.0.1-mac.jar:/Applications/Greenfoot.app/Contents/Java/javafx-media-20.0.1.jar:/Applications/Greenfoot.app/Contents/Java/javafx-base-20.0.1-mac.jar:/Applications/Greenfoot.app/Contents/Java/javafx-media-20.0.1-mac.jar:/Applications/Greenfoot.app/Contents/Java/javafx-graphics-20.0.1-mac.jar:/Applications/Greenfoot.app/Contents/Java/javafx-swing-20.0.1-mac.jar:/Applications/Greenfoot.app/Contents/Java/junit-4.12.jar:/Applications/Greenfoot.app/Contents/Java/junit-jupiter-params-5.5.2.jar:/Applications/Greenfoot.app/Contents/Java/junit-jupiter-api-5.5.2.jar:/Applications/Greenfoot.app/Contents/Java/junit-jupiter-engine-5.5.2.jar:/Applications/Greenfoot.app/Contents/Java/junit-platform-suite-api-1.5.2.jar:/Applications/Greenfoot.app/Contents/Java/junit-vintage-engine-5.5.2.jar:/Applications/Greenfoot.app/Contents/Java/junit-jupiter-5.5.2.jar:/Applications/Greenfoot.app/Contents/Java/junit-platform-engine-1.5.2.jar:/Applications/Greenfoot.app/Contents/Java/junit-platform-launcher-1.5.2.jar:/Applications/Greenfoot.app/Contents/Java/junit-platform-commons-1.5.2.jar:/Applications/Greenfoot.app/Contents/Java/hamcrest-core-1.3.jar:/Applications/Greenfoot.app/Contents/Java/opentest4j-1.2.0.jar:/Applications/Greenfoot.app/Contents/Java/bluej.jar:/Applications/Greenfoot.app/Contents/Java/classgraph-4.8.90.jar:/Applications/Greenfoot.app/Contents/Java/diffutils-1.2.1.jar:/Applications/Greenfoot.app/Contents/Java/commons-logging-1.2.jar:/Applications/Greenfoot.app/Contents/Java/commons-logging-1.1.3.jar:/Applications/Greenfoot.app/Contents/Java/jl1.0.1.jar:/Applications/Greenfoot.app/Contents/Java/opencsv-2.3.jar:/Applications/Greenfoot.app/Contents/Java/opencsv-2.4.jar:/Applications/Greenfoot.app/Contents/Java/xom-1.3.7.jar:/Applications/Greenfoot.app/Contents/Java/lang-stride.jar:/Applications/Greenfoot.app/Contents/Java/nsmenufx-2.1.8.jar:/Applications/Greenfoot.app/Contents/Java/wellbehavedfx-0.3.3.jar:/Applications/Greenfoot.app/Contents/Java/guava-17.0.jar:/Applications/Greenfoot.app/Contents/Java/simple-png-javafx-0.2.0.jar:/Applications/Greenfoot.app/Contents/Java/simple-png-0.2.0.jar:/Applications/Greenfoot.app/Contents/Java/httpcore-4.4.13.jar:/Applications/Greenfoot.app/Contents/Java/httpclient-4.3.6.jar:/Applications/Greenfoot.app/Contents/Java/httpcore-4.3.3.jar:/Applications/Greenfoot.app/Contents/Java/httpmime-4.1.1.jar:/Applications/Greenfoot.app/Contents/Java/httpclient-4.5.13.jar:/Applications/Greenfoot.app/Contents/Java/javafx/javafx.base.jar:/Applications/Greenfoot.app/Contents/Java/javafx/javafx.controls.jar:/Applications/Greenfoot.app/Contents/Java/javafx/javafx.fxml.jar:/Applications/Greenfoot.app/Contents/Java/javafx/javafx.graphics.jar:/Applications/Greenfoot.app/Contents/Java/javafx/javafx.media.jar:/Applications/Greenfoot.app/Contents/Java/javafx/javafx.properties.jar:/Applications/Greenfoot.app/Contents/Java/javafx/javafx.swing.jar:/Applications/Greenfoot.app/Contents/Java/javafx/javafx.web.jar:/Users/vanessahuo/Documents/GitHub/finalproject2024
+C:\Program Files\Greenfoot\lib\greenfoot.jar;C:\Program Files\Greenfoot\lib\javafx-base-20.0.1-win.jar;C:\Program Files\Greenfoot\lib\javafx-base-20.0.1.jar;C:\Program Files\Greenfoot\lib\javafx-controls-20.0.1-win.jar;C:\Program Files\Greenfoot\lib\javafx-controls-20.0.1.jar;C:\Program Files\Greenfoot\lib\javafx-fxml-20.0.1-win.jar;C:\Program Files\Greenfoot\lib\javafx-graphics-20.0.1-win.jar;C:\Program Files\Greenfoot\lib\javafx-graphics-20.0.1.jar;C:\Program Files\Greenfoot\lib\javafx-media-20.0.1-win.jar;C:\Program Files\Greenfoot\lib\javafx-media-20.0.1.jar;C:\Program Files\Greenfoot\lib\javafx-swing-20.0.1-win.jar;C:\Program Files\Greenfoot\lib\javafx-web-20.0.1-win.jar;C:\Program Files\Greenfoot\lib\junit-4.12.jar;C:\Program Files\Greenfoot\lib\junit-jupiter-5.5.2.jar;C:\Program Files\Greenfoot\lib\junit-jupiter-api-5.5.2.jar;C:\Program Files\Greenfoot\lib\junit-jupiter-engine-5.5.2.jar;C:\Program Files\Greenfoot\lib\junit-jupiter-params-5.5.2.jar;C:\Program Files\Greenfoot\lib\junit-platform-commons-1.5.2.jar;C:\Program Files\Greenfoot\lib\junit-platform-engine-1.5.2.jar;C:\Program Files\Greenfoot\lib\junit-platform-launcher-1.5.2.jar;C:\Program Files\Greenfoot\lib\junit-platform-suite-api-1.5.2.jar;C:\Program Files\Greenfoot\lib\junit-vintage-engine-5.5.2.jar;C:\Program Files\Greenfoot\lib\hamcrest-core-1.3.jar;C:\Program Files\Greenfoot\lib\opentest4j-1.2.0.jar;C:\Program Files\Greenfoot\lib\bluej.jar;C:\Program Files\Greenfoot\lib\classgraph-4.8.90.jar;C:\Program Files\Greenfoot\lib\diffutils-1.2.1.jar;C:\Program Files\Greenfoot\lib\commons-logging-1.2.jar;C:\Program Files\Greenfoot\lib\jl1.0.1.jar;C:\Program Files\Greenfoot\lib\opencsv-2.3.jar;C:\Program Files\Greenfoot\lib\opencsv-2.4.jar;C:\Program Files\Greenfoot\lib\xom-1.3.7.jar;C:\Program Files\Greenfoot\lib\lang-stride.jar;C:\Program Files\Greenfoot\lib\nsmenufx-2.1.8.jar;C:\Program Files\Greenfoot\lib\wellbehavedfx-0.3.3.jar;C:\Program Files\Greenfoot\lib\guava-17.0.jar;C:\Program Files\Greenfoot\lib\simple-png-0.2.0.jar;C:\Program Files\Greenfoot\lib\simple-png-javafx-0.2.0.jar;C:\Program Files\Greenfoot\lib\httpclient-4.5.13.jar;C:\Program Files\Greenfoot\lib\httpcore-4.4.13.jar;C:\Program Files\Greenfoot\lib\httpmime-4.1.1.jar;C:\Program Files\Greenfoot\lib\javafx\javafx.base.jar;C:\Program Files\Greenfoot\lib\javafx\javafx.controls.jar;C:\Program Files\Greenfoot\lib\javafx\javafx.fxml.jar;C:\Program Files\Greenfoot\lib\javafx\javafx.graphics.jar;C:\Program Files\Greenfoot\lib\javafx\javafx.media.jar;C:\Program Files\Greenfoot\lib\javafx\javafx.properties.jar;C:\Program Files\Greenfoot\lib\javafx\javafx.swing.jar;C:\Program Files\Greenfoot\lib\javafx\javafx.web.jar;C:\Users\anya.ria\Downloads\Github\finalproject2024
 -d
-/Users/vanessahuo/Documents/GitHub/finalproject2024/doc
+C:\Users\anya.ria\Downloads\Github\finalproject2024\doc
 -encoding
 UTF-8
 -charset
 UTF-8
-/Users/vanessahuo/Documents/GitHub/finalproject2024/MainScreen.java
+C:\Users\anya.ria\Downloads\Github\finalproject2024\MainScreen.java
 <---- end of javadoc command ---->
-Loading source file /Users/vanessahuo/Documents/GitHub/finalproject2024/MainScreen.java...
+Loading source file C:\Users\anya.ria\Downloads\Github\finalproject2024\MainScreen.java...
 Constructing Javadoc information...
 warning: unknown enum constant Tag.Any
   reason: class file for threadchecker.Tag not found
@@ -32,13 +32,37 @@ warning: unknown enum constant Tag.Any
 warning: unknown enum constant Tag.Any
 Standard Doclet version 17.0.4.1+1
 Building tree for all the packages and classes...
-Generating /Users/vanessahuo/Documents/GitHub/finalproject2024/doc/MainScreen.html...
-/Users/vanessahuo/Documents/GitHub/finalproject2024/MainScreen.java:725: warning: Parameter "outerIndex2" is documented more than once.
+Generating C:\Users\anya.ria\Downloads\Github\finalproject2024\doc\MainScreen.html...
+C:\Users\anya.ria\Downloads\Github\finalproject2024\MainScreen.java:21: warning: invalid input: '&position'
+ * <li> Fruits: <a href="https://www.freepik.com/free-vector/fruits-collection-cartoon-vector-icon-illustration-food-nature-icon-concept-isolated-premium-vector_46969946.htm#query=fruit&position=1&from_view=keyword&track=sph&uuid=f98d553c-3c26-43e8-820e-608d5958922c">Image by catalyststuff on Freepik</a>
+                                                                                                                                                                                         ^
+C:\Users\anya.ria\Downloads\Github\finalproject2024\MainScreen.java:21: warning: invalid input: '&from_view'
+ * <li> Fruits: <a href="https://www.freepik.com/free-vector/fruits-collection-cartoon-vector-icon-illustration-food-nature-icon-concept-isolated-premium-vector_46969946.htm#query=fruit&position=1&from_view=keyword&track=sph&uuid=f98d553c-3c26-43e8-820e-608d5958922c">Image by catalyststuff on Freepik</a>
+                                                                                                                                                                                                    ^
+C:\Users\anya.ria\Downloads\Github\finalproject2024\MainScreen.java:21: warning: invalid input: '&track'
+ * <li> Fruits: <a href="https://www.freepik.com/free-vector/fruits-collection-cartoon-vector-icon-illustration-food-nature-icon-concept-isolated-premium-vector_46969946.htm#query=fruit&position=1&from_view=keyword&track=sph&uuid=f98d553c-3c26-43e8-820e-608d5958922c">Image by catalyststuff on Freepik</a>
+                                                                                                                                                                                                                      ^
+C:\Users\anya.ria\Downloads\Github\finalproject2024\MainScreen.java:21: warning: invalid input: '&uuid'
+ * <li> Fruits: <a href="https://www.freepik.com/free-vector/fruits-collection-cartoon-vector-icon-illustration-food-nature-icon-concept-isolated-premium-vector_46969946.htm#query=fruit&position=1&from_view=keyword&track=sph&uuid=f98d553c-3c26-43e8-820e-608d5958922c">Image by catalyststuff on Freepik</a>
+                                                                                                                                                                                                                                ^
+C:\Users\anya.ria\Downloads\Github\finalproject2024\MainScreen.java:25: warning: invalid input: '&position'
+ * <li> Bomb: <a href="https://www.freepik.com/free-vector/bomb-floating-cartoon-vector-icon-illustration-object-holiday-icon-concept-isolated-flat_38270886.htm#query=cartoon%20bomb&position=27&from_view=keyword&track=ais_user&uuid=85de0172-f070-4146-bd2e-711ed18bb0fe">Image by catalyststuff on Freepik</a>
+                                                                                                                                                                                     ^
+C:\Users\anya.ria\Downloads\Github\finalproject2024\MainScreen.java:25: warning: invalid input: '&from_view'
+ * <li> Bomb: <a href="https://www.freepik.com/free-vector/bomb-floating-cartoon-vector-icon-illustration-object-holiday-icon-concept-isolated-flat_38270886.htm#query=cartoon%20bomb&position=27&from_view=keyword&track=ais_user&uuid=85de0172-f070-4146-bd2e-711ed18bb0fe">Image by catalyststuff on Freepik</a>
+                                                                                                                                                                                                 ^
+C:\Users\anya.ria\Downloads\Github\finalproject2024\MainScreen.java:25: warning: invalid input: '&track'
+ * <li> Bomb: <a href="https://www.freepik.com/free-vector/bomb-floating-cartoon-vector-icon-illustration-object-holiday-icon-concept-isolated-flat_38270886.htm#query=cartoon%20bomb&position=27&from_view=keyword&track=ais_user&uuid=85de0172-f070-4146-bd2e-711ed18bb0fe">Image by catalyststuff on Freepik</a>
+                                                                                                                                                                                                                   ^
+C:\Users\anya.ria\Downloads\Github\finalproject2024\MainScreen.java:25: warning: invalid input: '&uuid'
+ * <li> Bomb: <a href="https://www.freepik.com/free-vector/bomb-floating-cartoon-vector-icon-illustration-object-holiday-icon-concept-isolated-flat_38270886.htm#query=cartoon%20bomb&position=27&from_view=keyword&track=ais_user&uuid=85de0172-f070-4146-bd2e-711ed18bb0fe">Image by catalyststuff on Freepik</a>
+                                                                                                                                                                                                                                  ^
+C:\Users\anya.ria\Downloads\Github\finalproject2024\MainScreen.java:749: warning: Parameter "outerIndex2" is documented more than once.
      * @param outerIndex2   Inner index of second fruit
        ^
-/Users/vanessahuo/Documents/GitHub/finalproject2024/MainScreen.java:761: warning: @param argument "frui2" is not a parameter name.
+C:\Users\anya.ria\Downloads\Github\finalproject2024\MainScreen.java:785: warning: @param argument "frui2" is not a parameter name.
      * @param frui2                 Second fruit
        ^
-Generating /Users/vanessahuo/Documents/GitHub/finalproject2024/doc/package-summary.html...
-Generating /Users/vanessahuo/Documents/GitHub/finalproject2024/doc/index.html...
-7 warnings
+Generating C:\Users\anya.ria\Downloads\Github\finalproject2024\doc\package-summary.html...
+Generating C:\Users\anya.ria\Downloads\Github\finalproject2024\doc\index.html...
+15 warnings
