@@ -4,34 +4,33 @@ import java.util.ArrayList;
 /**
  * game desc...
  * 
- * @author Vanessa Huo, Megan Lee, Luke Xiao
+ * @author Vanessa Huo, Megan Lee
  * @version June 2024
  */
 public class MainScreen extends World
 {
-    public static int LEVEL = 1;
-    
+    public static int LEVEL = 0;
     //Grid
     private static final int CELL_SIZE = 65;
     private static Fruit[][] board;
     private int rows, cols;
     private int x, y;
-    
+
     private int booster1, booster2;
 
     private boolean run;
     private int score;
-    
+
     //Display
     Timer timer;
     Label scoreLabel;
     Watermelon melon;
     Paintbrush brush;
-    
+
     //Buttons
     private HomeButton home;
     private TutorialButton tut;
-    
+
     //Animation 
     private GreenfootImage[] explode = new GreenfootImage[9];
     private int animCounter, animDelay, animIndex, maxIndex;
@@ -122,13 +121,6 @@ public class MainScreen extends World
         if (getObjects(Selection.class).size() == 0){
             Selection.setSelecting(false);
         }
-        /*
-        scoreLabel.setValue(score);
-        if(getObjects(Selection.class).size() == 0){
-            //System.out.println("none detected");
-            Selection.setSelecting(false);
-        }
-        */
     }
 
     /**
@@ -593,34 +585,64 @@ public class MainScreen extends World
         if(crushFour(false) || crushThree(false) || crushFive(false)){
             board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
             board[outerIndex1][innerIndex1] = temp;
-
             //removes selection box
             resetSelection();
-            Swap swap = new Swap(board[outerIndex1][innerIndex1], board[outerIndex2][innerIndex2],direction, true);
-            addObject(swap, board[outerIndex1][innerIndex1].getX(), board[outerIndex1][innerIndex1].getY());
+            swapAnimation(board[outerIndex1][innerIndex1], board[outerIndex2][innerIndex2], direction, 5, true);
         }
         else{ //if switch cannot form a crush
             board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
             board[outerIndex1][innerIndex1] = temp;
-            Swap swap = new Swap(board[outerIndex1][innerIndex1], board[outerIndex2][innerIndex2],direction, false);
-            addObject(swap, board[outerIndex1][innerIndex1].getX(), board[outerIndex1][innerIndex1].getY());
+            swapAnimation(board[outerIndex1][innerIndex1], board[outerIndex2][innerIndex2], direction, 5, false);
         }
     }
 
     /**
-     * Swaps positions of two fruits within the 2D array.
+     * A visual animation of two fruit swapping places.
+     * If not successful, will swap twice to return to original positions. 
      * 
-     * @param outerIndex1   Outer index of first fruit
-     * @param innerIndex1   Inner index of first fruit
-     * @param outerIndex2   Outer index of second fruit
-     * @param outerIndex2   Inner index of second fruit
-     * @param direction A number representing direction of selected tile(0-3)
+     * @param fruit1                first fruit
+     * @param frui2                 second fruit
+     * @param direction             A number representing direction of selected tile(0-3)
+     * @param displacementFactor    Inner index of second fruit
+     * @param isSucessful           Was match valid (True) or not (false)
      */
-    public void swapIndexes(int outerIndex1, int innerIndex1, int outerIndex2, int innerIndex2){
-        Fruit temp = board[outerIndex1][innerIndex1];
-        board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2];
-        board[outerIndex2][innerIndex2] = temp;
-        System.out.println(outerIndex1 + "," + innerIndex1 + " switches with " + outerIndex2 + "," + innerIndex2);
+    public void swapAnimation(Fruit fruit1, Fruit fruit2, int direction, int displacementFactor, boolean isSucessful){
+        for(int displacement = 0; displacement <= getTileSize(); displacement+=displacementFactor){
+            switch(direction){
+                case 0: //up
+                    fruit1.setLocation(fruit1.getX(), fruit1.getY() - displacementFactor);
+                    fruit2.setLocation(fruit2.getX(), fruit2.getY() + displacementFactor);
+                    break;
+                case 1: //right
+                    fruit1.setLocation(fruit1.getX() + displacementFactor, fruit1.getY());
+                    fruit2.setLocation(fruit2.getX() - displacementFactor, fruit2.getY());
+                    break;
+                case 2: //down
+                    fruit1.setLocation(fruit1.getX(), fruit1.getY() + displacementFactor);
+                    fruit2.setLocation(fruit2.getX(), fruit2.getY() - displacementFactor);
+                    break;
+                case 3: //left
+                    fruit1.setLocation(fruit1.getX() - displacementFactor, fruit1.getY());
+                    fruit2.setLocation(fruit2.getX() + displacementFactor, fruit2.getY());
+                    break;
+            }
+            delay(1);
+        }
+
+        if(!isSucessful){
+            swapAnimation(fruit2, fruit1, direction, displacementFactor, true);
+        }
+        else{
+            int outerIndex1 = getIndex(fruit1, true);
+            int innerIndex1 = getIndex(fruit1, false);
+            int outerIndex2 = getIndex(fruit2, true);
+            int innerIndex2 = getIndex(fruit2, false);
+
+            Fruit temp = board[outerIndex1][innerIndex1];
+            board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2];
+            board[outerIndex2][innerIndex2] = temp;
+            drawBoard(false);
+        }
     }
 
     /**

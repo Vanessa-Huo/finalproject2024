@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MainScreen
-comment0.text=\n\ game\ desc...\n\ \n\ @author\ Vanessa\ Huo,\ Megan\ Lee,\ Luke\ Xiao\n\ @version\ June\ 2024\n
+comment0.text=\n\ game\ desc...\n\ \n\ @author\ Vanessa\ Huo,\ Megan\ Lee\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=MainScreen()
 comment10.params=
@@ -53,9 +53,9 @@ comment24.target=void\ paintStripes(Fruit)
 comment25.params=outerIndex1\ innerIndex1\ outerIndex2\ innerIndex2\ direction
 comment25.target=void\ swapFruits(int,\ int,\ int,\ int,\ int)
 comment25.text=\n\ Swaps\ positions\ of\ two\ fruits\ within\ the\ 2D\ array,\n\ determines\ whether\ swap\ is\ valid\ or\ not,\ and\ handles\ each\ appropriately.\n\ \n\ @param\ outerIndex1\ \ \ Outer\ index\ of\ first\ fruit\n\ @param\ innerIndex1\ \ \ Inner\ index\ of\ first\ fruit\n\ @param\ outerIndex2\ \ \ Outer\ index\ of\ second\ fruit\n\ @param\ outerIndex2\ \ \ Inner\ index\ of\ second\ fruit\n\ @param\ direction\ A\ number\ representing\ direction\ of\ selected\ tile(0-3)\n
-comment26.params=outerIndex1\ innerIndex1\ outerIndex2\ innerIndex2
-comment26.target=void\ swapIndexes(int,\ int,\ int,\ int)
-comment26.text=\n\ Swaps\ positions\ of\ two\ fruits\ within\ the\ 2D\ array.\n\ \n\ @param\ outerIndex1\ \ \ Outer\ index\ of\ first\ fruit\n\ @param\ innerIndex1\ \ \ Inner\ index\ of\ first\ fruit\n\ @param\ outerIndex2\ \ \ Outer\ index\ of\ second\ fruit\n\ @param\ outerIndex2\ \ \ Inner\ index\ of\ second\ fruit\n\ @param\ direction\ A\ number\ representing\ direction\ of\ selected\ tile(0-3)\n
+comment26.params=fruit1\ fruit2\ direction\ displacementFactor\ isSucessful
+comment26.target=void\ swapAnimation(Fruit,\ Fruit,\ int,\ int,\ boolean)
+comment26.text=\n\ A\ visual\ animation\ of\ two\ fruit\ swapping\ places.\n\ If\ not\ successful,\ will\ swap\ twice\ to\ return\ to\ original\ positions.\ \n\ \n\ @param\ fruit1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\ fruit\n\ @param\ frui2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ second\ fruit\n\ @param\ direction\ \ \ \ \ \ \ \ \ \ \ \ \ A\ number\ representing\ direction\ of\ selected\ tile(0-3)\n\ @param\ displacementFactor\ \ \ \ Inner\ index\ of\ second\ fruit\n\ @param\ isSucessful\ \ \ \ \ \ \ \ \ \ \ Was\ match\ valid\ (True)\ or\ not\ (false)\n
 comment27.params=
 comment27.target=void\ triggerExplosions()
 comment27.text=\n\ Creates\ explosion\ effect\ for\ cleared\ fruits.\n
