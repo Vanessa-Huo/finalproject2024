@@ -31,6 +31,15 @@ public class EndingScreen extends World
         
         Label endScore = new Label(score, 75);
         endScore.setFillColor(Color.BLACK);
-        addObject(endScore, getWidth()/2 - 40, getHeight()/2 + 52);
+        addObject(endScore, getWidth()/2 - 60, getHeight()/2 + 52);
+        
+        WatermelonDisplay booster1 = new WatermelonDisplay();
+        PaintbrushDisplay booster2 = new PaintbrushDisplay();
+        Label bst1 = new Label("x" + "2", 50);
+        Label bst2 = new Label("x" + "1", 50);
+        addObject(booster1, getWidth()/2 + 65, getHeight()/2 + 50);
+        addObject(booster2, getWidth()/2 + 175, getHeight()/2 + 53);
+        addObject(bst1, getWidth()/2 + 85, getHeight()/2 + 60);
+        addObject(bst2, getWidth()/2 + 195, getHeight()/2 + 60);
     }
 }
