@@ -1,11 +1,7 @@
 #BlueJ class context
 comment0.target=BStrawberry
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ BStrawberry\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ A\ BStrawberry\ is\ a\ dotted\ strawberry.\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Strawberries.\n\ When\ matched,\ it\ will\ clear\ all\ Strawberries\ on\ the\ board.\n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=BStrawberry()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ BStrawberry\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-comment0.text=\r\n\ A\ BStrawberry\ is\ a\ dotted\ strawberry.\r\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Strawberries.\r\n\ When\ matched,\ it\ will\ clear\ all\ Strawberries\ on\ the\ board.\r\n\ \r\n\ @author\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
-comment1.params=
-comment1.target=BStrawberry()
-comment1.text=\r\n\ A\ constructor\ to\ create\ a\ dotted\ Strawberry.\r\n
+comment1.text=\n\ A\ constructor\ to\ create\ a\ dotted\ Strawberry.\n
 numComments=2

@@ -1,11 +1,7 @@
 #BlueJ class context
 comment0.target=SPeach
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ SpecialPeach\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ A\ SPeach\ is\ a\ striped\ peach.\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Peaches.\n\ When\ matched,\ it\ will\ clear\ all\ fruits\ in\ its\ row\ &\ column.\n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=SPeach()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ SpecialPeach\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-comment0.text=\r\n\ A\ SPeach\ is\ a\ striped\ peach.\r\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Peaches.\r\n\ When\ matched,\ it\ will\ clear\ all\ fruits\ in\ its\ row\ &\ column.\r\n\ \r\n\ @author\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
-comment1.params=
-comment1.target=SPeach()
-comment1.text=\r\n\ A\ constructor\ to\ create\ a\ striped\ Peach.\r\n
+comment1.text=\n\ A\ constructor\ to\ create\ a\ striped\ Peach.\n
 numComments=2

@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public class MainScreen extends World
 {
-    public static int LEVEL = 0;
+    public static int LEVEL = 1;
     //Grid
     private static final int CELL_SIZE = 65;
     private static Fruit[][] board;
@@ -25,7 +25,7 @@ public class MainScreen extends World
 
     //Display
     Timer timer;
-    Label scoreLabel;
+    Label scoreLabel, melonNum, brushNum;
     Watermelon melon;
     Paintbrush brush;
 
@@ -68,13 +68,20 @@ public class MainScreen extends World
         timer = new Timer();
         scoreLabel = new Label(score, 80);
         scoreLabel.setFillColor(Color.BLACK);
+        melonNum = new Label(melon.getNumB(), 30);
+        melonNum.setFillColor(Color.BLACK);
+        brushNum = new Label(brush.getNumB(), 30);
+        brushNum.setFillColor(Color.BLACK);
         addObject(timer, 175, 175);
         addObject(scoreLabel, 175, 345);
+        addObject(melonNum, 150, 555);
+        addObject(brushNum, 275, 555);
 
         drawBoard(true);
 
         animCounter = 0;
         maxIndex = explode.length;
+        setPaintOrder(Label.class, Booster.class);
         //Greenfoot.setSpeed(70); // Set the speed to 7 0 out of 100
         
         state = GameState.CHECK_MATCHES;
@@ -113,6 +120,8 @@ public class MainScreen extends World
         //Play
         run = true;
         scoreLabel.setValue(score);
+        melonNum.setValue(melon.getNumB());
+        brushNum.setValue(brush.getNumB());
         //updateTimer();
         if (state != GameState.GAME_OVER) {
             switch (state) {
@@ -146,10 +155,7 @@ public class MainScreen extends World
         }
         if(timer.done){
             Greenfoot.setWorld(new EndingScreen(score));
-            
         }
-        
-        
         if (getObjects(Selection.class).size() == 0){
             Selection.setSelecting(false);
         }
@@ -178,28 +184,28 @@ public class MainScreen extends World
                 dropFruits();
                 state = GameState.CHECK_MATCHES;
                 break;
-        }
-        if(getObjects(Selection.class).size() == 0){
-            //System.out.println("none detected");
-            Selection.setSelecting(false);
-        }
-
-        
-        if(timer.done && once){
-            endScreen();
-            once = false;
-        }
-        
-        //prints score to save file
-        if(!run){
-            out.println(score);
-            out.close();
-        }
-    }
+            }
+            if(getObjects(Selection.class).size() == 0){
+                //System.out.println("none detected");
+                Selection.setSelecting(false);
+            }
     
-    /**
-     * TEMPORARY BEFORE ART
-     */
+            
+            if(timer.done && once){
+                endScreen();
+                once = false;
+            }
+            
+            //prints score to save file
+            if(!run){
+                out.println(score);
+                out.close();
+            }
+        }
+        
+        /**
+         * TEMPORARY BEFORE ART
+         */
     }   
 
     /**
@@ -507,6 +513,7 @@ public class MainScreen extends World
                 if (fruitClass.isInstance(board[x][y])) {
                     removeObject(board[x][y]);
                     board[x][y] = null;
+                    score++;
                 }
             }
         }
@@ -523,12 +530,14 @@ public class MainScreen extends World
             if(board[i][x]!=null){
                 removeObject(board[i][x]);
                 board[i][x] = null;
+                score++;
             }
         }
         for(int x=0; x<rows;x++){
             if(board[x][j]!=null){
                 removeObject(board[x][j]);
                 board[x][j] = null;
+                score++;
             }
         }
         score+=3;
