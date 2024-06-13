@@ -36,12 +36,12 @@ public class MainScreen extends World
     {    
         super(1024, 720, 1); 
 
-        setBackground("plainBG.png");
+        setBackground("mainScreen.png");
         home = new HomeButton();
         addObject(home, 100, getHeight() - 50);
         tut = new TutorialButton();
         addObject(tut, 250, getHeight() - 50);
-        melon = new Watermelon(true);
+        melon = new Watermelon(true,false);
 
         rows = 10;
         cols = 10;
@@ -55,12 +55,10 @@ public class MainScreen extends World
         timer = new Timer();
         scoreLabel = new Label(score, 80);
         scoreLabel.setFillColor(Color.BLACK);
-        addObject(timer, 170, 130);
-        addObject(scoreLabel, 170, 270);
+        addObject(timer, 175, 175);
+        addObject(scoreLabel, 175, 345);
        
         drawBoard(true);
-
-        text();
         
         animCounter = 0;
         maxIndex = explode.length;
@@ -111,15 +109,6 @@ public class MainScreen extends World
             //System.out.println("none detected");
             Selection.setSelecting(false);
         }
-    }
-    
-    /**
-     * TEMPORARY BEFORE ART
-     */
-    public void text(){
-        addObject(new Label("Time",50),100,60);
-        addObject(new Label("Score",50),100,200);
-        addObject(new Label("Booster",50),120,340);
     }
 
     /**
@@ -490,7 +479,7 @@ public class MainScreen extends World
                 addObject(board[i][j],x+j*65,y+i*65);
             }
         }
-        addObject(melon, 75,420);
+        addObject(melon, 110,515);
     }
 
     /**

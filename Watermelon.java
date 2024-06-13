@@ -14,16 +14,25 @@ public class Watermelon extends Boosters
      */
     private boolean dragging = false;
     private Watermelon temp;
-    private boolean first;
+    private boolean first, onBoard;
     
-    public Watermelon(boolean first){
-        image = new GreenfootImage("watermelonBomb.png");
-        image.scale(67,67);
-        setImage(image);
+    public Watermelon(boolean first, boolean onBoard){
+        
+        
         this.first=first;
-
-        pulseImage = new GreenfootImage("watermelonBomb.png");
-        pulseImage.scale(76,76);
+        this.onBoard = onBoard;
+        
+        if(onBoard){
+            image = new GreenfootImage("watermelonBomb.png");
+            image.scale(56,56);
+            pulseImage = new GreenfootImage("watermelonBomb.png");
+            pulseImage.scale(65,65);
+        }
+        else{
+            image = new GreenfootImage("watermelonBomb.png");
+            image.scale(100,100);
+        }
+        setImage(image);
         
         pulseCount = 0;
     }
@@ -45,7 +54,7 @@ public class Watermelon extends Boosters
         Fruit clickedFruit = (Fruit) Greenfoot.getMouseInfo().getActor();
         if (clickedFruit != this) {
             MainScreen world = (MainScreen) getWorld();
-            world.replace(clickedFruit, new Watermelon(false));
+            world.replace(clickedFruit, new Watermelon(false,true));
             //getWorld().removeObject(temp);
             dragging = false;
             setImage(image);
@@ -53,7 +62,7 @@ public class Watermelon extends Boosters
     }
     
     private void followMouse() {
-        temp = new Watermelon(false);
+        temp = new Watermelon(false,true);
         if(Greenfoot.mouseMoved(null))
         {
             MouseInfo mouse = Greenfoot.getMouseInfo();
