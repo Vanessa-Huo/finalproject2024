@@ -4,6 +4,7 @@ public class Timer extends Actor
 {
     private int timer = 55*60; //about 60 seconds
     public boolean done = false;
+    boolean first = true;
     public Timer()
     {
         updateImage();
@@ -13,13 +14,17 @@ public class Timer extends Actor
     {
         timer--;
         if ((timer % 55 == 0) && !done) updateImage();
+        
+        if(timer < 495 && first==true){
+            setLocation(getX() + 20, getY());
+            first = false; 
+            
+        }
         if (timer < 1) {
-            //Greenfoot.stop();
             Greenfoot.delay(60);
-            //EndingScreen end = new EndingScreen();
-            //Greenfoot.setWorld(end);
             done = true;
         }
+        System.out.println(timer);
     }
     
     private void updateImage()

@@ -38,8 +38,8 @@ public class MainScreen extends World
     PrintWriter out;
     
     
-    int boostersUsed1 = 0;
-    int boostersUsed2 = 0;
+    public static int boostersUsed1 = 0;
+    public static int boostersUsed2 = 0;
     public MainScreen()
     {    
         super(1024, 720, 1); 
@@ -321,11 +321,13 @@ public class MainScreen extends World
                             }
                         }
                     }
+                    boostersUsed1++;
+                    
                     crushFound = true;
                 }
             }
         }
-        boostersUsed1++;
+        
         return crushFound;
     }
 
@@ -697,22 +699,6 @@ public class MainScreen extends World
         }
     }
     
-    //Method to trigger a popup end screen
-    private void endScreen(){
-        run = false;
-        Label endScore = new Label(score, 100);
-        EndScreen a = new EndScreen();
-        Fadescreen b = new Fadescreen();
-        addObject(b, getWidth()/2, getHeight()/2);
-        addObject(a, getWidth()/2, getHeight()/2);
-        addObject(endScore, getWidth()/2, getHeight()/2 - 50);
-        
-        HomeButton home = new HomeButton();
-        addObject(home, getWidth()/2 - 100, 500);
-        AchievementButton ach = new AchievementButton();
-        addObject(ach, getWidth()/2 + 100, 500);
-        
-    }
 
     private void triggerExplosionsFour() {
         for (int i = 0; i < rows; i++) {

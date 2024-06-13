@@ -10,7 +10,7 @@ public class WatermelonDisplay extends BoosterDisplay
 {
     public WatermelonDisplay(){
         GreenfootImage wt = new GreenfootImage("watermelonBomb.png");
-        wt.scale(56, 56);
+        wt.scale(135, 135);
         setImage(wt);
     }
     /**

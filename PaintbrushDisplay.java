@@ -10,7 +10,7 @@ public class PaintbrushDisplay extends BoosterDisplay
 {
     public PaintbrushDisplay(){
         GreenfootImage pb = new GreenfootImage("paintbrush.png");
-        pb.scale(56, 56);
+        pb.scale(120, 120);
         setImage(pb);
     }
     /**
