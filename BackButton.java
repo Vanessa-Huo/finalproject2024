@@ -15,7 +15,7 @@ public class BackButton extends Icon
     {
         if (Greenfoot.mouseClicked(this))
         {
-            TutorialScreen.switchNext(); //Switches back to previous screen
+            TutorialScreen.switchBack(); //Switches back to previous screen
         }
     }
 }

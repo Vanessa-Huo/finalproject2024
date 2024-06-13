@@ -9,35 +9,46 @@ import java.util.ArrayList;
  */
 public class MainScreen extends World
 {
+    public static int LEVEL = 0;
+    
+    //Grid
+    private static final int CELL_SIZE = 65;
     private static Fruit[][] board;
     private int rows, cols;
-    private static final int CELL_SIZE = 65;
     private int x, y;
     
+    private int booster1, booster2;
+
     private boolean run;
     private int score;
-
+    
+    //Display
     Timer timer;
     Label scoreLabel;
-
-    //int score = 0;
-
+    Watermelon melon;
+    Paintbrush brush;
+    
+    //Buttons
     private HomeButton home;
     private TutorialButton tut;
-    private GreenfootImage[] explode = new GreenfootImage[3];
-    private int animCounter, animDelay, animIndex, maxIndex;
-    private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES }
-    private GameState state;
     
+    //Animation 
+    private GreenfootImage[] explode = new GreenfootImage[9];
+    private int animCounter, animDelay, animIndex, maxIndex;
+    private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES , GAME_OVER}
+    private GameState state;
+
     public MainScreen()
     {    
         super(1024, 720, 1); 
 
-        setBackground("plainBG.png");
+        setBackground("mainScreen.png");
         home = new HomeButton();
         addObject(home, 100, getHeight() - 50);
         tut = new TutorialButton();
         addObject(tut, 250, getHeight() - 50);
+        melon = new Watermelon(false);
+        brush = new Paintbrush(false);
 
         rows = 10;
         cols = 10;
@@ -51,20 +62,20 @@ public class MainScreen extends World
         timer = new Timer();
         scoreLabel = new Label(score, 80);
         scoreLabel.setFillColor(Color.BLACK);
-        addObject(timer, 170, 150);
-        addObject(scoreLabel, 170, 350);
-       
+        addObject(timer, 175, 175);
+        addObject(scoreLabel, 175, 345);
+
         drawBoard(true);
 
-        text();
-        
         animCounter = 0;
         maxIndex = explode.length;
-        //Greenfoot.setSpeed(70); // Set the speed to 70 out of 100
 
         state = GameState.CHECK_MATCHES;
     }
 
+    /**
+     * Called when world is ran, resets status of Selection
+     */
     public void started(){
         Selection.setSelecting(false);
     }
@@ -81,47 +92,43 @@ public class MainScreen extends World
         //Play
         run = true;
         scoreLabel.setValue(score);
-        switch (state) {
-            case CHECK_MATCHES:
-                if (crushFive(true) || crushFour(true) || crushThree(true)) {
-                    state = GameState.REMOVE_MATCHES;
-                } else {
+        //updateTimer();
+        if (state != GameState.GAME_OVER) {
+            switch (state) {
+                case CHECK_MATCHES:
+                    if (crushFive(true) || crushFour(true) || crushThree(true) || watermelonBomb()) {
+                        state = GameState.REMOVE_MATCHES;
+                    } else {
+                        dropFruits();
+                    }
+                    break;
+                case REMOVE_MATCHES:
+                    triggerExplosions();
+                    triggerExplosionsFour();
+                    state = GameState.PLAY_EXPLOSION;
+                    break;
+                case PLAY_EXPLOSION:
+                    if (getObjects(Explosion.class).isEmpty() && getObjects(ExplosionFour.class).isEmpty()) {
+                        state = GameState.FILL_SPACES;
+                    }
+                    break;
+                case FILL_SPACES:
                     dropFruits();
-                }
-                break;
-            case REMOVE_MATCHES:
-                triggerExplosions();
-                state = GameState.PLAY_EXPLOSION;
-                break;
-            case PLAY_EXPLOSION:
-                if (getObjects(Explosion.class).isEmpty()) {
-                    state = GameState.FILL_SPACES;
-                }
-                break;
-            case FILL_SPACES:
-                dropFruits();
-                state = GameState.CHECK_MATCHES;
-                break;
+                    state = GameState.CHECK_MATCHES;
+                    break;
+            }
+        }
+
+        if (getObjects(Selection.class).size() == 0){
+            Selection.setSelecting(false);
         }
         /*
-        crushFive(true);
-        crushFour(true);
-        crushThree(true);
-        dropFruits();
-        */
+        scoreLabel.setValue(score);
         if(getObjects(Selection.class).size() == 0){
             //System.out.println("none detected");
             Selection.setSelecting(false);
         }
-    }
-    
-    /**
-     * TEMPORARY BEFORE ART
-     */
-    public void text(){
-        addObject(new Label("Time",50),100,80);
-        addObject(new Label("Score",50),100,280);
-        addObject(new Label("Booster",50),100,480);
+        */
     }
 
     /**
@@ -232,6 +239,27 @@ public class MainScreen extends World
         return crushFound;
     }
 
+    private boolean watermelonBomb(){
+        boolean crushFound = false;
+        for(int i=0; i<rows;i++){
+            for(int j=0;j<cols;j++){
+                if(board[i][j] instanceof Watermelon){
+                    for(int x = i-1;x<=i+1;x++){
+                        for(int y = j-1;y<=j+1;y++){
+                            if(x>=0 && x<rows && y>=0 && y<cols && board[x][y]!=null){
+                                removeObject(board[x][y]);
+                                board[x][y]=null;
+                                score++;
+                            }
+                        }
+                    }
+                    crushFound = true;
+                }
+            }
+        }
+        return crushFound;
+    }
+
     /**
      * Drops the Fruits to fill empty spaces below them and refills the board with new Fruits at the top.
      */
@@ -262,7 +290,7 @@ public class MainScreen extends World
             }
         }
     }
-    
+
     private void delay(int x){
         if(run){
             Greenfoot.delay(x);
@@ -305,7 +333,7 @@ public class MainScreen extends World
         }
         return new SBlueberry();
     }
-    
+
     /**
      * Creates a bomb fruit that has the same type as given fruit.
      * 
@@ -369,7 +397,7 @@ public class MainScreen extends World
         }
         score += length;
     }
-    
+
     /**
      * Removes all the fruits that have the type as fruit at board[i][j]
      * 
@@ -390,7 +418,7 @@ public class MainScreen extends World
         }
         score+=5;
     }
-    
+
     /**
      * Clears the specified type of fruit from the board by setting their positions to null.
      * 
@@ -406,7 +434,7 @@ public class MainScreen extends World
             }
         }
     }
-    
+
     /**
      * Removes all fruits in the given row i and column j.
      * 
@@ -428,7 +456,7 @@ public class MainScreen extends World
         }
         score+=3;
     }
-    
+
     /**
      * Check if two objects are in the same class (include subclass).
      * 
@@ -453,7 +481,7 @@ public class MainScreen extends World
      * 
      * @param isNew   Initial set up or not
      */
-    private void drawBoard(boolean isNew){
+    public void drawBoard(boolean isNew){
         if(!isNew) removeObjects(getObjects(Fruit.class));
         if(cols%2==0){
             x = 665-(cols/2*CELL_SIZE)+(CELL_SIZE/2);
@@ -467,10 +495,12 @@ public class MainScreen extends World
         }
         for(int i=0; i<rows;i++){
             for(int j=0;j<cols;j++){
-                if(isNew) board[i][j]=getRandomFruit();
+                if(isNew || board[i][j]== null) board[i][j] = getRandomFruit();
                 addObject(board[i][j],x+j*65,y+i*65);
             }
         }
+        addObject(melon, 110,515);
+        addObject(brush, 235,520);
     }
 
     /**
@@ -487,11 +517,11 @@ public class MainScreen extends World
      */
     public void resetSelection(){
         ArrayList<Selection> selections = (ArrayList<Selection>) getObjects(Selection.class);
-        
+
         for(Selection s : selections){
             s.resetFruitImage();
         }
-        
+
         Selection.setSelecting(false);
         removeObjects(selections);
     }
@@ -518,44 +548,75 @@ public class MainScreen extends World
         }
         return 0;
     }
-    
+
     /**
-     * Swaps positions of two fruits within the 2D array.
-     * Refreshes board to display changes.
+     * Stores the indexes of the first first within 2D array. 
+     * Remove the first fruit and replace it with the second fruit at the same position within 2D array.
+     * 
+     * @param oldOne     Fruit that needs to be replaced 
+     * @param newOne     New fruit that replaces the old one
+     */
+    public void replace(Fruit oldOne, Fruit newOne){
+        int one = getIndex(oldOne,true);
+        int two = getIndex(oldOne,false);
+        removeObject(oldOne);
+        board[one][two] = null;
+        board[one][two] = newOne;
+        addObject(board[one][two],x+two*65,y+one*65);
+    }
+
+    /**
+     * Swaps positions of two fruits within the 2D array,
+     * determines whether swap is valid or not, and handles each appropriately.
      * 
      * @param outerIndex1   Outer index of first fruit
      * @param innerIndex1   Inner index of first fruit
      * @param outerIndex2   Outer index of second fruit
      * @param outerIndex2   Inner index of second fruit
-     * 
+     * @param direction A number representing direction of selected tile(0-3)
      */
-    public void swapFruits(int outerIndex1, int innerIndex1, int outerIndex2, int innerIndex2){
+    public void swapFruits(int outerIndex1, int innerIndex1, int outerIndex2, int innerIndex2, int direction){
         Fruit temp = board[outerIndex1][innerIndex1];
         board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2];
         board[outerIndex2][innerIndex2] = temp;
+
         //if switch made a crush possible
         if(crushFour(false) || crushThree(false) || crushFive(false)){
-            //System.out.println(state);
-            if(getObjects(Fruit.class).size() >= cols*rows){
-                //System.out.println("resetted");
-                resetSelection();
-                
-                drawBoard(false);
-                //System.out.println(Selection.isSelecting());
-            }
-            else{
-                board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
-                board[outerIndex1][innerIndex1] = temp;
-                dropFruits();
-                swapFruits(outerIndex1, innerIndex1, outerIndex2, innerIndex2);
-            }
+            board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
+            board[outerIndex1][innerIndex1] = temp;
+
+            //removes selection box
+            resetSelection();
+            Swap swap = new Swap(board[outerIndex1][innerIndex1], board[outerIndex2][innerIndex2],direction, true);
+            addObject(swap, board[outerIndex1][innerIndex1].getX(), board[outerIndex1][innerIndex1].getY());
         }
         else{ //if switch cannot form a crush
             board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
             board[outerIndex1][innerIndex1] = temp;
+            Swap swap = new Swap(board[outerIndex1][innerIndex1], board[outerIndex2][innerIndex2],direction, false);
+            addObject(swap, board[outerIndex1][innerIndex1].getX(), board[outerIndex1][innerIndex1].getY());
         }
     }
-    
+
+    /**
+     * Swaps positions of two fruits within the 2D array.
+     * 
+     * @param outerIndex1   Outer index of first fruit
+     * @param innerIndex1   Inner index of first fruit
+     * @param outerIndex2   Outer index of second fruit
+     * @param outerIndex2   Inner index of second fruit
+     * @param direction A number representing direction of selected tile(0-3)
+     */
+    public void swapIndexes(int outerIndex1, int innerIndex1, int outerIndex2, int innerIndex2){
+        Fruit temp = board[outerIndex1][innerIndex1];
+        board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2];
+        board[outerIndex2][innerIndex2] = temp;
+        System.out.println(outerIndex1 + "," + innerIndex1 + " switches with " + outerIndex2 + "," + innerIndex2);
+    }
+
+    /**
+     * Creates explosion effect for cleared fruits.
+     */
     private void triggerExplosions() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -566,11 +627,51 @@ public class MainScreen extends World
             }
         }
     }
-    
+
+    private void triggerExplosionsFour() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols - 3; j++) {
+                int length = getMatchLength(i, j, 0, 1);
+                if (length == 4) {
+                    for (int k = 0; k < 4; k++) {
+                        if (board[i][j + k] == null) {
+                            ExplosionFour explosion = new ExplosionFour();
+                            addObject(explosion, x + (j + k) * 65, y + i * 65);
+                        }
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < rows - 3; i++) {
+            for (int j = 0; j < cols; j++) {
+                int length = getMatchLength(i, j, 1, 0);
+                if (length == 4) {
+                    for (int k = 0; k < 4; k++) {
+                        if (board[i + k][j] == null) {
+                            ExplosionFour explosion = new ExplosionFour();
+                            addObject(explosion, x + j * 65, y + (i + k) * 65);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Getter for number of rows on board.
+     * 
+     * @return int  Number of rows
+     */
     public int getRows(){
         return rows;
     }
-    
+
+    /**
+     * Getter for number of columns on board.
+     * 
+     * @return int  Number of columns
+     */
     public int getColumns(){
         return cols;
     }

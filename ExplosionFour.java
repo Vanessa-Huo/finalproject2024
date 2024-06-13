@@ -11,8 +11,8 @@ public class ExplosionFour extends Actor
 {
     private GreenfootImage[] images;
     private int currentImage;
-    private double delay;
     private int delayCounter;
+    private static final int FRAME_DELAY = 2; // Controls the speed of the animation
 
     public ExplosionFour() {
         images = new GreenfootImage[10]; // Adjust the number of images accordingly
@@ -20,24 +20,21 @@ public class ExplosionFour extends Actor
             images[i] = new GreenfootImage("images/Explosion/Cut4/" + i + ".png");
         }
         currentImage = 0;
-        delay = 2.5; // Reduced delay to speed up animation
         delayCounter = 0;
         setImage(images[currentImage]);
-        
     }
 
     public void act() 
     {
-        if (delayCounter >= delay) {
+        delayCounter++;
+        if (delayCounter >= FRAME_DELAY) {
+            delayCounter = 0;
             currentImage++;
             if (currentImage < images.length) {
                 setImage(images[currentImage]);
             } else {
                 getWorld().removeObject(this);
             }
-            delayCounter = 0;
-        } else {
-            delayCounter++;
         }
     }
 }
