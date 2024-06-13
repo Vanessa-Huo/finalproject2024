@@ -9,6 +9,7 @@ comment10.target=void\ setSelecting(boolean)
 comment10.text=\n\ Sets\ isSelecting\ value\n\ \n\ @param\ isSelectingNow\ is\ selection\ box\ in\ use\ (true)\ or\ not\ (false)\n
 comment2.params=world
 comment2.target=void\ addedToWorld(greenfoot.World)
+comment2.text=\r\n\ A\ method\ called\ by\ the\ Greenfoot\ system\ when\ an\ Actor\ is\ added\ to\ a\ world.\r\n\ Determines\ whether\ selected\ fruit\ is\ along\ any\ outer\ edges\ of\ the\ board.\r\n
 comment3.params=
 comment3.target=void\ act()
 comment4.params=
