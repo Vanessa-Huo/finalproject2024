@@ -16,7 +16,6 @@ public class EndingScreen extends World
     private int score;
     /**
      * Constructor for objects of class EndingScreen.
-     * 
      */
     public EndingScreen(int score)
     {    
@@ -42,7 +41,7 @@ public class EndingScreen extends World
         if(playOnce){
             Label endScore = new Label(score, 75);
             endScore.setFillColor(Color.BLACK);
-            addObject(endScore, getWidth()/2 - 50, getHeight()/2 + 52);
+            addObject(endScore, getWidth()/2 - 35, getHeight()/2 + 52);
             
             Label bst1 = new Label("x" + numMelonNextRound(), 50);
             addObject(bst1, getWidth()/2 + 85, getHeight()/2 + 60);
@@ -55,6 +54,10 @@ public class EndingScreen extends World
         }
     }
     
+    /**
+     * Returns Number of watermelon bombs player can use for next round
+     * @return int Number of watermelon bombs for next round
+     */
     private int numMelonNextRound(){
         if(score>120){
             return 3;
@@ -65,6 +68,10 @@ public class EndingScreen extends World
         }
     }
     
+    /**
+     * Returns Number of brushes player can use for next round
+     * @return int Number of brushes for next round
+     */
     private int numBrushNextRound(){
         if(score>180){
             return 3;

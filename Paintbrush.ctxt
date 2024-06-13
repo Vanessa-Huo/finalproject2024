@@ -1,10 +1,11 @@
 #BlueJ class context
 comment0.target=Paintbrush
-comment0.text=\n\ When\ Paintbrush\ is\ used,\ the\ user\ can\ select\ three\ fruits\ to\ paint\ stripes\ on.\n\ \n\ \n\ @author\ Vanessa\ Huo\n\ @version\ June\ 2024\n
+comment0.text=\n\ When\ a\ Paintbrush\ is\ used,\ the\ user\ can\ select\ a\ fruit\ to\ paint\ stripes\ on.\n\ \n\ @author\ Vanessa\ Huo\n\ @version\ June\ 2024\n
 comment1.params=onBoard
 comment1.target=Paintbrush(boolean)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ paintFruit()
+comment3.text=\n\ Paints\ stripes\ on\ selected\ fruit.\ \n
 numComments=4
