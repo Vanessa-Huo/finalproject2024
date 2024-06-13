@@ -18,6 +18,7 @@ public class Watermelon extends Boosters
     
     public Watermelon(boolean onBoard){
         this.onBoard = onBoard;
+        //The booster is activated only if the player had already played the game once
         if(unLock()){
             if(onBoard){
                 image = new GreenfootImage("watermelonBomb.png");
@@ -47,15 +48,6 @@ public class Watermelon extends Boosters
                 replaceFruit();
             }
         }
-    }
-    
-    private boolean unLock(){
-        boolean result = false;
-        MainScreen world = (MainScreen) getWorld();
-        if(world.LEVEL>0){
-            result = true;
-        }
-        return result;
     }
     
     private void replaceFruit(){
