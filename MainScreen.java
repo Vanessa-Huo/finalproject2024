@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
-
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
 /**
  * game desc...
  * 
@@ -19,7 +21,7 @@ public class MainScreen extends World
     private int booster1, booster2;
 
     private boolean run;
-    private int score;
+    private int score = 0;
 
     //Display
     Timer timer;
@@ -36,7 +38,12 @@ public class MainScreen extends World
     private int animCounter, animDelay, animIndex, maxIndex;
     private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES , GAME_OVER}
     private GameState state;
-
+    
+    PrintWriter out;
+    
+    
+    int boostersUsed1 = 0;
+    int boostersUsed2 = 0;
     public MainScreen()
     {    
         super(1024, 720, 1); 
@@ -74,10 +81,16 @@ public class MainScreen extends World
 
         animCounter = 0;
         maxIndex = explode.length;
-        
         setPaintOrder(Label.class, Booster.class);
-
+        //Greenfoot.setSpeed(70); // Set the speed to 7 0 out of 100
+        
         state = GameState.CHECK_MATCHES;
+        try{
+            FileWriter scores = new FileWriter("Scores.txt", true);
+            out = new PrintWriter(scores);
+        } catch(IOException e){
+            System.out.println("IO exception");
+        }
     }
 
     /**
@@ -85,6 +98,14 @@ public class MainScreen extends World
      */
     public void started(){
         Selection.setSelecting(false);
+        //activates printwriter for scores
+        try{
+            FileWriter scores = new FileWriter("Scores.txt", true);
+            out = new PrintWriter(scores);
+        } catch(IOException e){
+            System.out.println("IO exception");
+        }
+        run = true;
     }
 
     public void act(){
@@ -127,11 +148,65 @@ public class MainScreen extends World
                     break;
             }
         }
-
+        //prints score to save file
+        if(timer.done){
+            out.println(score);
+            out.close();
+        }
+        if(timer.done){
+            Greenfoot.setWorld(new EndingScreen(score));
+        }
         if (getObjects(Selection.class).size() == 0){
             Selection.setSelecting(false);
         }
-    }
+        /*
+        run = true;
+        scoreLabel.setValue(score);
+        switch (state) {
+            case CHECK_MATCHES:
+                if (crushFive(true) || crushFour(true) || crushThree(true) || watermelonBomb()) {
+                    state = GameState.REMOVE_MATCHES;
+                } else {
+                    dropFruits();
+                }
+                break;
+            case REMOVE_MATCHES:
+                triggerExplosions();
+                triggerExplosionsFour();
+                state = GameState.PLAY_EXPLOSION;
+                break;
+            case PLAY_EXPLOSION:
+                if (getObjects(Explosion.class).isEmpty() && getObjects(ExplosionFour.class).isEmpty()) {
+                    state = GameState.FILL_SPACES;
+                }
+                break;
+            case FILL_SPACES:
+                dropFruits();
+                state = GameState.CHECK_MATCHES;
+                break;
+            }
+            if(getObjects(Selection.class).size() == 0){
+                //System.out.println("none detected");
+                Selection.setSelecting(false);
+            }
+    
+            
+            if(timer.done && once){
+                endScreen();
+                once = false;
+            }
+            
+            //prints score to save file
+            if(!run){
+                out.println(score);
+                out.close();
+            }
+        }
+        
+        /**
+         * TEMPORARY BEFORE ART
+         */
+    }   
 
     /**
      * Checks for horizontal and vertical matches of three Fruits and removes them.
@@ -259,6 +334,7 @@ public class MainScreen extends World
                 }
             }
         }
+        boostersUsed1++;
         return crushFound;
     }
 
@@ -693,6 +769,23 @@ public class MainScreen extends World
             }
         }
     }
+    
+    //Method to trigger a popup end screen
+    private void endScreen(){
+        run = false;
+        Label endScore = new Label(score, 100);
+        EndScreen a = new EndScreen();
+        Fadescreen b = new Fadescreen();
+        addObject(b, getWidth()/2, getHeight()/2);
+        addObject(a, getWidth()/2, getHeight()/2);
+        addObject(endScore, getWidth()/2, getHeight()/2 - 50);
+        
+        HomeButton home = new HomeButton();
+        addObject(home, getWidth()/2 - 100, 500);
+        AchievementButton ach = new AchievementButton();
+        addObject(ach, getWidth()/2 + 100, 500);
+        
+    }
 
     private void triggerExplosionsFour() {
         for (int i = 0; i < rows; i++) {
@@ -749,5 +842,9 @@ public class MainScreen extends World
      */
     public int getColumns(){
         return cols;
+    }
+    
+    public int getScore() {
+        return score;
     }
 }

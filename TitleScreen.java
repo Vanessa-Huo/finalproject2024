@@ -27,8 +27,4 @@ public class TitleScreen extends World
         ach = new AchievementButton();
         addObject(ach, (getWidth() / 2) + 200, 420);
     }
-
-    public void act() {
-        
-    }
 }
