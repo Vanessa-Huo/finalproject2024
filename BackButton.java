@@ -16,6 +16,7 @@ public class BackButton extends Icon
         if (Greenfoot.mouseClicked(this))
         {
             TutorialScreen.switchBack(); //Switches back to previous screen
+            Greenfoot.playSound("mouseclick.mp3");
         }
     }
 }
