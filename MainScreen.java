@@ -9,27 +9,31 @@ import java.util.ArrayList;
  */
 public class MainScreen extends World
 {
+    public static int LEVEL = 1;
+    
+    //Grid
+    private static final int CELL_SIZE = 65;
     private static Fruit[][] board;
     private int rows, cols;
-    private static final int CELL_SIZE = 65;
-    public static int LEVEL = 0;
-    private int booster1, booster2;
     private int x, y;
+    
+    private int booster1, booster2;
 
     private boolean run;
     private int score;
-
+    
+    //Display
     Timer timer;
     Label scoreLabel;
     Watermelon melon;
     Paintbrush brush;
-
-    //int score = 0;
-
+    
+    //Buttons
     private HomeButton home;
     private TutorialButton tut;
+    
+    //Animation 
     private GreenfootImage[] explode = new GreenfootImage[9];
-
     private int animCounter, animDelay, animIndex, maxIndex;
     private enum GameState { CHECK_MATCHES, REMOVE_MATCHES, PLAY_EXPLOSION, FILL_SPACES , GAME_OVER}
     private GameState state;
@@ -65,7 +69,6 @@ public class MainScreen extends World
 
         animCounter = 0;
         maxIndex = explode.length;
-        //Greenfoot.setSpeed(70); // Set the speed to 70 out of 100
 
         state = GameState.CHECK_MATCHES;
     }
@@ -90,7 +93,6 @@ public class MainScreen extends World
         run = true;
         scoreLabel.setValue(score);
         //updateTimer();
-
         if (state != GameState.GAME_OVER) {
             switch (state) {
                 case CHECK_MATCHES:
@@ -121,37 +123,12 @@ public class MainScreen extends World
             Selection.setSelecting(false);
         }
         /*
-        run = true;
         scoreLabel.setValue(score);
-        switch (state) {
-            case CHECK_MATCHES:
-                if (crushFive(true) || crushFour(true) || crushThree(true) || watermelonBomb()) {
-                    state = GameState.REMOVE_MATCHES;
-                } else {
-                    dropFruits();
-                }
-                break;
-            case REMOVE_MATCHES:
-                triggerExplosions();
-                triggerExplosionsFour();
-                state = GameState.PLAY_EXPLOSION;
-                break;
-            case PLAY_EXPLOSION:
-                if (getObjects(Explosion.class).isEmpty() && getObjects(ExplosionFour.class).isEmpty()) {
-                    state = GameState.FILL_SPACES;
-                }
-                break;
-            case FILL_SPACES:
-                dropFruits();
-                state = GameState.CHECK_MATCHES;
-                break;
-        }
         if(getObjects(Selection.class).size() == 0){
             //System.out.println("none detected");
             Selection.setSelecting(false);
         }
         */
-        
     }
 
     /**

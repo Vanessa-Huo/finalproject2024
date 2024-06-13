@@ -13,19 +13,25 @@ public class Paintbrush extends Boosters
     private boolean isActive, onBoard;
     public Paintbrush(boolean onBoard){
         this.onBoard = onBoard;
-        
-        if(onBoard){
-            image = new GreenfootImage("paintbrush.png");
-            image.scale(56,56);
-            pulseImage = new GreenfootImage("paintbrush.png");
-            pulseImage.scale(65,65);
-        }
-        else{
-            image = new GreenfootImage("paintbrush.png");
-            image.scale(90,90);
+        //The booster is activated only if the player had already played the game once
+        if(unLock()){
+            if(onBoard){
+                image = new GreenfootImage("paintbrush.png");
+                image.scale(56,56);
+                pulseImage = new GreenfootImage("paintbrush.png");
+                pulseImage.scale(65,65);
+            }
+            else{
+                image = new GreenfootImage("paintbrush.png");
+                image.scale(90,90);
+            }
+        }else{
+            image = new GreenfootImage("paintbrushGrey.png");
+            image.scale(100,100);
         }
         setImage(image);
         mouse = Greenfoot.getMouseInfo();
+        pulseCount = 0;
         isActive = false;
     }
     

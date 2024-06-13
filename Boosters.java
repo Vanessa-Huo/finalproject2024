@@ -14,4 +14,17 @@ public class Boosters extends Fruit
     {
         // Add your action code here.
     }
+    
+    /**
+     * A method that check if LEVEL is greater than 0, meaning the player had already played once. 
+     * If so, unlock the booster.
+     */
+    public boolean unLock(){
+        boolean result = false;
+        MainScreen world = (MainScreen) getWorld();
+        if(world.LEVEL>0){
+            result = true;
+        }
+        return result;
+    }
 }
