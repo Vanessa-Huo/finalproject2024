@@ -36,7 +36,10 @@ public class MainScreen extends World
     private GameState state;
     
     PrintWriter out;
-    private boolean once = true;
+    
+    
+    int boostersUsed1 = 0;
+    int boostersUsed2 = 0;
     public MainScreen()
     {    
         super(1024, 720, 1); 
@@ -71,7 +74,12 @@ public class MainScreen extends World
         //Greenfoot.setSpeed(70); // Set the speed to 7 0 out of 100
         
         state = GameState.CHECK_MATCHES;
-        
+        try{
+            FileWriter scores = new FileWriter("Scores.txt", true);
+            out = new PrintWriter(scores);
+        } catch(IOException e){
+            System.out.println("IO exception");
+        }
     }
 
     /**
@@ -79,10 +87,10 @@ public class MainScreen extends World
      */
     public void started(){
         Selection.setSelecting(false);
+        //activates printwriter for scores
         try{
             FileWriter scores = new FileWriter("Scores.txt", true);
             out = new PrintWriter(scores);
-            
         } catch(IOException e){
             System.out.println("IO exception");
         }
@@ -99,7 +107,7 @@ public class MainScreen extends World
             score = 0;
         }
         //Play
-        
+        run = true;
         scoreLabel.setValue(score);
         //updateTimer();
 
@@ -128,7 +136,17 @@ public class MainScreen extends World
                     break;
             }
         }
-
+        //prints score to save file
+        if(timer.done){
+            out.println(score);
+            out.close();
+        }
+        if(timer.done){
+            Greenfoot.setWorld(new EndingScreen(score));
+            
+        }
+        
+        
         if (getObjects(Selection.class).size() == 0){
             Selection.setSelecting(false);
         }
@@ -168,6 +186,8 @@ public class MainScreen extends World
             endScreen();
             once = false;
         }
+        
+        //prints score to save file
         if(!run){
             out.println(score);
             out.close();
@@ -177,15 +197,7 @@ public class MainScreen extends World
     /**
      * TEMPORARY BEFORE ART
      */
-    public void text(){
-        addObject(new Label("Time",50),100,80);
-        addObject(new Label("Score",50),100,280);
-        addObject(new Label("Booster",50),100,480);
-
-        */
-        
-
-    }
+    }   
 
     /**
      * Checks for horizontal and vertical matches of three Fruits and removes them.
@@ -313,6 +325,7 @@ public class MainScreen extends World
                 }
             }
         }
+        boostersUsed1++;
         return crushFound;
     }
 
@@ -684,6 +697,7 @@ public class MainScreen extends World
         }
     }
     
+    //Method to trigger a popup end screen
     private void endScreen(){
         run = false;
         Label endScore = new Label(score, 100);

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Write a description of class AchievementScreen here.
  * 
- * @author Megan Lee 
+ * @author Megan Lee, Rick Li
  * @version (a version number or a date)
  */
 public class AchievementScreen extends World
@@ -36,9 +36,10 @@ public class AchievementScreen extends World
         while (moreLines){
             try{
                 String temp = s.nextLine();
-                
-                scoreBoard.add(Integer.valueOf(temp));
-                numLines++;
+                if(!temp.equals(null)){
+                    scoreBoard.add(Integer.valueOf(temp));
+                    numLines++;
+                }
             }catch(NoSuchElementException e){
                 moreLines = false;
             }
@@ -47,13 +48,9 @@ public class AchievementScreen extends World
         int xA = getWidth()/2 - 50;
         int xB = getWidth()/2 + 50;
         int Y = 100;
-        for(int i = 0; i<sortedScores.size(); i++){
-            Label place = new Label(i+1, 80);
-            Label score = new Label(sortedScores.get(i), 80);
-            addObject(place, xA, Y);
-            addObject(score, xB, Y);
-            Y += 25;
-        }
+        Label score = new Label(sortedScores.get(sortedScores.size() - 1), 200);
+        score.setFillColor(Color.BLACK);
+        addObject(score, getWidth()/2, getHeight()/2 - 40);
     }
     public void act(){
         

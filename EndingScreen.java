@@ -12,11 +12,12 @@ public class EndingScreen extends World
     private AchievementButton achButton;
     private double halfWidth = getWidth() / 2;
     private double halfHeight = getHeight() / 2;
+    
     /**
      * Constructor for objects of class EndingScreen.
      * 
      */
-    public EndingScreen()
+    public EndingScreen(int score)
     {    
         super(1024, 720, 1);
         
@@ -27,5 +28,9 @@ public class EndingScreen extends World
         
         achButton = new AchievementButton();
         addObject(achButton, getWidth() - 100, getHeight() - 50);
+        
+        Label endScore = new Label(score, 75);
+        endScore.setFillColor(Color.BLACK);
+        addObject(endScore, getWidth()/2 - 40, getHeight()/2 + 52);
     }
 }
