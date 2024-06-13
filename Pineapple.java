@@ -7,13 +7,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Megan Lee
  * @version June 2024
  */
-public class Pineapple extends Fruit
-{
+public class Pineapple extends Fruit{
+    /**
+     * A constructor create a regular Pineapple.
+     */
     public Pineapple(){
         image = new GreenfootImage("pineapple.png");
         image.scale(56,56);
         setImage(image);
         
+        //scaled larger than regular image to simulate a pulse
         pulseImage = new GreenfootImage("pineapple.png");
         pulseImage.scale(65,65);
         

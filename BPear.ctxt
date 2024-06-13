@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=BPear
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ BPear\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ A\ BPear\ is\ a\ dotted\ pear.\r\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Pears.\r\n\ When\ matched,\ it\ will\ clear\ all\ Pears\ on\ the\ board.\r\n\ \r\n\ @author\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
 comment1.params=
 comment1.target=BPear()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ BPear\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.text=\r\n\ A\ constructor\ to\ create\ a\ dotted\ Pear.\r\n
 numComments=2

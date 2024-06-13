@@ -6,13 +6,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Megan Lee
  * @version June 2024
  */
-public class Strawberry extends Fruit
-{
+public class Strawberry extends Fruit{
+    /**
+     * A constructor to create a regular Strawberry.
+     */
     public Strawberry(){
         image = new GreenfootImage("strawberry.png");
         image.scale(56,56);
         setImage(image);
         
+        //scaled larger than regular image to simulate a pulse
         pulseImage = new GreenfootImage("strawberry.png");
         pulseImage.scale(65,65);
         

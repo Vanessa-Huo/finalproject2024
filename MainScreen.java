@@ -284,6 +284,11 @@ public class MainScreen extends World
         }
     }
 
+    /**
+     * While running program, delay between acts
+     * 
+     * @param x Number of time steps to delay by
+     */
     private void delay(int x){
         if(run){
             Greenfoot.delay(x);
@@ -497,25 +502,21 @@ public class MainScreen extends World
     }
 
     /**
-     * Returns width/height of tile
-     * 
-     * @return  size of tile
-     */
-    public int getTileSize(){
-        return CELL_SIZE;
-    }
-
-    /**
      * Removes all current selection boxes from world.
      */
     public void resetSelection(){
+        //get all selections in the world (should be one max at a time)
         ArrayList<Selection> selections = (ArrayList<Selection>) getObjects(Selection.class);
 
+        //reset each selection's associated fruit's image (not its larger pulse version)
         for(Selection s : selections){
             s.resetFruitImage();
         }
 
+        //reset class variable isSelecting to be false 
         Selection.setSelecting(false);
+
+        //remove all selections
         removeObjects(selections);
     }
 
@@ -527,14 +528,17 @@ public class MainScreen extends World
      * @return int          Outer/Inner index of fruit
      */
     public int getIndex(Fruit fruit, boolean outerIndex){
+        //loop through outer indexes
         for(int i=0; i<rows;i++){
+            //loop through inner indexes
             for(int j=0;j<cols;j++){
+                //matches given fruit (parameter) to each Fruit on the board by reference 
                 if(board[i][j] == fruit){
-                    if(outerIndex){
-                        return i;
+                    if(outerIndex){ 
+                        return i; //returns outer index
                     }
                     else{
-                        return j;
+                        return j; //returns inner index
                     }
                 }
             }
@@ -569,37 +573,47 @@ public class MainScreen extends World
      * @param direction A number representing direction of selected tile(0-3)
      */
     public void swapFruits(int outerIndex1, int innerIndex1, int outerIndex2, int innerIndex2, int direction){
-        Fruit temp = board[outerIndex1][innerIndex1];
-        board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2];
-        board[outerIndex2][innerIndex2] = temp;
+        //switches the fruits' indexes
+        Fruit temp = board[outerIndex1][innerIndex1]; //temp holds first fruit's reference
+        board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2]; //first fruit can take second fruit's reference
+        board[outerIndex2][innerIndex2] = temp; //second fruit can take first fruit's reference (from temp)
 
-        //if switch made a crush possible
-        if(crushFour(false) || crushThree(false) || crushFive(false)){
-            board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
-            board[outerIndex1][innerIndex1] = temp;
+        //checks if switch made a crush possible
+        if(crushFour(false) || crushThree(false) || crushFive(false)){ 
+            //revert each fruit to its original index so that swap animation can occur (without crush being formed & removed yet)
+            board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1]; //second fruit takes first fruit's reference (its original)        
+            board[outerIndex1][innerIndex1] = temp; //first fruit takes temp's reference (its original)
+
             //removes selection box
             resetSelection();
+
+            //calls swap animation for a successful swap
             swapAnimation(board[outerIndex1][innerIndex1], board[outerIndex2][innerIndex2], direction, 5, true);
         }
         else{ //if switch cannot form a crush
-            board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
-            board[outerIndex1][innerIndex1] = temp;
+            //revert each fruit to its original index
+            board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1]; //second fruit takes first fruit's reference (its original)        
+            board[outerIndex1][innerIndex1] = temp; //first fruit takes temp's reference (its original)[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
+
+            //calls swap animation for a unsuccessful swap
             swapAnimation(board[outerIndex1][innerIndex1], board[outerIndex2][innerIndex2], direction, 5, false);
         }
     }
 
     /**
      * A visual animation of two fruit swapping places.
-     * If not successful, will swap twice to return to original positions. 
+     * If not successful, will call itself twice to return to original positions. 
      * 
-     * @param fruit1                first fruit
-     * @param frui2                 second fruit
+     * @param fruit1                First fruit
+     * @param frui2                 Second fruit
      * @param direction             A number representing direction of selected tile(0-3)
-     * @param displacementFactor    Inner index of second fruit
+     * @param displacementFactor    Pixels to move at a time
      * @param isSucessful           Was match valid (True) or not (false)
      */
     public void swapAnimation(Fruit fruit1, Fruit fruit2, int direction, int displacementFactor, boolean isSucessful){
+        //loops until displacement equals a cell size (both fruits visually swapped cells)
         for(int displacement = 0; displacement <= getTileSize(); displacement+=displacementFactor){
+            //depending on direction, move each fruit accordingly
             switch(direction){
                 case 0: //up
                     fruit1.setLocation(fruit1.getX(), fruit1.getY() - displacementFactor);
@@ -621,18 +635,26 @@ public class MainScreen extends World
             delay(1);
         }
 
+        //if not successful
         if(!isSucessful){
+            //call again, switch order for fruit parameter so that they reverse back
             swapAnimation(fruit2, fruit1, direction, displacementFactor, true);
         }
         else{
+            //indexes of first fruit
             int outerIndex1 = getIndex(fruit1, true);
             int innerIndex1 = getIndex(fruit1, false);
+
+            //indexes of second fruit
             int outerIndex2 = getIndex(fruit2, true);
             int innerIndex2 = getIndex(fruit2, false);
 
-            Fruit temp = board[outerIndex1][innerIndex1];
-            board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2];
-            board[outerIndex2][innerIndex2] = temp;
+            //"permanantely"
+            Fruit temp = board[outerIndex1][innerIndex1]; //temp holds first fruit's reference
+            board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2]; //first fruit can take second fruit's reference
+            board[outerIndex2][innerIndex2] = temp; //second fruit can take first fruit's reference (from temp)
+            
+            //refreshes board to display changes, crush will then be cleared 
             drawBoard(false);
         }
     }
@@ -679,6 +701,15 @@ public class MainScreen extends World
                 }
             }
         }
+    }
+
+    /**
+     * Returns width/height of tile
+     * 
+     * @return  size of tile
+     */
+    public int getTileSize(){
+        return CELL_SIZE;
     }
 
     /**
