@@ -6,42 +6,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Watermelon extends Boosters
+public class Watermelon extends Booster
 {
-    /**
-     * THIS IS VANESSA.
-     * I'M STILL FIXING THE BUGS HERE...PLEASE DONT MOVE ANYTHING THANKS!!!
-     */
     private boolean dragging = false;
-    private Watermelon temp;
-    private int numberUse;
-    private boolean onBoard;
-    
+    //private boolean onBoard;
+    //private static int numBooster;
+
     public Watermelon(boolean onBoard){
-        this.onBoard = onBoard;
-        //The booster is activated only if the player had already played the game once
-        if(unLock()){
-            if(onBoard){
-                image = new GreenfootImage("watermelonBomb.png");
-                image.scale(56,56);
-                pulseImage = new GreenfootImage("watermelonBomb.png");
-                pulseImage.scale(65,65);
-            }
-            else{
-                image = new GreenfootImage("watermelonBomb.png");
-                image.scale(100,100);
-            }
-        }else{
-            image = new GreenfootImage("watermelonGrey.png");
-            image.scale(100,100);
-        }
-        setImage(image);
-        pulseCount = 0;
+        super(onBoard,"watermelonBomb.png","watermelonGrey.png");
     }
     
     public void act(){
-        super.act();
-        if(unLock() && Greenfoot.mouseClicked(this) && !onBoard){
+        //super.act();
+        if(unLock() && Greenfoot.mouseClicked(this) && !onBoard && getNumB()>0){
             dragging = true;
         }
         if(dragging){
@@ -56,6 +33,7 @@ public class Watermelon extends Boosters
         if (clickedFruit != this) {
             MainScreen world = (MainScreen) getWorld();
             world.replace(clickedFruit, new Watermelon(true));
+            numMelon--;
             dragging = false;
         }
     }
