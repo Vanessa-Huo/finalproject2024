@@ -30,10 +30,6 @@ public class EndingScreen extends World
         achButton = new AchievementButton();
         addObject(achButton, getWidth() - 100, getHeight() - 50);
         
-        Label endScore = new Label(score, 75);
-        endScore.setFillColor(Color.BLACK);
-        addObject(endScore, getWidth()/2 + 15, getHeight()/2 + 52);
-        
         WatermelonDisplay booster1 = new WatermelonDisplay();
         addObject(booster1, getWidth()/2 + 65, getHeight()/2 + 50);
         
@@ -47,10 +43,10 @@ public class EndingScreen extends World
             endScore.setFillColor(Color.BLACK);
             addObject(endScore, getWidth()/2 - 35, getHeight()/2 + 52);
             
-            Label bst1 = new Label("x" + numMelonNextRound(), 50);
+            Label bst1 = new Label("+" + numMelonNextRound(), 50);
             addObject(bst1, getWidth()/2 + 85, getHeight()/2 + 60);
             
-            Label bst2 = new Label("x" + numBrushNextRound(), 50);
+            Label bst2 = new Label("+" + numBrushNextRound(), 50);
             addObject(bst2, getWidth()/2 + 195, getHeight()/2 + 60);
             Booster.setNumB(numMelonNextRound(), numBrushNextRound());
             

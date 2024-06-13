@@ -53,8 +53,8 @@ public class AchievementScreen extends World
         score.setFillColor(Color.BLACK);
         addObject(score, getWidth()/2, getHeight()/2 - 40);
         
-        WatermelonDisplay booster1 = new WatermelonDisplay();
-        PaintbrushDisplay booster2 = new PaintbrushDisplay();
+        WatermelonDisplay booster1 = new WatermelonDisplay(true);
+        PaintbrushDisplay booster2 = new PaintbrushDisplay(true);
         Label bst1 = new Label("x" + MainScreen.boostersUsed1, 80);
         Label bst2 = new Label("x" + MainScreen.boostersUsed2, 80);
         addObject(booster1, getWidth()/2 + 95, getHeight()/2 + 126);
