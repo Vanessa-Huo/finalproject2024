@@ -14,6 +14,7 @@ public class Watermelon extends Boosters
      */
     private boolean dragging = false;
     private Watermelon temp;
+    private int numberUse;
     private boolean onBoard;
     
     public Watermelon(boolean onBoard){

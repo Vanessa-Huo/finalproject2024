@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class MainScreen extends World
 {
-    public static int LEVEL = 0;
+    public static int LEVEL = 1;
     
     //Grid
     private static final int CELL_SIZE = 65;
@@ -562,6 +562,15 @@ public class MainScreen extends World
         removeObject(oldOne);
         board[one][two] = null;
         board[one][two] = newOne;
+        addObject(board[one][two],x+two*65,y+one*65);
+    }
+    
+    public void paintStripes(Fruit fruit){
+        Fruit temp = getSpecialFruit(fruit);
+        int one = getIndex(fruit,true);
+        int two = getIndex(fruit,false);
+        removeObject(board[one][two]);
+        board[one][two] = temp;
         addObject(board[one][two],x+two*65,y+one*65);
     }
 
