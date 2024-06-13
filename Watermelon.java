@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Watermelon here.
+ * When a Watermelon is added, it clears all the fruits within a 3x3 range around it.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Vanessa Huo
+ * @version June 2024
  */
 public class Watermelon extends Booster
 {
@@ -17,7 +17,6 @@ public class Watermelon extends Booster
     }
     
     public void act(){
-        //super.act();
         if(unLock() && Greenfoot.mouseClicked(this) && !onBoard && getNumB()>0){
             dragging = true;
         }
@@ -28,6 +27,9 @@ public class Watermelon extends Booster
         }
     }
     
+    /**
+     * Replaces selected fruit with watermelon bomb
+     */
     private void replaceFruit(){
         Fruit clickedFruit = (Fruit) Greenfoot.getMouseInfo().getActor();
         if (clickedFruit != this) {

@@ -1,7 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
- * When Paintbrush is used, the user can select three fruits to paint stripes on.
- * 
+ * When a Paintbrush is used, the user can select a fruit to paint stripes on.
  * 
  * @author Vanessa Huo
  * @version June 2024
@@ -27,6 +26,9 @@ public class Paintbrush extends Booster
         }
     }
     
+    /**
+     * Paints stripes on selected fruit. 
+     */
     private void paintFruit(){
         Fruit clickedFruit = (Fruit) Greenfoot.getMouseInfo().getActor();
         if (clickedFruit != this) {

@@ -13,11 +13,11 @@ import java.io.IOException;
  *     an entire row and column. Matching five fruits will create a spotted bomb fruit. When matched, it 
  *     clears all fruits of that color from the board. 
  * <P> Boosters are activated after player reaches LEVEL 1. The number of boosters player gets for next round 
- *     depends on the points scored in previous around. Boosters that are not used in this round will be saved 
+ *     depends on the points scored in previous round. Boosters that are not used in this round will be saved 
  *     for next round. Watermelon Bomb will clear all the fruits within a 3x3 range around it. Paintbrush will turn 
  *     a selected fruit to a special striped fruit of that color. 
  * 
- * @author Vanessa Huo, Megan Lee, Luke Xiao, Anya Shah, Gennie Won, Rick Li
+ * @author Vanessa Huo, Megan Lee, Rick Li, Anya Shah, Gennie Won, Luke Xiao
  * @version June 2024
  */
 public class MainScreen extends World
@@ -230,12 +230,11 @@ public class MainScreen extends World
     /**
      * Determines the size of the board according to current level. 
      * As level increases, the size of the board also increases. 
-     * 
      */
     private void boardSetUp(){
         if(LEVEL==0){
             rows = 5;
-            cols = 5;
+            cols = 6;
         }else if(LEVEL==1){
             rows = 7;
             cols = 6;
