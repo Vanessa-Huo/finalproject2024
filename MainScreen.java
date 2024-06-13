@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public class MainScreen extends World
 {
-    public static int LEVEL = 1;
+    public static int LEVEL = 0;
     //Grid
     private static final int CELL_SIZE = 65;
     private static Fruit[][] board;
@@ -47,7 +47,7 @@ public class MainScreen extends World
     public MainScreen()
     {    
         super(1024, 720, 1); 
-
+        
         setBackground("mainScreen.png");
         home = new HomeButton();
         addObject(home, 100, getHeight() - 50);
@@ -56,8 +56,7 @@ public class MainScreen extends World
         melon = new Watermelon(false);
         brush = new Paintbrush(false);
 
-        rows = 10;
-        cols = 10;
+        boardSetUp();
 
         addObject(new Board(rows,cols,CELL_SIZE), 665,360);
 
@@ -206,7 +205,23 @@ public class MainScreen extends World
         /**
          * TEMPORARY BEFORE ART
          */
-    }   
+    }  
+    
+    private void boardSetUp(){
+        if(LEVEL==0){
+            rows = 5;
+            cols = 5;
+        }else if(LEVEL==1){
+            rows = 7;
+            cols = 6;
+        }else if(LEVEL==2){
+            rows = 8;
+            cols = 7;
+        }else{
+            rows = 10;
+            cols = 10;
+        }
+    }
 
     /**
      * Checks for horizontal and vertical matches of three Fruits and removes them.

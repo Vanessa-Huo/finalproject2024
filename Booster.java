@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Booster superclass. 
  * 
- * @author Megan Lee
+ * @author Vanessa Huo
  * @version June 2024
  */
 public abstract class Booster extends Fruit
@@ -12,6 +12,7 @@ public abstract class Booster extends Fruit
     protected boolean onBoard;
     protected static int numMelon = 0;
     protected static int numBrush = 0;
+    public static int addMelon, addBrush;
     /**
      * A method that check if LEVEL is greater than 0, meaning the player had already played once. 
      * If so, unlock the booster.
@@ -26,7 +27,7 @@ public abstract class Booster extends Fruit
                 pulseImage.scale(65,65);
             }
             else{
-                setNumB();
+                //setNumB();
                 image = new GreenfootImage(imageName);
                 image.scale(100,100);
             }
@@ -54,9 +55,8 @@ public abstract class Booster extends Fruit
         return 0;
     }
     
-    
-    public void setNumB(){
-        if(this instanceof Watermelon)numMelon+=2;
-        if(this instanceof Paintbrush)numBrush+=2;
+    public static void setNumB(int addMelon, int addBrush){
+        numMelon+=addMelon;
+        numBrush+=addBrush;
     }
 }
