@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Explosion here.
+ * An explosion effect for fruits that have been cleared.
  * 
  * @author Luke Xiao 
  * @version (06.10.2024)
