@@ -16,6 +16,7 @@ public class AchievementButton extends Icon
         {
             AchievementScreen world = new AchievementScreen();
             Greenfoot.setWorld(world);
+            Greenfoot.playSound("mouseclick.mp3");
         }
     }
 }

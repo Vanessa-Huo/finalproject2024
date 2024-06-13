@@ -13,6 +13,29 @@ public abstract class Fruit extends Actor
     protected int pulseCount;
     protected int fruitNum = 0;
 
+    private static GreenfootSound[] fruitSound;
+    private static int fruitSoundIndex;
+    
+    public static void init()
+    {
+        fruitSoundIndex = 0;
+        fruitSound = new GreenfootSound[20];
+        for(int i = 0; i < fruitSound.length; i++) {
+            fruitSound[i] = new GreenfootSound("hippo1.mp3");
+        }
+    }
+    
+    public static void playHippoSound()
+    {
+        fruitSound[fruitSoundIndex].setVolume(80);
+        fruitSound[fruitSoundIndex].setVolume(40);
+        fruitSound[fruitSoundIndex].play();
+        fruitSoundIndex++;
+        if(fruitSoundIndex >= fruitSound.length) {
+            fruitSoundIndex = 0;
+        }
+    }
+    
     public void act(){
         mouse = Greenfoot.getMouseInfo();
         MainScreen world = (MainScreen)getWorld();
@@ -74,6 +97,7 @@ public abstract class Fruit extends Actor
             }
         }
         return result;
+        
     }
     
     public int getFruitNum(){

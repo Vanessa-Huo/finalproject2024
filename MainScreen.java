@@ -54,6 +54,10 @@ public class MainScreen extends World
     private GameState state;
     
     PrintWriter out;
+    
+    //Init music
+    private GreenfootSound musicBG;
+    
     public MainScreen()
     {    
         //Create a new world with 1020x720 cells with a cell size of 1x1 pixels.
@@ -112,7 +116,11 @@ public class MainScreen extends World
             out = new PrintWriter(scores);
         } catch(IOException e){
             System.out.println("IO exception");
-        }
+        } 
+        
+        //Preload background music
+        musicBG = new GreenfootSound ("backgroundMusic3.mp3");
+        musicBG.playLoop();
     }
 
     /**
@@ -129,7 +137,7 @@ public class MainScreen extends World
         }
         runGame = true;
     }
-
+    
     public void act(){
         // Setup
         while(runGame==false && crushThree(true)){
