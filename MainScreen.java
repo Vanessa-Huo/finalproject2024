@@ -21,6 +21,7 @@ public class MainScreen extends World
     Timer timer;
     Label scoreLabel;
     Watermelon melon;
+    Paintbrush brush;
 
     //int score = 0;
 
@@ -42,6 +43,7 @@ public class MainScreen extends World
         tut = new TutorialButton();
         addObject(tut, 250, getHeight() - 50);
         melon = new Watermelon(true,false);
+        brush = new Paintbrush(false);
 
         rows = 10;
         cols = 10;
@@ -480,6 +482,7 @@ public class MainScreen extends World
             }
         }
         addObject(melon, 110,515);
+        addObject(brush, 235,520);
     }
 
     /**
