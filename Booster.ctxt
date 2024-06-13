@@ -1,13 +1,15 @@
 #BlueJ class context
 comment0.target=Booster
-comment0.text=\n\ Booster\ superclass.\ \n\ \n\ @author\ Vanessa\ Huo\n\ @version\ June\ 2024\n
+comment0.text=\n\ A\ booster\ is\ a\ special\ item\ that\ cannot\ be\ formed\ during\ the\ game.\ \n\ It\ helps\ players\ clear\ the\ board\ by\ providing\ various\ advantages.\n\ Boosters\ are\ only\ activated\ when\ game\ level\ is\ greater\ than\ 0.\ \n\ \n\ @author\ Vanessa\ Huo\n\ @version\ June\ 2024\n
 comment1.params=onBoard\ imageName\ imageNameGrey
 comment1.target=Booster(boolean,\ java.lang.String,\ java.lang.String)
-comment1.text=\n\ A\ method\ that\ check\ if\ LEVEL\ is\ greater\ than\ 0,\ meaning\ the\ player\ had\ already\ played\ once.\ \n\ If\ so,\ unlock\ the\ booster.\n
 comment2.params=
 comment2.target=boolean\ unLock()
+comment2.text=\n\ Checks\ current\ game\ level.\ If\ greater\ than\ 0,\ the\ boosters\ are\ activated.\n
 comment3.params=
 comment3.target=int\ getNumB()
+comment3.text=\n\ Returns\ the\ number\ of\ boosters\ player\ can\ use.\n\ @return\ int\ The\ number\ of\ boosters\ player\ can\ use\n
 comment4.params=addMelon\ addBrush
 comment4.target=void\ setNumB(int,\ int)
+comment4.text=\n\ Increases\ the\ number\ of\ boosters\ player\ can\ use.\n\ \n\ @param\ addMelon\ \ \ The\ number\ of\ watermelon\ bomb\ increased\n\ @param\ addBrush\ \ \ The\ number\ of\ paint\ brush\ increased\n
 numComments=5
