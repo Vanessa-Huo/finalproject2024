@@ -56,9 +56,9 @@ public class EndingScreen extends World
     }
     
     private int numMelonNextRound(){
-        if(score>100){
+        if(score>120){
             return 3;
-        }else if(score>50){
+        }else if(score>70){
             return 2;
         }else{
             return 1;
@@ -66,11 +66,11 @@ public class EndingScreen extends World
     }
     
     private int numBrushNextRound(){
-        if(score>150){
+        if(score>180){
             return 3;
-        }else if(score>120){
+        }else if(score>140){
             return 2;
-        }else if(score>80){
+        }else if(score>100){
             return 1;
         }else{
             return 0;

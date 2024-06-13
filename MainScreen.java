@@ -4,26 +4,40 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
 /**
- * game desc...
+ * <h1>Fruit Crusher - Grid Based Game</h1>
+ * <p> Fruit Crusher is a matching-tile puzzle game inspired by popular matching game Candy Crush. 
+ *     Players swap colored fruits on a aboard to create a row or column of at least three matching fruits.
+ *     The aim is to score higher points in a time limit of 60s by matching fruits, each match will help 
+ *     clear the board and crush more fruits! 
+ * <P> Matching four fruits in a row or column will create a special striped fruit. When matched, it clears
+ *     an entire row and column. Matching five fruits will create a spotted bomb fruit. When matched, it 
+ *     clears all fruits of that color from the board. 
+ * <P> Boosters are activated after player reaches LEVEL 1. The number of boosters player gets for next round 
+ *     depends on the points scored in previous around. Boosters that are not used in this round will be saved 
+ *     for next round. Watermelon Bomb will clear all the fruits within a 3x3 range around it. Paintbrush will turn 
+ *     a selected fruit to a special striped fruit of that color. 
  * 
- * @author Vanessa Huo, Megan Lee
+ * @author Vanessa Huo, Megan Lee, Luke Xiao, Anya Shah, Gennie Won, Rick Li
  * @version June 2024
  */
 public class MainScreen extends World
 {
+    //Current level
     public static int LEVEL = 0;
-    //Grid
+    
+    //Grid 
     private static final int CELL_SIZE = 65;
     private static Fruit[][] board;
     private int rows, cols;
     private int x, y;
-
-    private int booster1, booster2;
-
-    private boolean run;
+    
+    //Game state
+    private boolean runGame;
+    
+    //Score
     private int score = 0;
 
-    //Display
+    //Vairables on screen
     Timer timer;
     Label scoreLabel, melonNum, brushNum;
     Watermelon melon;
@@ -40,30 +54,35 @@ public class MainScreen extends World
     private GameState state;
     
     PrintWriter out;
-    
-    
-    int boostersUsed1 = 0;
-    int boostersUsed2 = 0;
     public MainScreen()
     {    
+        //Create a new world with 1020x720 cells with a cell size of 1x1 pixels.
         super(1024, 720, 1); 
         
+        //The game is still in preparation
+        runGame = false;
+        
+        //Set up background
         setBackground("mainScreen.png");
+        
+        //Set up and locate buttons
         home = new HomeButton();
         addObject(home, 100, getHeight() - 50);
         tut = new TutorialButton();
         addObject(tut, 250, getHeight() - 50);
+        
+        //Set up boosters
         melon = new Watermelon(false);
         brush = new Paintbrush(false);
 
+        //Set up the size of the board 
+        //according to current game Level
         boardSetUp();
-
         addObject(new Board(rows,cols,CELL_SIZE), 665,360);
-
+        // Init game board 
         board = new Fruit[rows][cols];
-
-        run = false;
-
+        
+        //Init timer and texts
         timer = new Timer();
         scoreLabel = new Label(score, 80);
         scoreLabel.setFillColor(Color.BLACK);
@@ -71,19 +90,23 @@ public class MainScreen extends World
         melonNum.setFillColor(Color.BLACK);
         brushNum = new Label(brush.getNumB(), 30);
         brushNum.setFillColor(Color.BLACK);
+        
+        // Locate timer and texts
         addObject(timer, 175, 175);
         addObject(scoreLabel, 175, 345);
         addObject(melonNum, 150, 555);
         addObject(brushNum, 275, 555);
-
+        
+        //Initial set up, draw the board 
         drawBoard(true);
 
+        //Animation varaibles 
         animCounter = 0;
         maxIndex = explode.length;
         setPaintOrder(Label.class, Booster.class);
-        //Greenfoot.setSpeed(70); // Set the speed to 7 0 out of 100
-        
         state = GameState.CHECK_MATCHES;
+        //Greenfoot.setSpeed(70); // Set the speed to 7 0 out of 100
+    
         try{
             FileWriter scores = new FileWriter("Scores.txt", true);
             out = new PrintWriter(scores);
@@ -104,20 +127,21 @@ public class MainScreen extends World
         } catch(IOException e){
             System.out.println("IO exception");
         }
-        run = true;
+        runGame = true;
     }
 
     public void act(){
-        //Setup
-        while(run==false && crushThree(true)){
+        // Setup
+        while(runGame==false && crushThree(true)){
             crushFive(true);
             crushFour(true);
             crushThree(true);
             dropFruits();
             score = 0;
         }
-        //Play
-        run = true;
+        // Play
+        runGame = true; //Start the game
+        // Update variables on screen
         scoreLabel.setValue(score);
         melonNum.setValue(melon.getNumB());
         brushNum.setValue(brush.getNumB());
@@ -147,7 +171,7 @@ public class MainScreen extends World
                     break;
             }
         }
-        //prints score to save file
+        //Prints score to save file
         if(timer.done){
             out.println(score);
             out.close();
@@ -200,13 +224,14 @@ public class MainScreen extends World
                 out.println(score);
                 out.close();
             }
-        }
-        
-        /**
-         * TEMPORARY BEFORE ART
-         */
+        }*/
     }  
     
+    /**
+     * Determines the size of the board according to current level. 
+     * As level increases, the size of the board also increases. 
+     * 
+     */
     private void boardSetUp(){
         if(LEVEL==0){
             rows = 5;
@@ -257,6 +282,7 @@ public class MainScreen extends World
 
     /**
      * Checks for horizontal and vertical matches of four Fruits and removes them.
+     * Then, creates a SpecialFruit of the same type at board[i][j].
      * 
      * @param removeCrushes   Remove found crushes (true) or not (false)
      * @return boolean  Crush was found (true) or not (false)
@@ -294,6 +320,7 @@ public class MainScreen extends World
 
     /**
      * Checks for matches of five or more Fruits and removes them.
+     * Then, creates a BombFruit of the same type at board[i][j].
      * 
      * @param removeCrushes   Remove found crushes (true) or not (false)
      * @return boolean  Crush was found (true) or not (false)
@@ -331,6 +358,12 @@ public class MainScreen extends World
         return crushFound;
     }
 
+    /**
+     * Checks if a watermelonBomb is added to the board. It tirggers a explosion. 
+     * The explosion removes all the fruits that are in the 3x3 range around the watermelon. 
+     * 
+     * @return boolean  Crush was found (true) or not (false)
+     */
     private boolean watermelonBomb(){
         boolean crushFound = false;
         for(int i=0; i<rows;i++){
@@ -349,7 +382,6 @@ public class MainScreen extends World
                 }
             }
         }
-        boostersUsed1++;
         return crushFound;
     }
 
@@ -357,10 +389,13 @@ public class MainScreen extends World
      * Drops the Fruits to fill empty spaces below them and refills the board with new Fruits at the top.
      */
     private void dropFruits() {
+        //Shifts non-empty fruits down to fill empty spaces.
         for (int j = 0; j < cols; j++) {
             for (int i = rows - 1; i >= 0; i--) {
                 if (board[i][j] == null) {
+                    // Find the first non-empty tile above the current empty space
                     for (int k = i - 1; k >= 0; k--) {
+                        // Move the fruit down to the empty space
                         if (board[k][j] != null) {
                             board[i][j] = board[k][j];
                             board[k][j] = null;
@@ -373,6 +408,7 @@ public class MainScreen extends World
                 }
             }
         }
+        //Refills the board with new fruits
         for (int j = 0; j < cols; j++) {
             for (int i = rows - 1; i >= 0; i--) {
                 if (board[i][j] == null) {
@@ -385,12 +421,11 @@ public class MainScreen extends World
     }
 
     /**
-     * While running program, delay between acts
-     * 
+     * While running the game, delay between acts
      * @param x Number of time steps to delay by
      */
     private void delay(int x){
-        if(run){
+        if(runGame){
             Greenfoot.delay(x);
         }
     }
@@ -415,7 +450,7 @@ public class MainScreen extends World
      * Given Peach will return a SpecialPeach
      * 
      * @param fruit     Given fruit
-     * @return Fruit A new SpecialFruit.
+     * @return Fruit    A new SpecialFruit
      */
     private Fruit getSpecialFruit(Fruit x){
         if(x instanceof Blueberry){
@@ -434,9 +469,10 @@ public class MainScreen extends World
 
     /**
      * Creates a bomb fruit that has the same type as given fruit.
+     * Given Peach will return a BombPeach
      * 
      * @param fruit     Given fruit
-     * @return Fruit A new BombFruit.
+     * @return Fruit    A new BombFruit.
      */
     private Fruit getBombFruit(Fruit y){
         if(y instanceof Blueberry){
@@ -497,7 +533,7 @@ public class MainScreen extends World
     }
 
     /**
-     * Removes all the fruits that have the type as fruit at board[i][j]
+     * Removes all the fruits that have the type as the fruit at board[i][j]
      * 
      * @param i     The row index
      * @param j     The column index
@@ -514,11 +550,11 @@ public class MainScreen extends World
         }else if(board[i][j] instanceof Strawberry){
             clearFruit(Strawberry.class);
         }
-        score+=5;
     }
 
     /**
      * Clears the specified type of fruit from the board by setting their positions to null.
+     * For every fruit that has been removed, increases the score by 1. Bonus score + 5.
      * 
      * @param fruitClass the class type of the fruit to be cleared from the board
      */
@@ -532,10 +568,12 @@ public class MainScreen extends World
                 }
             }
         }
+        score+=5;
     }
 
     /**
      * Removes all fruits in the given row i and column j.
+     * For every fruit that has been removed, increases the score by 1. Bonus score + 3.
      * 
      * @param i     The row index to remove
      * @param j     The column index to remove
@@ -559,11 +597,12 @@ public class MainScreen extends World
     }
 
     /**
-     * Check if two objects are in the same class (include subclass).
+     * Check if two objects are in the same class.
+     * If one of the objects is in the subclass, they will still be consiered in the same class. 
      * 
      * @param i     First fruit
      * @param j     Second fruit
-     * @return boolean     Return "true" if they are in the same class
+     * @return boolean     Return objects are in the same class (true) or not (false)
      */
     private boolean isSameClass(Fruit one, Fruit two){
         boolean result = false;
@@ -582,8 +621,9 @@ public class MainScreen extends World
      * 
      * @param isNew   Initial set up or not
      */
-    public void drawBoard(boolean isNew){
+    private void drawBoard(boolean isNew){
         if(!isNew) removeObjects(getObjects(Fruit.class));
+        //Locates positions at the center of each grid
         if(cols%2==0){
             x = 665-(cols/2*CELL_SIZE)+(CELL_SIZE/2);
         }else{
@@ -594,12 +634,14 @@ public class MainScreen extends World
         }else{
             y = 360-(rows/2*CELL_SIZE);
         }
+        //Fills the board with fruits 
         for(int i=0; i<rows;i++){
             for(int j=0;j<cols;j++){
                 if(isNew || board[i][j]== null) board[i][j] = getRandomFruit();
                 addObject(board[i][j],x+j*65,y+i*65);
             }
         }
+        //Displays boosters 
         addObject(melon, 110,515);
         addObject(brush, 235,520);
     }
@@ -651,12 +693,14 @@ public class MainScreen extends World
 
     /**
      * Stores the indexes of the first first within 2D array. 
-     * Remove the first fruit and replace it with the second fruit at the same position within 2D array.
+     * Removes the first fruit and replace it with the second 
+     * fruit at the same position within 2D array.
      * 
      * @param oldOne     Fruit that needs to be replaced 
      * @param newOne     New fruit that replaces the old one
      */
     public void replace(Fruit oldOne, Fruit newOne){
+        //Get indexes of the fruit within the array
         int one = getIndex(oldOne,true);
         int two = getIndex(oldOne,false);
         removeObject(oldOne);
@@ -665,11 +709,18 @@ public class MainScreen extends World
         addObject(board[one][two],x+two*65,y+one*65);
     }
     
+    /**
+     * Replaces given fruit with a special(striped) fruit of the same type.  
+     * 
+     * @param fruit     Fruit that needs to be replaced
+     */
     public void paintStripes(Fruit fruit){
-        Fruit temp = getSpecialFruit(fruit);
+        //Get indexes of the fruit within the array
         int one = getIndex(fruit,true);
         int two = getIndex(fruit,false);
+        Fruit temp = getSpecialFruit(fruit);
         removeObject(board[one][two]);
+        //Replace the fruit with a special fruit
         board[one][two] = temp;
         addObject(board[one][two],x+two*65,y+one*65);
     }
@@ -787,7 +838,7 @@ public class MainScreen extends World
     
     //Method to trigger a popup end screen
     private void endScreen(){
-        run = false;
+        runGame = false;
         Label endScore = new Label(score, 100);
         EndScreen a = new EndScreen();
         Fadescreen b = new Fadescreen();
@@ -799,7 +850,6 @@ public class MainScreen extends World
         addObject(home, getWidth()/2 - 100, 500);
         AchievementButton ach = new AchievementButton();
         addObject(ach, getWidth()/2 + 100, 500);
-        
     }
 
     private void triggerExplosionsFour() {
@@ -859,6 +909,11 @@ public class MainScreen extends World
         return cols;
     }
     
+    /**
+     * Getter for scores.
+     * 
+     * @return int  Number of scores
+     */
     public int getScore() {
         return score;
     }
