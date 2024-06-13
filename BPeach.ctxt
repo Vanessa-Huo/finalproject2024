@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=BPeach
-comment0.text=\n\ Write\ a\ description\ of\ class\ BPeach\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ A\ BPeach\ is\ a\ striped\ peach.\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Peaches.\n\ When\ matched,\ it\ will\ clear\ all\ Peaches\ on\ the\ board\n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=BPeach()
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ BPeach\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment1.text=\n\ A\ constructor\ to\ create\ a\ dotted\ Peach.\n
 numComments=2

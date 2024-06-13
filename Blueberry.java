@@ -6,16 +6,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Megan Lee
  * @version June 2024
  */
-public class Blueberry extends Fruit
-{
+public class Blueberry extends Fruit{
+    /**
+     * A constructor to create a regular Blueberry.
+     */
     public Blueberry(){
         image = new GreenfootImage("blueberry.png");
         image.scale(56,56);
         setImage(image);
-        
+
+        //scaled larger than regular image to simulate a pulse
         pulseImage = new GreenfootImage("blueberry.png");
         pulseImage.scale(65,65);
-            
+
         pulseCount = 0;
     }
 }
