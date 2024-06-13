@@ -1,6 +1,12 @@
 #BlueJ class context
 comment0.target=AchievementScreen
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ AchievementScreen\ here.\r\n\ \r\n\ @author\ Megan\ Lee\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ AchievementScreen\ here.\r\n\ \r\n\ @author\ Megan\ Lee,\ Rick\ Li\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=AchievementScreen()
-numComments=2
+comment2.params=
+comment2.target=void\ started()
+comment3.params=
+comment3.target=void\ act()
+comment4.params=arr
+comment4.target=java.util.ArrayList\ insertionSort(java.util.ArrayList)
+numComments=5
