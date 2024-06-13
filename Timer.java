@@ -1,5 +1,8 @@
 import greenfoot.*;
-
+/**
+ * @author Rick Li
+ * @version June 2024
+ */
 public class Timer extends Actor
 {
     private int timer = 55*60; //about 60 seconds
@@ -22,6 +25,12 @@ public class Timer extends Actor
         }
         if (timer < 1) {
             Greenfoot.delay(60);
+            MainScreen world = (MainScreen) getWorld();
+            world.LEVEL++;
+            //EndingScreen end = new EndingScreen();
+            //Greenfoot.setWorld(end);
+            //EndingScreen end = new EndingScreen();
+            //Greenfoot.setWorld(end);
             done = true;
         }
         System.out.println(timer);

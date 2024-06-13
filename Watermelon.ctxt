@@ -1,12 +1,11 @@
 #BlueJ class context
 comment0.target=Watermelon
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Watermelon\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=first\ onBoard
-comment1.target=Watermelon(boolean,\ boolean)
+comment0.text=\n\ When\ a\ Watermelon\ is\ added,\ it\ clears\ all\ the\ fruits\ within\ a\ 3x3\ range\ around\ it.\n\ \n\ @author\ Vanessa\ Huo\n\ @version\ June\ 2024\n
+comment1.params=onBoard
+comment1.target=Watermelon(boolean)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ replaceFruit()
-comment4.params=
-comment4.target=void\ followMouse()
-numComments=5
+comment3.text=\n\ Replaces\ selected\ fruit\ with\ watermelon\ bomb\n
+numComments=4

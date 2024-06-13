@@ -11,6 +11,7 @@ public class TutorialButton extends Icon
     public TutorialButton(){
         setImage("tutorialButton.png");
     }
+    
     public void act(){
         if (Greenfoot.mouseClicked(this))
         {

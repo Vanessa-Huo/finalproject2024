@@ -6,13 +6,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Megan Lee
  * @version June 2024
  */
-public class Pear extends Fruit
-{
+public class Pear extends Fruit{
+    /**
+     * A constructor create a regular Pear.
+     */
     public Pear(){
         image = new GreenfootImage("pear.png");
         image.scale(56,56);    
         setImage(image);
         
+        //scaled larger than regular image to simulate a pulse
         pulseImage = new GreenfootImage("pear.png");
         pulseImage.scale(65,65);
             

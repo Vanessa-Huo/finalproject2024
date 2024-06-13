@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=BBlueberry
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ BBlueberry\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ A\ BBlueberry\ is\ a\ dotted\ blueberry.\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Blueberries.\n\ When\ matched,\ it\ will\ clear\ all\ Blueberries\ on\ the\ board.\n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=BBlueberry()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ BBlueberry\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.text=\n\ A\ constructor\ to\ create\ a\ dotted\ Blueberry.\n
 numComments=2
