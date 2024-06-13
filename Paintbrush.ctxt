@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Paintbrush
-comment0.text=\r\n\ When\ Paintbrush\ is\ used,\ the\ user\ can\ select\ three\ fruits\ to\ paint\ stripes\ on.\r\n\ \r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ When\ Paintbrush\ is\ used,\ the\ user\ can\ select\ three\ fruits\ to\ paint\ stripes\ on.\n\ \n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=onBoard
 comment1.target=Paintbrush(boolean)
 comment2.params=
