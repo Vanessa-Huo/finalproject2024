@@ -9,38 +9,37 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Watermelon extends Boosters
 {
     /**
-     * Act - do whatever the Watermelon wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * THIS IS VANESSA.
+     * I'M STILL FIXING THE BUGS HERE...PLEASE DONT MOVE ANYTHING THANKS!!!
      */
     private boolean dragging = false;
     private Watermelon temp;
-    private boolean first, onBoard;
+    private boolean onBoard;
     
-    public Watermelon(boolean first, boolean onBoard){
-        
-        
-        this.first=first;
+    public Watermelon(boolean onBoard){
         this.onBoard = onBoard;
-        
-        if(onBoard){
-            image = new GreenfootImage("watermelonBomb.png");
-            image.scale(56,56);
-            pulseImage = new GreenfootImage("watermelonBomb.png");
-            pulseImage.scale(65,65);
-        }
-        else{
-            image = new GreenfootImage("watermelonBomb.png");
+        if(unLock()){
+            if(onBoard){
+                image = new GreenfootImage("watermelonBomb.png");
+                image.scale(56,56);
+                pulseImage = new GreenfootImage("watermelonBomb.png");
+                pulseImage.scale(65,65);
+            }
+            else{
+                image = new GreenfootImage("watermelonBomb.png");
+                image.scale(100,100);
+            }
+        }else{
+            image = new GreenfootImage("watermelonGrey.png");
             image.scale(100,100);
         }
         setImage(image);
-        
         pulseCount = 0;
     }
     
     public void act(){
         super.act();
-        if(Greenfoot.mouseClicked(this) && first){
-            //Selection.setSelecting();
+        if(unLock() && Greenfoot.mouseClicked(this) && !onBoard){
             dragging = true;
         }
         if(dragging){
@@ -50,23 +49,21 @@ public class Watermelon extends Boosters
         }
     }
     
+    private boolean unLock(){
+        boolean result = false;
+        MainScreen world = (MainScreen) getWorld();
+        if(world.LEVEL>0){
+            result = true;
+        }
+        return result;
+    }
+    
     private void replaceFruit(){
         Fruit clickedFruit = (Fruit) Greenfoot.getMouseInfo().getActor();
         if (clickedFruit != this) {
             MainScreen world = (MainScreen) getWorld();
-            world.replace(clickedFruit, new Watermelon(false,true));
-            //getWorld().removeObject(temp);
+            world.replace(clickedFruit, new Watermelon(true));
             dragging = false;
-            setImage(image);
-        }
-    }
-    
-    private void followMouse() {
-        temp = new Watermelon(false,true);
-        if(Greenfoot.mouseMoved(null))
-        {
-            MouseInfo mouse = Greenfoot.getMouseInfo();
-            temp.setLocation(mouse.getX(),mouse.getY());
         }
     }
 }

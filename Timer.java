@@ -16,6 +16,8 @@ public class Timer extends Actor
         if (timer < 1) {
             //Greenfoot.stop();
             Greenfoot.delay(60);
+            MainScreen world = (MainScreen) getWorld();
+            world.LEVEL++;
             EndingScreen end = new EndingScreen();
             Greenfoot.setWorld(end);
         }

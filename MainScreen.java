@@ -12,6 +12,7 @@ public class MainScreen extends World
     private static Fruit[][] board;
     private int rows, cols;
     private static final int CELL_SIZE = 65;
+    public static int LEVEL = 0;
     private int booster1, booster2;
     private int x, y;
     
@@ -42,7 +43,7 @@ public class MainScreen extends World
         addObject(home, 100, getHeight() - 50);
         tut = new TutorialButton();
         addObject(tut, 250, getHeight() - 50);
-        melon = new Watermelon(true,false);
+        melon = new Watermelon(false);
         brush = new Paintbrush(false);
 
         rows = 10;
@@ -499,11 +500,9 @@ public class MainScreen extends World
      */
     public void resetSelection(){
         ArrayList<Selection> selections = (ArrayList<Selection>) getObjects(Selection.class);
-        
         for(Selection s : selections){
             s.resetFruitImage();
         }
-        
         Selection.setSelecting(false);
         removeObjects(selections);
     }
