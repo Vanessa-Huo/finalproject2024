@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Swap
-comment0.text=\n\ Write\ a\ description\ of\ class\ Swap\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ A\ visual\ animation\ of\ two\ fruit\ swapping\ places.\r\n\ If\ not\ successful,\ will\ swap\ twice\ to\ return\ to\ original\ positions.\ \r\n\ \r\n\ @author\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
 comment1.params=fruit1\ fruit2\ direction\ isSucessful
 comment1.target=Swap(Fruit,\ Fruit,\ int,\ boolean)
 comment2.params=

@@ -69,6 +69,9 @@ public class MainScreen extends World
         state = GameState.CHECK_MATCHES;
     }
 
+    /**
+     * Called when world is ran, resets status of Selection
+     */
     public void started(){
         Selection.setSelecting(false);
     }
@@ -500,7 +503,7 @@ public class MainScreen extends World
      * 
      * @param isNew   Initial set up or not
      */
-    private void drawBoard(boolean isNew){
+    public void drawBoard(boolean isNew){
         if(!isNew) removeObjects(getObjects(Fruit.class));
         if(cols%2==0){
             x = 665-(cols/2*CELL_SIZE)+(CELL_SIZE/2);
@@ -514,7 +517,7 @@ public class MainScreen extends World
         }
         for(int i=0; i<rows;i++){
             for(int j=0;j<cols;j++){
-                if(isNew) board[i][j]=getRandomFruit();
+                if(isNew || board[i][j]== null) board[i][j] = getRandomFruit();
                 addObject(board[i][j],x+j*65,y+i*65);
             }
         }
@@ -585,42 +588,57 @@ public class MainScreen extends World
     }
 
     /**
-     * Swaps positions of two fruits within the 2D array.
-     * Refreshes board to display changes.
+     * Swaps positions of two fruits within the 2D array,
+     * determines whether swap is valid or not, and handles each appropriately.
      * 
      * @param outerIndex1   Outer index of first fruit
      * @param innerIndex1   Inner index of first fruit
      * @param outerIndex2   Outer index of second fruit
      * @param outerIndex2   Inner index of second fruit
-     * 
+     * @param direction A number representing direction of selected tile(0-3)
      */
-    public void swapFruits(int outerIndex1, int innerIndex1, int outerIndex2, int innerIndex2){
+    public void swapFruits(int outerIndex1, int innerIndex1, int outerIndex2, int innerIndex2, int direction){
         Fruit temp = board[outerIndex1][innerIndex1];
         board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2];
         board[outerIndex2][innerIndex2] = temp;
+
         //if switch made a crush possible
         if(crushFour(false) || crushThree(false) || crushFive(false)){
-            //System.out.println(state);
-            if(getObjects(Fruit.class).size() >= cols*rows){
-                //System.out.println("resetted");
-                resetSelection();
+            board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
+            board[outerIndex1][innerIndex1] = temp;
 
-                drawBoard(false);
-                //System.out.println(Selection.isSelecting());
-            }
-            else{
-                board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
-                board[outerIndex1][innerIndex1] = temp;
-                dropFruits();
-                swapFruits(outerIndex1, innerIndex1, outerIndex2, innerIndex2);
-            }
+            //removes selection box
+            resetSelection();
+            Swap swap = new Swap(board[outerIndex1][innerIndex1], board[outerIndex2][innerIndex2],direction, true);
+            addObject(swap, board[outerIndex1][innerIndex1].getX(), board[outerIndex1][innerIndex1].getY());
         }
         else{ //if switch cannot form a crush
             board[outerIndex2][innerIndex2] = board[outerIndex1][innerIndex1];            
             board[outerIndex1][innerIndex1] = temp;
+            Swap swap = new Swap(board[outerIndex1][innerIndex1], board[outerIndex2][innerIndex2],direction, false);
+            addObject(swap, board[outerIndex1][innerIndex1].getX(), board[outerIndex1][innerIndex1].getY());
         }
     }
 
+    /**
+     * Swaps positions of two fruits within the 2D array.
+     * 
+     * @param outerIndex1   Outer index of first fruit
+     * @param innerIndex1   Inner index of first fruit
+     * @param outerIndex2   Outer index of second fruit
+     * @param outerIndex2   Inner index of second fruit
+     * @param direction A number representing direction of selected tile(0-3)
+     */
+    public void swapIndexes(int outerIndex1, int innerIndex1, int outerIndex2, int innerIndex2){
+        Fruit temp = board[outerIndex1][innerIndex1];
+        board[outerIndex1][innerIndex1] = board[outerIndex2][innerIndex2];
+        board[outerIndex2][innerIndex2] = temp;
+        System.out.println(outerIndex1 + "," + innerIndex1 + " switches with " + outerIndex2 + "," + innerIndex2);
+    }
+
+    /**
+     * Creates explosion effect for cleared fruits.
+     */
     private void triggerExplosions() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -662,10 +680,20 @@ public class MainScreen extends World
         }
     }
 
+    /**
+     * Getter for number of rows on board.
+     * 
+     * @return int  Number of rows
+     */
     public int getRows(){
         return rows;
     }
 
+    /**
+     * Getter for number of columns on board.
+     * 
+     * @return int  Number of columns
+     */
     public int getColumns(){
         return cols;
     }

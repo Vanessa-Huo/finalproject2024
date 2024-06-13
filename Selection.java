@@ -62,7 +62,6 @@ public class Selection extends Actor
     }
     
     public void act(){
-        //System.out.println(isSelecting);
         if(actor.getWorld() == null){
             getWorld().removeObject(this);
         }
@@ -182,8 +181,7 @@ public class Selection extends Actor
             if(Greenfoot.isKeyDown(key)){
                 int newOuterIndex = ((Fruit)actor).getIndexOfSwap(pos,true);
                 int newInnerIndex = ((Fruit)actor).getIndexOfSwap(pos,false);
-                
-                world.swapFruits(world.getIndex((Fruit)actor, true), world.getIndex((Fruit)actor, false), newOuterIndex, newInnerIndex);
+                world.swapFruits(world.getIndex((Fruit)actor, true), world.getIndex((Fruit)actor, false), newOuterIndex, newInnerIndex, pos);
                 
                 isSelecting = false;
                 

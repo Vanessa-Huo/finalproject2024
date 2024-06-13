@@ -2,7 +2,7 @@ import greenfoot.*;
 
 public class Timer extends Actor
 {
-    private int timer = 55*60; //about 60 seconds
+    private int timer = 55*1800; //about 60 seconds
  
     public Timer()
     {
