@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class StartButton here.
  * 
- * @author Anya Shah
+ * @author Anya Shah, Gennie Won
  * @version (a version number or a date)
  */
 public class PlayButton extends Icon
@@ -17,6 +17,7 @@ public class PlayButton extends Icon
         {
             MainScreen world = new MainScreen();
             Greenfoot.setWorld(world);
+            Greenfoot.playSound("mouseclick2.mp3");
         }
     }
 }

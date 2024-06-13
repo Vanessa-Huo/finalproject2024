@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class TutorialButton here.
  * 
- * @author Anya Shah
+ * @author Anya Shah, Gennie Won
  * @version June 2024
  */
 public class TutorialButton extends Icon
@@ -17,6 +17,7 @@ public class TutorialButton extends Icon
         {
             TutorialScreen world = new TutorialScreen();
             Greenfoot.setWorld(world);
+            Greenfoot.playSound("mouseclick.mp3");
         }
     }
 }
