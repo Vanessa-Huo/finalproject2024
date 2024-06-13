@@ -32,7 +32,7 @@ public class MainScreen extends World
     private GameState state;
     
     PrintWriter out;
-    
+    private boolean once = true;
     public MainScreen()
     {    
         super(1024, 720, 1); 
@@ -126,8 +126,10 @@ public class MainScreen extends World
             //System.out.println("none detected");
             Selection.setSelecting(false);
         }
-        if(timer.done){
+        
+        if(timer.done && once){
             endScreen();
+            once = false;
         }
         if(!run){
             out.println(score);
@@ -591,8 +593,11 @@ public class MainScreen extends World
         run = false;
         Label endScore = new Label(score, 100);
         EndScreen a = new EndScreen();
+        Fadescreen b = new Fadescreen();
+        addObject(b, getWidth()/2, getHeight()/2);
         addObject(a, getWidth()/2, getHeight()/2);
-        addObject(endScore, getWidth()/2, getHeight()/2 - 100);
+        addObject(endScore, getWidth()/2, getHeight()/2 - 50);
+        
         HomeButton home = new HomeButton();
         addObject(home, getWidth()/2 - 100, 500);
         AchievementButton ach = new AchievementButton();
