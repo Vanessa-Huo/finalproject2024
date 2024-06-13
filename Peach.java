@@ -6,13 +6,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Megan Lee
  * @version June 2024
  */
-public class Peach extends Fruit
-{
+public class Peach extends Fruit{
+    /**
+     * A constructor create a regular Peach.
+     */
     public Peach(){
         image = new GreenfootImage("peach.png");
         image.scale(56,56);
         setImage(image);
-
+        
+        //scaled larger than regular image to simulate a pulse
         pulseImage = new GreenfootImage("peach.png");
         pulseImage.scale(65,65);
 

@@ -11,6 +11,7 @@ public class Paintbrush extends Boosters
 {
     private MouseInfo mouse;
     private boolean isActive, onBoard;
+    private boolean paint;
     public Paintbrush(boolean onBoard){
         this.onBoard = onBoard;
         //The booster is activated only if the player had already played the game once
@@ -35,10 +36,24 @@ public class Paintbrush extends Boosters
         isActive = false;
     }
     
-    public void act()
-    {
-        if(Greenfoot.mouseClicked(this)){
-            isActive = true;
+    public void act(){
+        super.act();
+        if(unLock() && Greenfoot.mouseClicked(this) && !onBoard){
+            paint = true;
+        }
+        if(paint){
+            if (Greenfoot.mouseClicked(null) && Greenfoot.getMouseInfo().getActor() instanceof Fruit) {
+                paintFruit();
+            }
+        }
+    }
+    
+    private void paintFruit(){
+        Fruit clickedFruit = (Fruit) Greenfoot.getMouseInfo().getActor();
+        if (clickedFruit != this) {
+            MainScreen world = (MainScreen) getWorld();
+            world.paintStripes(clickedFruit);
+            paint = false;
         }
     }
 }
