@@ -33,7 +33,6 @@ public class Timer extends Actor
             //Greenfoot.setWorld(end);
             done = true;
         }
-        System.out.println(timer);
     }
     
     private void updateImage()

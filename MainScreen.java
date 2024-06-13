@@ -751,6 +751,7 @@ public class MainScreen extends World
         //Replace the fruit with a special fruit
         board[one][two] = temp;
         addObject(board[one][two],x+two*65,y+one*65);
+        boostersUsed2++;
     }
 
     /**
