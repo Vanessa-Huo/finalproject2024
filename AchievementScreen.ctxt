@@ -1,6 +1,11 @@
 #BlueJ class context
 comment0.target=AchievementScreen
+<<<<<<< Updated upstream
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ AchievementScreen\ here.\r\n\ \r\n\ @author\ Megan\ Lee\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+=======
+comment0.text=\r\n\ Achievement\ Screen\ will\ display\ a\ user's\ all-time\ \r\n\ highscore,\ along\ with\ the\ number\ of\ boosters\ used\r\n\ \r\n\ \r\n\ @author\ Megan\ Lee\ \r\n\ @version\ June\ 2024\r\n
+>>>>>>> Stashed changes
 comment1.params=
 comment1.target=AchievementScreen()
+comment1.text=\r\n\ A\ constructor\ to\ create\ achievement\ screen.\r\n
 numComments=2

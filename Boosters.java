@@ -16,7 +16,7 @@ public class Boosters extends Fruit
     }
     
     /**
-     * A method that check if LEVEL is greater than 0, meaning the player had already played once. 
+     * A method that checks if LEVEL is greater than 0, meaning the player had already played once. 
      * If so, unlock the booster.
      */
     public boolean unLock(){
