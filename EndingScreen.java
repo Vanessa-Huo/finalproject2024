@@ -12,6 +12,9 @@ public class EndingScreen extends World
     private AchievementButton ach;
     private double halfWidth = getWidth() / 2;
     private double halfHeight = getHeight() / 2;
+    private int score;
+    // private MainScreen main;
+    // Label scoreLabel;
     /**
      * Constructor for objects of class EndingScreen.
      * 
@@ -26,6 +29,10 @@ public class EndingScreen extends World
         addObject(home, ((int) halfWidth / 2) + 80, 570);
         ach = new AchievementButton();
         addObject(ach, ((getWidth() / 2) + (int) halfWidth / 2) - 80, 570);
+        
+        // score = main.getScore();
+        // scoreLabel = new Label(score, 80);
+        // addObject(scoreLabel, getWidth()/2, getHeight()/2);
     }
     public void act() {
         if(Greenfoot.mouseClicked(home)) {

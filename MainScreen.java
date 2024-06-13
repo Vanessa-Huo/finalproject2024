@@ -574,4 +574,8 @@ public class MainScreen extends World
     public int getColumns(){
         return cols;
     }
+    
+    public int getScore() {
+        return score;
+    }
 }
