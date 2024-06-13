@@ -33,14 +33,14 @@ public class Swap extends Effect{
             fruit2 = temp;
             isSucessful = true;
             MainScreen world = (MainScreen) getWorld();
-            world.swapIndexes(world.getIndex(fruit1, true), world.getIndex(fruit1, false), world.getIndex(fruit2, true), world.getIndex(fruit2, false));
-            world.drawBoard(false);
+            //world.swapIndexes(world.getIndex(fruit1, true), world.getIndex(fruit1, false), world.getIndex(fruit2, true), world.getIndex(fruit2, false));
+            //world.drawBoard(false);
         }
         else{
             MainScreen world = (MainScreen) getWorld();
-            world.swapIndexes(world.getIndex(fruit1, true), world.getIndex(fruit1, false), world.getIndex(fruit2, true), world.getIndex(fruit2, false));
-            world.drawBoard(false);
-            world.removeObject(this);
+            //world.swapIndexes(world.getIndex(fruit1, true), world.getIndex(fruit1, false), world.getIndex(fruit2, true), world.getIndex(fruit2, false));
+            //world.drawBoard(false);
+            //world.removeObject(this);
         }
     }
     
