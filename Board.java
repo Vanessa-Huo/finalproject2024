@@ -12,13 +12,9 @@ public class Board extends Actor
     private GreenfootImage image;
     private int width, height;
     
-    private int cellSize = 50;
-    
-    
     public Board(int rows, int cols, int cellSize) {
         width = cols * cellSize;
         height = rows * cellSize;
-        
         
         GreenfootImage gridImage = new GreenfootImage(width+1, height+1);
         

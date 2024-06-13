@@ -13,9 +13,9 @@ public class BStrawberry extends Strawberry
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public BStrawberry(){
-        image = new GreenfootImage("button-red.png");
+        image = new GreenfootImage("polkadotStrawberry.png");
         image.scale(56,56);
-        pulseImage = new GreenfootImage("button-red.png");
+        pulseImage = new GreenfootImage("polkadotStrawberry.png");
         pulseImage.scale(65,65);
         fruitNum = 2;
         setImage(image);

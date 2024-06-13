@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Megan Lee
  * @version June 2024
  */
-public class Boosters extends Actor
+public class Boosters extends Fruit
 {
     protected GreenfootImage image;
     

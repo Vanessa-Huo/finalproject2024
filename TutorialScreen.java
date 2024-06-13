@@ -8,21 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TutorialScreen extends World
 {
-    //GreenfootImage[] instructions = new GreenfootImage[3]; //Images of different instruction panels 
-    public static int currentScreen = 0; //Track current screen displayed
-    private PlayButton play; // TEMP
-    private HomeButton home; // TEMP
+    GreenfootImage[] instructions = new GreenfootImage[3]; //Images of different instruction panels 
+    public static int currentScreen; //Track current screen displayed
+    
     public TutorialScreen(){
         super(1024, 720, 1); 
-        //prepare();
-        /**
-         * TEMP
-         */
-        setBackground("tempInstructions.png");
-        play = new PlayButton();
-        addObject(play, 330, 600);
-        home = new HomeButton();
-        addObject(home, 330, 700);
+        prepare();
     }
     
     /**
@@ -30,19 +21,24 @@ public class TutorialScreen extends World
      */
     public void prepare() {
         for(int i=0; i<3;i++) {
-            //instructions[i] = new GreenfootImage("images/howtoplay" + (i+1) + ".jpg");
-            //instructions[i].scale(600,400);
+            instructions[i] = new GreenfootImage("howToPlay" + (i+1) + ".png");
         }
-        
+
         BackButton backBtn = new BackButton();
-        addObject(backBtn, getWidth()/2 - 100, getHeight()-100);
+        addObject(backBtn, getWidth()/2 - 100, getHeight()-50);
         
         NextButton nextBtn = new NextButton();
-        addObject(nextBtn, getWidth()/2 + 100, getHeight()-100);
+        addObject(nextBtn, getWidth()/2 + 100, getHeight()-50);
         
         HomeButton homeBtn = new HomeButton();
         addObject(homeBtn, 100, getHeight() - 50);
-        //setBackground(instructions[currentScreen]);
+        
+        PlayButton playBtn = new PlayButton();
+        addObject(playBtn, getWidth() - 100, getHeight() - 50);
+        
+        setBackground(instructions[currentScreen]);
+        
+        currentScreen = 0;
     }
     
     /**
@@ -64,18 +60,6 @@ public class TutorialScreen extends World
     }
     
     public void act(){
-        //setBackground(instructions[currentScreen]);
-        
-        /**
-         * TEMP
-         */
-        if(Greenfoot.mouseClicked(play)) {
-            MainScreen main = new MainScreen();
-            Greenfoot.setWorld(main);
-        }
-        if(Greenfoot.mouseClicked(home)) {
-            TitleScreen title = new TitleScreen();
-            Greenfoot.setWorld(title);
-        }
+        setBackground(instructions[currentScreen]);
     }
 }
