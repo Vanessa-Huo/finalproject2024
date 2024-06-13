@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Explosion here.
+ * An explosion effect for fruits that have been cleared.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Luke Xiao 
+ * @version (06.10.2024)
+ * Image: https://www.vectorstock.com/royalty-free-vector/cartoon-smoke-explosion-game-sprite-animate-effect-vector-42343324
  */
 public class Explosion extends Actor
 {
@@ -14,12 +15,12 @@ public class Explosion extends Actor
     private int delayCounter;
 
     public Explosion() {
-        images = new GreenfootImage[3]; // Adjust the number of images accordingly
+        images = new GreenfootImage[9]; // Adjust the number of images accordingly
         for (int i = 0; i < images.length; i++) {
             images[i] = new GreenfootImage("images/Explosion/Cut/" + i + ".png");
         }
         currentImage = 0;
-        delay = 1.5; // Reduced delay to speed up animation
+        delay = 2.5; // Reduced delay to speed up animation
         delayCounter = 0;
         setImage(images[currentImage]);
         
