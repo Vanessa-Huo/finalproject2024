@@ -24,15 +24,19 @@ public class ExplosionFour extends Actor
         delayCounter = 0;
         setImage(images[currentImage]);
         
+        System.out.println("ExplosionFour created, starting with image " + currentImage);
     }
 
     public void act() 
     {
+        System.out.println("ExplosionFour act method called, delayCounter: " + delayCounter);
         if (delayCounter >= delay) {
             currentImage++;
             if (currentImage < images.length) {
+                System.out.println("Changing to image " + currentImage);
                 setImage(images[currentImage]);
             } else {
+                System.out.println("Animation finished, removing ExplosionFour");
                 getWorld().removeObject(this);
             }
             delayCounter = 0;
