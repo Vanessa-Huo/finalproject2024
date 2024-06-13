@@ -24,25 +24,12 @@ public class EndingScreen extends World
         super(1024, 720, 1);
         
         setBackground("gameOverScreen.png");
-        home = new HomeButton();
-        addObject(home, ((int) halfWidth / 2) + 80, 570);
-        ach = new AchievementButton();
-        addObject(ach, ((getWidth() / 2) + (int) halfWidth / 2) - 80, 570);
         
         // score = main.getScore();
         // scoreLabel = new Label(score, 80);
         // addObject(scoreLabel, getWidth()/2, getHeight()/2);
     }
     public void act() {
-        if(Greenfoot.mouseClicked(home)) {
-            TitleScreen title = new TitleScreen();
-            Greenfoot.setWorld(title);
-        }
-        if(Greenfoot.mouseClicked(ach)) {
-            AchievementScreen achieve = new AchievementScreen();
-            Greenfoot.setWorld(achieve);
-        }
-        
         homeBtn = new HomeButton();
         addObject(homeBtn, 100, getHeight() - 50);
         
