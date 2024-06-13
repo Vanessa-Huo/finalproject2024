@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class MainScreen extends World
 {
-    public static int LEVEL = 1;
+    public static int LEVEL = 0;
     
     //Grid
     private static final int CELL_SIZE = 65;
