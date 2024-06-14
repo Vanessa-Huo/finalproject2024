@@ -14,15 +14,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Selection extends Actor
 {
     public static final Color TRANSPARENT_WHITE = new Color (255, 255, 255, 80);
-
+    
+    private static boolean isSelecting; //if user is currently dragging box to choose location
+    
     private GreenfootImage image;//selection box picture
     private Actor actor; //target actor
     private MouseInfo mouse; //mouse of user
-
-    private static boolean isSelecting;
     private int width, height; //dimensions of selection box 
     private int initialPosX, initialPosY; //initial position of selection box
-    private int actCount;//used at start to set initial position coords
     private int pos; //current location of selection box; -1 = default, 0 = above, 1 = right, 2 = down, 3 = left
     private boolean topEdge, rightEdge, bottomEdge, leftEdge;
 
@@ -38,46 +37,47 @@ public class Selection extends Actor
         this.actor = actor;
         this.width = width;
         this.height = height;
-        
+
         //uncomment below for built-in image
         //image = drawBox ();
-        
+
         image = new GreenfootImage("selectBorder.png");
         image.setTransparency(0);
         setImage(image);
-        
+
         pos = -1;
-        actCount = 0;
     }
-    
+
+    /**
+     * A method called by the Greenfoot system when an Actor is added to a world.
+     * Determines whether selected fruit is along any outer edges of the board.
+     */
     public void addedToWorld(World world){
         MainScreen mainScreen = (MainScreen) world;
-        int rowNumber = mainScreen.getIndex((Fruit) actor, true) + 1;
-        int columnNumber = mainScreen.getIndex((Fruit) actor, false) + 1;
-        
-        topEdge = rowNumber == 1;
-        rightEdge = columnNumber == mainScreen.getRows();
-        bottomEdge = rowNumber  == mainScreen.getColumns();
-        leftEdge = columnNumber  == 1;
+        int rowNumber = mainScreen.getIndex((Fruit) actor, true) + 1; //row number of fruit
+        int columnNumber = mainScreen.getIndex((Fruit) actor, false) + 1; //column number of fruit
+
+        topEdge = rowNumber == 1; //on first row
+        rightEdge = columnNumber == mainScreen.getRows(); //on last column
+        bottomEdge = rowNumber  == mainScreen.getColumns(); //on bottom row
+        leftEdge = columnNumber  == 1; //on first column
+
+        //set initial position of selection box at start
+        initialPosX = actor.getX();
+        initialPosY = actor.getY(); 
     }
-    
+
     public void act(){
         if(actor.getWorld() == null){
+            //if actor removed, remove its selection box too
             getWorld().removeObject(this);
         }
         else{
-            //set initial position of selection box at start
-            if(actCount == 1){
-                initialPosX = getX();
-                initialPosY = getY(); 
-            }
-            checkKey("Enter");
-            
+            checkKey("Enter"); 
+
             ((Fruit)actor).pulseImage();
 
             followMouse();
-            
-            if(actCount<2) actCount++;
         }
     }
 
@@ -86,16 +86,18 @@ public class Selection extends Actor
      * Will update position of selection box accordingly in the direction of most signficance.
      */
     private void followMouse () {
-        if(image.getTransparency() == 0 && pos != -1){
-            image.setTransparency(255);
-        }
         mouse = Greenfoot.getMouseInfo(); //user's mouse
         int xCoord, yCoord; //mouse coords
 
         //cell dimensions to translate to
         int xMovementFactor = width; 
         int yMovementFactor = height;
-
+        
+        //when mouse has been dragged by user, display selection
+        if(image.getTransparency() == 0 && pos != -1){
+            image.setTransparency(255);
+        }
+        
         if (mouse != null){
             // check for dragging of selection box
             if(Greenfoot.mouseDragged(this)){
@@ -121,7 +123,8 @@ public class Selection extends Actor
                         break;
                 }
             }
-
+            
+            //after dragging, no longer selecting
             if(Greenfoot.mouseDragEnded(this)){
                 isSelecting = false;
             }
@@ -182,21 +185,21 @@ public class Selection extends Actor
                 int newOuterIndex = ((Fruit)actor).getIndexOfSwap(pos,true);
                 int newInnerIndex = ((Fruit)actor).getIndexOfSwap(pos,false);
                 world.swapFruits(world.getIndex((Fruit)actor, true), world.getIndex((Fruit)actor, false), newOuterIndex, newInnerIndex, pos);
-                
+
                 isSelecting = false;
-                
+
                 world.removeObject(this);
             }
         }
     }
-    
+
     /**
      * Selected Actor will change to its original image. 
      */
     public void resetFruitImage(){
         ((Fruit) actor).resetImage();
     }
-    
+
     /**
      * Draws a translucent white box with a border at its corners.
      * 
@@ -239,7 +242,7 @@ public class Selection extends Actor
     public static boolean isSelecting(){
         return isSelecting;
     }
-    
+
     /**
      * Sets isSelecting value
      * 

@@ -1,9 +1,13 @@
 import greenfoot.*;
-
+/**
+ * @author Rick Li
+ * @version June 2024
+ */
 public class Timer extends Actor
 {
     private int timer = 55*60; //about 60 seconds
- 
+    public boolean done = false;
+    boolean first = true;
     public Timer()
     {
         updateImage();
@@ -12,17 +16,25 @@ public class Timer extends Actor
     public void act()
     {
         timer--;
-        if (timer % 55 == 0) updateImage();
+        if ((timer % 55 == 0) && !done) updateImage();
+        
+        if(timer < 495 && first==true){
+            setLocation(getX() + 20, getY());
+            first = false; 
+        }
+        
         if (timer < 1) {
-            //Greenfoot.stop();
             Greenfoot.delay(60);
             MainScreen world = (MainScreen) getWorld();
             world.LEVEL++;
-            EndingScreen end = new EndingScreen();
-            Greenfoot.setWorld(end);
+            //EndingScreen end = new EndingScreen();
+            //Greenfoot.setWorld(end);
+            //EndingScreen end = new EndingScreen();
+            //Greenfoot.setWorld(end);
+            done = true;
         }
     }
-     
+    
     private void updateImage()
     {
         //Generates an image for the label, can be replaced with other images

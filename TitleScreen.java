@@ -1,16 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import greenfoot.World;
 /**
- * Write a description of class TitleScreen here.
+ * Title screen will display the title and start, tutorial, achievement buttons.
  * 
  * @author Anya Shah
- * @version (a version number or a date)
+ * @version June 2024
  */
 public class TitleScreen extends World
 {
     private PlayButton play;
     private AchievementButton ach;
     private TutorialButton tut;
+    
+    private GreenfootSound music; //sound
     /**
      * Constructor for objects of class TitleScreen.
      * 
@@ -26,9 +28,24 @@ public class TitleScreen extends World
         addObject(play, getWidth() / 2, 420);
         ach = new AchievementButton();
         addObject(ach, (getWidth() / 2) + 200, 420);
+        music = new GreenfootSound("backgroundMusic3.mp3");
+        music.setVolume(70);
     }
-
-    public void act() {
-        
+    
+    public void act(){
+        if(Greenfoot.mouseClicked(play)){
+            music.stop();
+            MainScreen game = new MainScreen();
+            Greenfoot.setWorld(game);
+            Greenfoot.playSound("mouseclick.mp3");
+        }
+    }
+    
+    public void stopped() {
+        music.pause();
+    }
+    
+    public void started() {
+        music.playLoop();
     }
 }

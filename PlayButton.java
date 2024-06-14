@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class StartButton here.
+ * StartButton is a button used by the user to return to switch to game screen.
  * 
- * @author Anya Shah
- * @version (a version number or a date)
+ * @author Anya Shah, Gennie Won
+ * @version June 2024
  */
 public class PlayButton extends Icon
 {
@@ -17,6 +17,7 @@ public class PlayButton extends Icon
         {
             MainScreen world = new MainScreen();
             Greenfoot.setWorld(world);
+            Greenfoot.playSound("mouseclick2.mp3");
         }
     }
 }

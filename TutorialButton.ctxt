@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=TutorialButton
-comment0.text=\n\ Write\ a\ description\ of\ class\ TutorialButton\ here.\n\ \n\ @author\ Anya\ Shah\n\ @version\ June\ 2024\n
+comment0.text=\r\n\ TutorialButton\ is\ a\ button\ used\ by\ the\ user\ to\ return\ to\ switch\ to\ instructions\ screen.\r\n\ \r\n\ @author\ Anya\ Shah,\ Gennie\ Won\r\n\ @version\ June\ 2024\r\n
 comment1.params=
 comment1.target=TutorialButton()
 comment2.params=

@@ -1,6 +1,7 @@
 #BlueJ class context
 comment0.target=Blueberry
-comment0.text=\n\ Blueberry\ is\ a\ type\ of\ fruit.\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Blueberrries.\n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
+comment0.text=\r\n\ Blueberry\ is\ a\ type\ of\ fruit.\r\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Blueberrries.\r\n\ \r\n\ @author\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
 comment1.params=
 comment1.target=Blueberry()
+comment1.text=\r\n\ A\ constructor\ to\ create\ a\ regular\ Blueberry.\r\n
 numComments=2

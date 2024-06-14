@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class AchievementButton here.
+ * AchievementButton is a button used by the user to switch to achievements screen. 
  * 
  * @author Anya Shah
- * @version (a version number or a date)
+ * @version June 2024
  */
 public class AchievementButton extends Icon
 {
@@ -16,6 +16,7 @@ public class AchievementButton extends Icon
         {
             AchievementScreen world = new AchievementScreen();
             Greenfoot.setWorld(world);
+            Greenfoot.playSound("mouseclick.mp3");
         }
     }
 }

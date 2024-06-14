@@ -1,17 +1,17 @@
 #BlueJ class context
 comment0.target=TutorialScreen
-comment0.text=\n\ Provides\ user\ with\ a\ "slideshow"\ of\ how\ to\ play\ the\ game.\n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
+comment0.text=\r\n\ Provides\ user\ with\ a\ "slideshow"\ of\ how\ to\ play\ the\ game.\r\n\ \r\n\ @author\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
 comment1.params=
 comment1.target=TutorialScreen()
 comment2.params=
 comment2.target=void\ prepare()
-comment2.text=\n\ Add\ buttons,\ assign\ instructon\ panel\ images\ to\ array.\n
+comment2.text=\r\n\ Add\ buttons,\ assign\ instructon\ panel\ images\ to\ array.\r\n
 comment3.params=
 comment3.target=void\ switchBack()
-comment3.text=\n\ Switch\ back\ to\ previous\ screen.\n
+comment3.text=\r\n\ Switch\ back\ to\ previous\ screen.\r\n
 comment4.params=
 comment4.target=void\ switchNext()
-comment4.text=\n\ Switch\ forward\ to\ next\ screen.\n
+comment4.text=\r\n\ Switch\ forward\ to\ next\ screen.\r\n
 comment5.params=
 comment5.target=void\ act()
 numComments=6
