@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Pineapple
-comment0.text=\n\ Pineapple\ is\ a\ type\ of\ fruit.\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Pineapples.\n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
+comment0.text=\r\n\ Pineapple\ is\ a\ type\ of\ fruit.\r\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Pineapples.\r\n\ \r\n\ @author\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
 comment1.params=
 comment1.target=Pineapple()
-comment1.text=\n\ A\ constructor\ create\ a\ regular\ Pineapple.\n
+comment1.text=\r\n\ A\ constructor\ create\ a\ regular\ Pineapple.\r\n
 numComments=2

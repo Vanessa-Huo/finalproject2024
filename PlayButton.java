@@ -1,13 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class StartButton here.
+ * StartButton is a button used by the user to return to switch to game screen.
  * 
  * @author Anya Shah, Gennie Won
- * @version (a version number or a date)
+ * @version June 2024
  */
 public class PlayButton extends Icon
 {
+    /**
+     * Constructor to create a play button.
+     */
     public PlayButton(){
         setImage("playButton.png");
     }

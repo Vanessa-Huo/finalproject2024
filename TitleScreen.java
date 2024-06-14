@@ -41,10 +41,16 @@ public class TitleScreen extends World
         }
     }
     
+    /**
+     * Called when world is ran, controls longer sounds
+     */
     public void stopped() {
         music.pause();
     }
     
+    /**
+     * Called when world is ran, controls longer sounds
+     */
     public void started() {
         music.playLoop();
     }

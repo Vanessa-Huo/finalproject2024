@@ -1,11 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ExplosionFour here.
+ * An animation for matching 4 fruits together.
  * 
  * @author Luke Xiao 
  * @version (06.12.2024)
- * Image: https://besthvet.best/product_details/31457511.html
  */
 public class ExplosionFour extends Actor
 {

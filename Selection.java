@@ -73,7 +73,7 @@ public class Selection extends Actor
             getWorld().removeObject(this);
         }
         else{
-            checkKey("Enter"); 
+            checkKey("Space"); 
 
             ((Fruit)actor).pulseImage();
 

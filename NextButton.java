@@ -8,9 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class NextButton extends Icon
 {
+    /**
+     * Constructor to create a next button.
+     */
     public NextButton(){
         setImage("nextButton.png");
     }
+    
     public void act()
     {
         if (Greenfoot.mouseClicked(this))
