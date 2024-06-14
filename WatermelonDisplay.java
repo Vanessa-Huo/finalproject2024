@@ -13,6 +13,11 @@ public class WatermelonDisplay extends BoosterDisplay
         wt.scale(56, 56);
         setImage(wt);
     }
+    public WatermelonDisplay(boolean achievement){
+        GreenfootImage wt = new GreenfootImage("watermelonBomb.png");
+        wt.scale(135, 135);
+        setImage(wt);   
+    }
     /**
      * Act - do whatever the WatermelonDisplay wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

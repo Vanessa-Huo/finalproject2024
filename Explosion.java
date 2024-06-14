@@ -13,7 +13,8 @@ public class Explosion extends Actor
     private int currentImage;
     private double delay;
     private int delayCounter;
-
+    private static GreenfootSound[] explosionSound;
+    private static int explosionSoundIndex;
     public Explosion() {
         images = new GreenfootImage[9]; // Adjust the number of images accordingly
         for (int i = 0; i < images.length; i++) {
@@ -26,6 +27,22 @@ public class Explosion extends Actor
         
     }
 
+    public static void init() {
+        explosionSoundIndex = 0;
+        explosionSound = new GreenfootSound[30];
+        for(int i = 0; i < explosionSound.length; i++) {
+            explosionSound[i] = new GreenfootSound("explosion.mp3");
+        }
+    }
+    
+    public static void playExplosionSound() {
+        explosionSound[explosionSoundIndex].setVolume(50);
+        explosionSound[explosionSoundIndex].play();
+        explosionSoundIndex++;
+        if(explosionSoundIndex >= explosionSound.length) {
+            explosionSoundIndex = 0;
+        }
+    }
     public void act() 
     {
         if (delayCounter >= delay) {

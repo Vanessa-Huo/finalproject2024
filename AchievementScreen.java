@@ -4,6 +4,7 @@ import java.util.NoSuchElementException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+
 /**
  * Achievement Screen will display a user's all-time 
  * highscore, along with the number of boosters used
@@ -31,8 +32,7 @@ public class AchievementScreen extends World
         } catch(FileNotFoundException e){
             System.out.println("File not found");
         }
-    }
-    public void started(){
+        
         boolean moreLines = true;
         numLines = 0;
         while (moreLines){
@@ -50,13 +50,19 @@ public class AchievementScreen extends World
         int xA = getWidth()/2 - 50;
         int xB = getWidth()/2 + 50;
         int Y = 100;
+        //Displays high score
         Label score = new Label(sortedScores.get(sortedScores.size() - 1), 200);
         score.setFillColor(Color.BLACK);
         addObject(score, getWidth()/2, getHeight()/2 - 40);
-    }
-    public void act(){
         
-        
+        WatermelonDisplay booster1 = new WatermelonDisplay(true);
+        PaintbrushDisplay booster2 = new PaintbrushDisplay(true);
+        Label bst1 = new Label("x" + MainScreen.boostersUsed1, 80);
+        Label bst2 = new Label("x" + MainScreen.boostersUsed2, 80);
+        addObject(booster1, getWidth()/2 + 95, getHeight()/2 + 126);
+        addObject(booster2, getWidth()/2 + 294, getHeight()/2 + 140);
+        addObject(bst1, getWidth()/2 + 140, getHeight()/2 + 170);
+        addObject(bst2, getWidth()/2 + 335, getHeight()/2 + 170);
     }
     
     public static ArrayList<Integer> insertionSort(ArrayList<Integer> arr) {
