@@ -8,8 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Paintbrush extends Booster
 {
     private boolean paint = false;
-    //private boolean onBoard;
-    //private static int numBooster;
     
     public Paintbrush(boolean onBoard){
         super(onBoard,"paintbrush.png","paintbrushGrey.png");

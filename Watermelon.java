@@ -9,8 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Watermelon extends Booster
 {
     private boolean dragging = false;
-    //private boolean onBoard;
-    //private static int numBooster;
 
     public Watermelon(boolean onBoard){
         super(onBoard,"watermelonBomb.png","watermelonGrey.png");
