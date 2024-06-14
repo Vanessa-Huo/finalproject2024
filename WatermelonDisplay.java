@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class WatermelonDisplay here.
  * 
  * @author (your name) 
- * @version (a version number or a date)
+ * @version June 2024
  */
 public class WatermelonDisplay extends BoosterDisplay
 {

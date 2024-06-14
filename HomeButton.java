@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class HomeButton here.
+ * HomeButton.
  * 
  * @author Anya Shah
- * @version (a version number or a date)
+ * @version June 2024
  */
 public class HomeButton extends Icon
 {

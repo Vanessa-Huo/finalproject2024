@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class AchievementButton here.
+ * AchievementButton.
  * 
  * @author Anya Shah
- * @version (a version number or a date)
+ * @version June 2024
  */
 public class AchievementButton extends Icon
 {

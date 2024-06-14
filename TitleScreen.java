@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import greenfoot.World;
 /**
- * Write a description of class TitleScreen here.
+ * Title screen will display the title and start, tutorial, achievement buttons.
  * 
  * @author Anya Shah
- * @version (a version number or a date)
+ * @version June 2024
  */
 public class TitleScreen extends World
 {

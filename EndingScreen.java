@@ -1,10 +1,11 @@
     import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EndingScreen here.
+ * Ending Screen will display the score for this round, along with the number
+ * of boosters the player gets for next round.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Rick Li, Vanessa Huo
+ * @version June 2024
  */
 public class EndingScreen extends World
 {

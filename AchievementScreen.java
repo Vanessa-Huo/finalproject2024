@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * to achieve that highscore.
  * 
  * @author Megan Lee, Rick Li
- * @version (a version number or a date)
+ * @version June 2024
  */
 public class AchievementScreen extends World
 {
