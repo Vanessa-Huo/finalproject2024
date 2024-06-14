@@ -4,8 +4,8 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
 /**
- * <h1>Fruit Crusher - Grid Based Game</h1>
- * <p> Fruit Crusher is a matching-tile puzzle game inspired by popular matching game Candy Crush. 
+ * <h1>Fruit Crush - Grid Based Game</h1>
+ * <p> Fruit Crush is a matching-tile puzzle game inspired by popular matching game Candy Crush. 
  *     Players swap colored fruits on a aboard to create a row or column of at least three matching fruits.
  *     The aim is to score higher points in a time limit of 60s by matching fruits, each match will help 
  *     clear the board and crush more fruits! 
@@ -32,6 +32,7 @@ import java.io.IOException;
  * <li> Clicking sound 1: <a href="https://pixabay.com/sound-effects/button-124476/">Sound by Pixabay</a>
  * <li> Clicking sound 2: <a href="https://pixabay.com/sound-effects/sound-1-167181/">Sound by Sub_0987654321 on Pixabay</a>
  * <li> Explosion: <a href="https://pixabay.com/sound-effects/explosion-91872/">Sound by Pixabay</a>
+ * 
  * @author Vanessa Huo, Megan Lee, Rick Li, Anya Shah, Gennie Won, Luke Xiao
  * @version June 2024
  */
@@ -80,6 +81,7 @@ public class MainScreen extends World
     {    
         //Create a new world with 1020x720 cells with a cell size of 1x1 pixels.
         super(1024, 720, 1); 
+        Greenfoot.setSpeed(50);
         
         //The game is still in preparation
         runGame = false;
@@ -384,7 +386,7 @@ public class MainScreen extends World
     }
 
     /**
-     * Checks if a watermelonBomb is added to the board. It tirggers a explosion. 
+     * Checks if a watermelonBomb is added to the board. It triggers an explosion. 
      * The explosion removes all the fruits that are in the 3x3 range around the watermelon. 
      * 
      * @return boolean  Crush was found (true) or not (false)
@@ -626,7 +628,7 @@ public class MainScreen extends World
 
     /**
      * Check if two objects are in the same class.
-     * If one of the objects is in the subclass, they will still be consiered in the same class. 
+     * If one of the objects is in the subclass, they will still be considered in the same class. 
      * 
      * @param i     First fruit
      * @param j     Second fruit
@@ -720,7 +722,7 @@ public class MainScreen extends World
     }
 
     /**
-     * Stores the indexes of the first first within 2D array. 
+     * Stores the indexes of the first fruit within 2D array. 
      * Removes the first fruit and replace it with the second 
      * fruit at the same position within 2D array.
      * 

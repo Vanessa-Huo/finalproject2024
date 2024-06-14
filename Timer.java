@@ -21,8 +21,8 @@ public class Timer extends Actor
         if(timer < 495 && first==true){
             setLocation(getX() + 20, getY());
             first = false; 
-            
         }
+        
         if (timer < 1) {
             Greenfoot.delay(60);
             MainScreen world = (MainScreen) getWorld();
