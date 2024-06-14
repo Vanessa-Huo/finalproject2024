@@ -8,9 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BackButton extends Icon
 {
+    /**
+     * Constructor to create a back button.
+     */
     public BackButton(){
         setImage("backButton.png");
     }
+    
     public void act()
     {
         if (Greenfoot.mouseClicked(this))

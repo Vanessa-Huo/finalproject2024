@@ -1,11 +1,10 @@
 #BlueJ class context
 comment0.target=PaintbrushDisplay
-comment0.text=\n\ Write\ a\ description\ of\ class\ PaintbrushDisplay\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ An\ icon\ for\ paintbrush\ booster.\r\n\ \r\n\ @author\ Rick\ Li\r\n\ @version\ June\ 2024\r\n
 comment1.params=
 comment1.target=PaintbrushDisplay()
+comment1.text=\r\n\ Constructor\ for\ paintbrush\ icon\r\n
 comment2.params=achievement
 comment2.target=PaintbrushDisplay(boolean)
-comment3.params=
-comment3.target=void\ act()
-comment3.text=\n\ Act\ -\ do\ whatever\ the\ PaintbrushDisplay\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-numComments=4
+comment2.text=\r\n\ A\ variation\ of\ a\ constructor\ for\ paintbrush\ icon.\r\n\ Used\ on\ achievement\ screen.\r\n
+numComments=3

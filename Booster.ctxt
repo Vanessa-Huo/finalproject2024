@@ -1,15 +1,15 @@
 #BlueJ class context
 comment0.target=Booster
-comment0.text=\n\ A\ booster\ is\ a\ special\ item\ that\ cannot\ be\ formed\ during\ the\ game.\ \n\ It\ helps\ players\ clear\ the\ board\ by\ providing\ various\ advantages.\n\ Boosters\ are\ only\ activated\ when\ game\ level\ is\ greater\ than\ 0.\ \n\ \n\ @author\ Vanessa\ Huo\n\ @version\ June\ 2024\n
+comment0.text=\r\n\ A\ booster\ is\ a\ special\ item\ that\ cannot\ be\ formed\ during\ the\ game.\ \r\n\ It\ helps\ players\ clear\ the\ board\ by\ providing\ various\ advantages.\r\n\ Boosters\ are\ only\ activated\ when\ game\ level\ is\ greater\ than\ 0.\ \r\n\ \r\n\ @author\ Vanessa\ Huo\r\n\ @version\ June\ 2024\r\n
 comment1.params=onBoard\ imageName\ imageNameGrey
 comment1.target=Booster(boolean,\ java.lang.String,\ java.lang.String)
 comment2.params=
 comment2.target=boolean\ unLock()
-comment2.text=\n\ Checks\ current\ game\ level.\ If\ greater\ than\ 0,\ the\ boosters\ are\ activated.\n
+comment2.text=\r\n\ Checks\ current\ game\ level.\ If\ greater\ than\ 0,\ the\ boosters\ are\ activated.\r\n
 comment3.params=
 comment3.target=int\ getNumB()
-comment3.text=\n\ Returns\ the\ number\ of\ boosters\ player\ can\ use.\n\ @return\ int\ The\ number\ of\ boosters\ player\ can\ use\n
+comment3.text=\r\n\ Returns\ the\ number\ of\ boosters\ player\ can\ use.\r\n\ @return\ int\ The\ number\ of\ boosters\ player\ can\ use\r\n
 comment4.params=addMelon\ addBrush
 comment4.target=void\ setNumB(int,\ int)
-comment4.text=\n\ Increases\ the\ number\ of\ boosters\ player\ can\ use.\n\ \n\ @param\ addMelon\ \ \ The\ number\ of\ watermelon\ bomb\ increased\n\ @param\ addBrush\ \ \ The\ number\ of\ paint\ brush\ increased\n
+comment4.text=\r\n\ Increases\ the\ number\ of\ boosters\ player\ can\ use.\r\n\ \r\n\ @param\ addMelon\ \ \ The\ number\ of\ watermelon\ bomb\ increased\r\n\ @param\ addBrush\ \ \ The\ number\ of\ paint\ brush\ increased\r\n
 numComments=5

@@ -1,10 +1,10 @@
     import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EndingScreen here.
+ * EndingScreen displays a user's score from recent game
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Rick Li
+ * @version June 2024
  */
 public class EndingScreen extends World
 {

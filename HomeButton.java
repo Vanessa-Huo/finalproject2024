@@ -1,13 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class HomeButton here.
+ * HomeButton is a button used by the user to return to home screen. 
  * 
  * @author Anya Shah
- * @version (a version number or a date)
+ * @version June 2024
  */
 public class HomeButton extends Icon
 {
+    /**
+     * Constructor to create a home button.
+     */
     public HomeButton(){
         setImage("homeButton.png");
     }

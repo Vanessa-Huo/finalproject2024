@@ -23,8 +23,14 @@ import java.io.IOException;
  * <li> Question mark: <a href="https://www.vecteezy.com/vector-art/26434406-question-mark-help-support-icon-vector-isolated-on-circle-background">Question mark, help support icon vector isolated on circle background Vectors by Vecteezy</a>
  * <li> Save: <a href="https://cdn.iconscout.com/icon/free/png-256/free-save-1779882-1518534.png?f=webp">Image by IconScout</a>
  * <li> Bomb: <a href="https://www.freepik.com/free-vector/bomb-floating-cartoon-vector-icon-illustration-object-holiday-icon-concept-isolated-flat_38270886.htm#query=cartoon%20bomb&position=27&from_view=keyword&track=ais_user&uuid=85de0172-f070-4146-bd2e-711ed18bb0fe">Image by catalyststuff on Freepik</a>
- * <li> Watermelon: <a href="https://www.vectorstock.com/royalty-free-vector/part-of-watermelon-vector-45364331">Image by Brgfx on VectorStock</a>
+ * <li> Watermelon: <a Generated with Microsoft CoPilot</a>
+ * <li> Paintbrush: <a Generated with Microsoft CoPilot</a>
  * <li> Mouse cursor: <a href="https://en.m.wikipedia.org/wiki/File:Mouse-cursor-hand-pointer.svg">Image by Lordalpha1 on Wikipedia</a>
+ * <li> Explosion for 4: <https://www.vectorstock.com/royalty-free-vector/cartoon-smoke-explosion-game-sprite-animate-effect-vector-42343324</a>
+ * <li> Explosion for 3: <https://besthvet.best/product_details/31457511.html</a>
+ * <li> Mouse cursor: <a href="https://en.m.wikipedia.org/wiki/File:Mouse-cursor-hand-pointer.svg">Image by Lordalpha1 on Wikipedia</a>
+ * <li> Mouse cursor: <a href="https://en.m.wikipedia.org/wiki/File:Mouse-cursor-hand-pointer.svg">Image by Lordalpha1 on Wikipedia</a>
+ * 
  * <p>
  * <h2> Sound Credits </h2>
  * <li> Background music: <a href="https://pixabay.com/sound-effects/light-tune-no1-14485/">Sound by Pixabay</a>
@@ -144,7 +150,7 @@ public class MainScreen extends World
     }
 
     /**
-     * Called when world is ran, resets status of Selection
+     * Called when world is ran
      */
     public void started(){
         Selection.setSelecting(false);
