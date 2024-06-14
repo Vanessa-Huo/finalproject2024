@@ -10,28 +10,28 @@ import java.util.ArrayList;
 public class MainScreen extends World
 {
     public static int LEVEL = 0;
-    
+
     //Grid
     private static final int CELL_SIZE = 65;
     private static Fruit[][] board;
     private int rows, cols;
     private int x, y;
-    
+
     private int booster1, booster2;
 
     private boolean run;
     private int score;
-    
+
     //Display
     Timer timer;
     Label scoreLabel;
     Watermelon melon;
     Paintbrush brush;
-    
+
     //Buttons
     private HomeButton home;
     private TutorialButton tut;
-    
+
     //Animation 
     private GreenfootImage[] explode = new GreenfootImage[9];
     private int animCounter, animDelay, animIndex, maxIndex;
@@ -104,7 +104,7 @@ public class MainScreen extends World
                     break;
                 case REMOVE_MATCHES:
                     triggerExplosions();
-                    triggerExplosionsFour();
+                    //triggerExplosionsFour();
                     state = GameState.PLAY_EXPLOSION;
                     break;
                 case PLAY_EXPLOSION:
@@ -125,10 +125,10 @@ public class MainScreen extends World
         /*
         scoreLabel.setValue(score);
         if(getObjects(Selection.class).size() == 0){
-            //System.out.println("none detected");
-            Selection.setSelecting(false);
+        //System.out.println("none detected");
+        Selection.setSelecting(false);
         }
-        */
+         */
     }
 
     /**
@@ -137,6 +137,7 @@ public class MainScreen extends World
      * @param removeCrushes   Remove found crushes (true) or not (false)
      * @return boolean  Crush was found (true) or not (false)
      */
+
     private boolean crushThree(boolean removeCrushes) {
         boolean crushFound = false;
         for(int i=0; i<rows;i++){
@@ -169,6 +170,8 @@ public class MainScreen extends World
      * @param removeCrushes   Remove found crushes (true) or not (false)
      * @return boolean  Crush was found (true) or not (false)
      */
+
+
     private boolean crushFour(boolean removeCrushes){
         boolean crushFound = false;
         for(int i=0; i<rows;i++){
@@ -617,9 +620,12 @@ public class MainScreen extends World
     /**
      * Creates explosion effect for cleared fruits.
      */
+
     private void triggerExplosions() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
+                //int horizontalMatch = getMatchLength(i, j, 0, 1);
+                //int verticalMatch = getMatchLength(i, j, 1, 0);
                 if (board[i][j] == null) {
                     Explosion explosion = new Explosion();
                     addObject(explosion, x + j * 65, y + i * 65);
@@ -629,34 +635,51 @@ public class MainScreen extends World
     }
 
     private void triggerExplosionsFour() {
+        //System.out.println("Triggering Explosions for Four");
         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols - 3; j++) {
-                int length = getMatchLength(i, j, 0, 1);
-                if (length == 4) {
-                    for (int k = 0; k < 4; k++) {
-                        if (board[i][j + k] == null) {
-                            ExplosionFour explosion = new ExplosionFour();
-                            addObject(explosion, x + (j + k) * 65, y + i * 65);
-                        }
-                    }
-                }
-            }
-        }
-
-        for (int i = 0; i < rows - 3; i++) {
             for (int j = 0; j < cols; j++) {
-                int length = getMatchLength(i, j, 1, 0);
-                if (length == 4) {
-                    for (int k = 0; k < 4; k++) {
-                        if (board[i + k][j] == null) {
-                            ExplosionFour explosion = new ExplosionFour();
-                            addObject(explosion, x + j * 65, y + (i + k) * 65);
-                        }
-                    }
+                int horizontalMatch = getMatchLength(i, j, 0, 1);
+                int verticalMatch = getMatchLength(i, j, 1, 0);
+                //System.out.println("Checking matches at (" + i + "," + j + "): Horizontal = " + horizontalMatch + ", Vertical = " + verticalMatch);
+                if (horizontalMatch == 4 || verticalMatch == 4) {
+                    //System.out.println("ExplosionFour at (" + i + "," + j + ")");
+                    addObject(new ExplosionFour(), x + j * 65, y + i * 65);
                 }
             }
         }
     }
+
+    /*
+    private void triggerExplosionsFour() {
+    for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols - 3; j++) {
+    int length = getMatchLength(i, j, 0, 1);
+    if (length == 4) {
+    for (int k = 0; k < 4; k++) {
+    if (board[i][j + k] == null) {
+    ExplosionFour explosion = new ExplosionFour();
+    addObject(explosion, x + (j + k) * 65, y + i * 65);
+    }
+    }
+    }
+    }
+    }
+
+    for (int i = 0; i < rows - 3; i++) {
+    for (int j = 0; j < cols; j++) {
+    int length = getMatchLength(i, j, 1, 0);
+    if (length == 4) {
+    for (int k = 0; k < 4; k++) {
+    if (board[i + k][j] == null) {
+    ExplosionFour explosion = new ExplosionFour();
+    addObject(explosion, x + j * 65, y + (i + k) * 65);
+    }
+    }
+    }
+    }
+    }
+    }
+     */
 
     /**
      * Getter for number of rows on board.
