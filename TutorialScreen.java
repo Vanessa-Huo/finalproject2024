@@ -11,9 +11,6 @@ public class TutorialScreen extends World
     GreenfootImage[] instructions = new GreenfootImage[3]; //Images of different instruction panels 
     public static int currentScreen; //Track current screen displayed
     
-    /**
-     * Constructor for Tutorial Screen.
-     */
     public TutorialScreen(){
         super(1024, 720, 1); 
         prepare();

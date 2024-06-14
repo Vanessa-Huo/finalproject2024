@@ -1,16 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- *StartButton is a button used by the user to return to switch to instructions screen.
+ * Write a description of class TutorialButton here.
  * 
  * @author Anya Shah, Gennie Won
  * @version June 2024
  */
 public class TutorialButton extends Icon
 {
-    /**
-     * Constructor to create a tutorial button.
-     */
     public TutorialButton(){
         setImage("tutorialButton.png");
     }

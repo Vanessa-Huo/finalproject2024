@@ -11,12 +11,6 @@ public class Board extends Actor
     private GreenfootImage image;
     private int width, height;
     
-    /**
-     * Constructor for board
-     * @param rows      Number of Rows
-     * @param cols      Number of Columns
-     * @param cellSize  Size of a cell in pixels
-     */
     public Board(int rows, int cols, int cellSize) {
         width = cols * cellSize; //Total width of the board
         height = rows * cellSize; //Total height of the board

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Fruit
-comment0.text=\r\n\ Fruit\ Superclass.\r\n\ \r\n\ @author\ Megan\ Lee\r\n
+comment0.text=\n\ Fruit\ Superclass.\n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=void\ init()
 comment2.params=
@@ -9,7 +9,7 @@ comment3.params=
 comment3.target=void\ act()
 comment4.params=direction\ returnOuterIndex
 comment4.target=int\ getIndexOfSwap(int,\ boolean)
-comment4.text=\r\n\ \r\n\ @param\ direction\ A\ number\ representing\ direction\ of\ selected\ tile(0-3)\r\n\ @param\ boolean\ \ \ Return\ outer\ (true)\ or\ inner\ (false)\ index\ of\ new\r\n\ @return\ int\ \ \ \ \ \ Outer/inner\ index\ of\ new\ position\r\n
+comment4.text=\n\ \n\ @param\ direction\ A\ number\ representing\ direction\ of\ selected\ tile(0-3)\n\ @param\ boolean\ \ \ Return\ outer\ (true)\ or\ inner\ (false)\ index\ of\ new\n\ @return\ int\ \ \ \ \ \ Outer/inner\ index\ of\ new\ position\n
 comment5.params=
 comment5.target=int\ getFruitNum()
 comment6.params=

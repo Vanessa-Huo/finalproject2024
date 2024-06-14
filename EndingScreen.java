@@ -1,9 +1,10 @@
     import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * EndingScreen displays a user's score from recent game
+ * Ending Screen will display the score for this round, along with the number
+ * of boosters the player gets for next round.
  * 
- * @author Rick Li
+ * @author Rick Li, Vanessa Huo
  * @version June 2024
  */
 public class EndingScreen extends World

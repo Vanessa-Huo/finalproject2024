@@ -1,28 +1,29 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * An icon for watermelon bomb booster.
+ * Write a description of class WatermelonDisplay here.
  * 
- * @author Rick Li
+ * @author (your name) 
  * @version June 2024
  */
-public class WatermelonDisplay extends Icon
+public class WatermelonDisplay extends BoosterDisplay
 {
-    /**
-     * Constructor for watermelon bomb icon
-     */
     public WatermelonDisplay(){
         GreenfootImage wt = new GreenfootImage("watermelonBomb.png");
         wt.scale(56, 56);
         setImage(wt);
     }
-    
-    /**
-     * Constructor for watermelon bomb icon
-     */
     public WatermelonDisplay(boolean achievement){
         GreenfootImage wt = new GreenfootImage("watermelonBomb.png");
         wt.scale(135, 135);
         setImage(wt);   
+    }
+    /**
+     * Act - do whatever the WatermelonDisplay wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+        // Add your action code here.
     }
 }

@@ -4,6 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Fruit Superclass.
  * 
  * @author Megan Lee
+ * @version June 2024
  */
 public abstract class Fruit extends Actor
 {

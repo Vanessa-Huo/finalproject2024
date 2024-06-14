@@ -1,29 +1,29 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * An icon for paintbrush booster.
+ * Write a description of class PaintbrushDisplay here.
  * 
- * @author Rick Li
+ * @author (your name) 
  * @version June 2024
  */
-public class PaintbrushDisplay extends Icon
+public class PaintbrushDisplay extends BoosterDisplay
 {
-    /**
-     * Constructor for paintbrush icon
-     */
     public PaintbrushDisplay(){
         GreenfootImage pb = new GreenfootImage("paintbrush.png");
         pb.scale(56, 56);
         setImage(pb);
     }
-    
-    /**
-     * A variation of a constructor for paintbrush icon.
-     * Used on achievement screen.
-     */
     public PaintbrushDisplay(boolean achievement){
         GreenfootImage pb = new GreenfootImage("paintbrush.png");
         pb.scale(120, 120);
         setImage(pb); 
+    }
+    /**
+     * Act - do whatever the PaintbrushDisplay wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+        // Add your action code here.
     }
 }

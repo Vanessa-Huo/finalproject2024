@@ -19,11 +19,9 @@ public class AchievementScreen extends World
     ArrayList<Integer> scoreBoard = new ArrayList<Integer>();
     ArrayList<Integer> sortedScores;
     int numLines;
-    /**
-     * Constructor for Achievement Screen
-     */
     public AchievementScreen()
     {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 720, 1);
         setBackground("achievementScreen.png");
         
@@ -67,10 +65,6 @@ public class AchievementScreen extends World
         addObject(bst2, getWidth()/2 + 335, getHeight()/2 + 170);
     }
     
-    /**
-     * Insertion sort.
-     * @author A widespread sorting algorithm
-     */
     public static ArrayList<Integer> insertionSort(ArrayList<Integer> arr) {
         int n = arr.size();
         for (int i = 1; i < n; ++i) {

@@ -3,5 +3,4 @@ comment0.target=Board
 comment0.text=\r\n\ Grid\ to\ visually\ organize\ the\ fruits\ into\ a\ game\ board.\ \r\n\ \r\n\ @author\ Vanessa\ Huo\r\n\ @version\ June\ 2024\r\n
 comment1.params=rows\ cols\ cellSize
 comment1.target=Board(int,\ int,\ int)
-comment1.text=\r\n\ Constructor\ for\ board\r\n\ @param\ rows\ \ \ \ \ \ Number\ of\ Rows\r\n\ @param\ cols\ \ \ \ \ \ Number\ of\ Columns\r\n\ @param\ cellSize\ \ Size\ of\ a\ cell\ in\ pixels\r\n
 numComments=2

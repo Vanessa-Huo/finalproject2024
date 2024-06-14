@@ -5,6 +5,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * 
  * @author Luke Xiao 
  * @version (06.10.2024)
+ * Image: https://www.vectorstock.com/royalty-free-vector/cartoon-smoke-explosion-game-sprite-animate-effect-vector-42343324
  */
 public class Explosion extends Actor
 {
