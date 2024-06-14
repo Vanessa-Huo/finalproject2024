@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=PlayButton
-comment0.text=\r\n\ StartButton\ is\ a\ button\ used\ by\ the\ user\ to\ return\ to\ switch\ to\ game\ screen.\r\n\ \r\n\ @author\ Anya\ Shah,\ Gennie\ Won\r\n\ @version\ June\ 2024\r\n
+comment0.text=\n\ StartButton\ is\ a\ button\ used\ by\ the\ user\ to\ return\ to\ switch\ to\ game\ screen.\n\ \n\ @author\ Anya\ Shah,\ Gennie\ Won\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=PlayButton()
 comment2.params=

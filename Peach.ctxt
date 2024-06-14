@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Peach
-comment0.text=\r\n\ Peach\ is\ a\ type\ of\ fruit.\r\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Peach.\r\n\ \r\n\ @author\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
+comment0.text=\n\ Peach\ is\ a\ type\ of\ fruit.\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Peach.\n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=Peach()
-comment1.text=\r\n\ A\ constructor\ create\ a\ regular\ Peach.\r\n
+comment1.text=\n\ A\ constructor\ create\ a\ regular\ Peach.\n
 numComments=2

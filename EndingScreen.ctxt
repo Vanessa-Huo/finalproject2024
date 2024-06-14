@@ -1,15 +1,15 @@
 #BlueJ class context
 comment0.target=EndingScreen
-comment0.text=\r\n\ EndingScreen\ displays\ a\ user's\ score\ from\ recent\ game,\ along\ with\ the\ number\r\n\ of\ boosters\ the\ player\ gets\ for\ next\ round.\r\n\ \r\n\ @author\ Rick\ Li,\ Vanessa\ Huo\r\n\ @version\ June\ 2024\r\n
+comment0.text=\n\ EndingScreen\ displays\ a\ user's\ score\ from\ recent\ game,\ along\ with\ the\ number\n\ of\ boosters\ the\ player\ gets\ for\ next\ round.\n\ \n\ @author\ Rick\ Li,\ Vanessa\ Huo\n\ @version\ June\ 2024\n
 comment1.params=score
 comment1.target=EndingScreen(int)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ EndingScreen.\r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ EndingScreen.\n
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=int\ numMelonNextRound()
-comment3.text=\r\n\ Returns\ Number\ of\ watermelon\ bombs\ player\ can\ use\ for\ next\ round\r\n\ @return\ int\ Number\ of\ watermelon\ bombs\ for\ next\ round\r\n
+comment3.text=\n\ Returns\ Number\ of\ watermelon\ bombs\ player\ can\ use\ for\ next\ round\n\ @return\ int\ Number\ of\ watermelon\ bombs\ for\ next\ round\n
 comment4.params=
 comment4.target=int\ numBrushNextRound()
-comment4.text=\r\n\ Returns\ Number\ of\ brushes\ player\ can\ use\ for\ next\ round\r\n\ @return\ int\ Number\ of\ brushes\ for\ next\ round\r\n
+comment4.text=\n\ Returns\ Number\ of\ brushes\ player\ can\ use\ for\ next\ round\n\ @return\ int\ Number\ of\ brushes\ for\ next\ round\n
 numComments=5

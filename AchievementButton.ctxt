@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=AchievementButton
-comment0.text=\r\n\ AchievementButton\ is\ a\ button\ used\ by\ the\ user\ to\ switch\ to\ achievements\ screen.\ \r\n\ \r\n\ @author\ Anya\ Shah\r\n\ @version\ June\ 2024\r\n
+comment0.text=\n\ AchievementButton\ is\ a\ button\ used\ by\ the\ user\ to\ switch\ to\ achievements\ screen.\ \n\ \n\ @author\ Anya\ Shah\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=AchievementButton()
 comment2.params=

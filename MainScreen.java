@@ -133,7 +133,6 @@ public class MainScreen extends World
         maxIndex = explode.length;
         setPaintOrder(Label.class, Booster.class);
         state = GameState.CHECK_MATCHES;
-        //Greenfoot.setSpeed(70); // Set the speed to 7 0 out of 100
     
         try{
             FileWriter scores = new FileWriter("Scores.txt", true);
@@ -181,7 +180,7 @@ public class MainScreen extends World
         scoreLabel.setValue(score);
         melonNum.setValue(melon.getNumB());
         brushNum.setValue(brush.getNumB());
-        //updateTimer();
+        
         if (state != GameState.GAME_OVER) {
             switch (state) {
                 case CHECK_MATCHES:
@@ -218,49 +217,6 @@ public class MainScreen extends World
         if (getObjects(Selection.class).size() == 0){
             Selection.setSelecting(false);
         }
-        /*
-        run = true;
-        scoreLabel.setValue(score);
-        switch (state) {
-            case CHECK_MATCHES:
-                if (crushFive(true) || crushFour(true) || crushThree(true) || watermelonBomb()) {
-                    state = GameState.REMOVE_MATCHES;
-                } else {
-                    dropFruits();
-                }
-                break;
-            case REMOVE_MATCHES:
-                triggerExplosions();
-                triggerExplosionsFour();
-                state = GameState.PLAY_EXPLOSION;
-                break;
-            case PLAY_EXPLOSION:
-                if (getObjects(Explosion.class).isEmpty() && getObjects(ExplosionFour.class).isEmpty()) {
-                    state = GameState.FILL_SPACES;
-                }
-                break;
-            case FILL_SPACES:
-                dropFruits();
-                state = GameState.CHECK_MATCHES;
-                break;
-            }
-            if(getObjects(Selection.class).size() == 0){
-                //System.out.println("none detected");
-                Selection.setSelecting(false);
-            }
-    
-            
-            if(timer.done && once){
-                endScreen();
-                once = false;
-            }
-            
-            //prints score to save file
-            if(!run){
-                out.println(score);
-                out.close();
-            }
-        }*/
     }  
     
     /**
