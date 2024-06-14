@@ -1,6 +1,10 @@
 #BlueJ class context
 comment0.target=AchievementScreen
+<<<<<<< HEAD
 comment0.text=\n\ Write\ a\ description\ of\ class\ AchievementScreen\ here.\n\ \n\ @author\ Megan\ Lee,\ Rick\ Li\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+=======
+comment0.text=\r\n\ Achievement\ Screen\ will\ display\ a\ user's\ all-time\ \r\n\ highscore,\ along\ with\ the\ number\ of\ boosters\ used\r\n\ to\ achieve\ that\ highscore.\r\n\ \r\n\ @author\ Megan\ Lee,\ Rick\ Li\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+>>>>>>> megan
 comment1.params=
 comment1.target=AchievementScreen()
 comment2.params=arr

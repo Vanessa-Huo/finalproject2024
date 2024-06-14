@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /**
- * Write a description of class AchievementScreen here.
+ * Achievement Screen will display a user's all-time 
+ * highscore, along with the number of boosters used
+ * to achieve that highscore.
  * 
  * @author Megan Lee, Rick Li
  * @version (a version number or a date)
