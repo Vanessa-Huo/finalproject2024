@@ -147,6 +147,7 @@ public class MainScreen extends World
      * Called when world is ran, resets status of Selection
      */
     public void started(){
+        musicBG.playLoop();
         Selection.setSelecting(false);
         //activates printwriter for scores
         try{
@@ -156,6 +157,9 @@ public class MainScreen extends World
             System.out.println("IO exception");
         }
         runGame = true;
+    }
+    public void stopped() {
+        musicBG.pause();
     }
     
     public void act(){

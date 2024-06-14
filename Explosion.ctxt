@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Explosion
-comment0.text=\n\ An\ explosion\ effect\ for\ fruits\ that\ have\ been\ cleared.\n\ \n\ @author\ Luke\ Xiao\ \n\ @version\ (06.10.2024)\n\ Image\:\ https\://www.vectorstock.com/royalty-free-vector/cartoon-smoke-explosion-game-sprite-animate-effect-vector-42343324\n
+comment0.text=\r\n\ An\ explosion\ effect\ for\ fruits\ that\ have\ been\ cleared.\r\n\ \r\n\ @author\ Luke\ Xiao\ \r\n\ @version\ (06.10.2024)\r\n\ Image\:\ https\://www.vectorstock.com/royalty-free-vector/cartoon-smoke-explosion-game-sprite-animate-effect-vector-42343324\r\n
 comment1.params=
 comment1.target=Explosion()
 comment2.params=
