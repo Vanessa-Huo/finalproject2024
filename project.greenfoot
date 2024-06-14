@@ -200,11 +200,7 @@ editor.fx.0.height=0
 editor.fx.0.width=0
 editor.fx.0.x=0
 editor.fx.0.y=0
-<<<<<<< HEAD
 height=880
-=======
-height=1408
->>>>>>> megan
 package.numDependencies=65
 package.numTargets=42
 project.charset=UTF-8
@@ -516,11 +512,7 @@ target9.width=130
 target9.x=0
 target9.y=0
 version=3.1.0
-<<<<<<< HEAD
 width=1393
-=======
-width=2576
->>>>>>> megan
 world.lastInstantiated=TitleScreen
-xPosition=257
+xPosition=671
 yPosition=100
