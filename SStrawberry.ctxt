@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=SStrawberry
-comment0.text=\r\n\ A\ SStrawberry\ is\ a\ striped\ strawberry.\r\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Strawberries.\r\n\ When\ matched,\ it\ will\ clear\ all\ fruits\ in\ its\ row\ &\ column.\r\n\ \r\n\ @author\ Megan\ Lee\r\n\ @version\ June\ 2024\r\n
+comment0.text=\n\ A\ SStrawberry\ is\ a\ striped\ strawberry.\n\ It\ can\ be\ matched\ in\ a\ row/column\ of\ 3,4,\ or\ 5\ with\ other\ Strawberries.\n\ When\ matched,\ it\ will\ clear\ all\ fruits\ in\ its\ row\ &\ column.\n\ \n\ @author\ Megan\ Lee\n\ @version\ June\ 2024\n
 comment1.params=
 comment1.target=SStrawberry()
-comment1.text=\r\n\ A\ constructor\ to\ create\ a\ striped\ Strawberry.\r\n
+comment1.text=\n\ A\ constructor\ to\ create\ a\ striped\ Strawberry.\n
 numComments=2
