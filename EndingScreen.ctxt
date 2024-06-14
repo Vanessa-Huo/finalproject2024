@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=EndingScreen
-comment0.text=\n\ Ending\ Screen\ will\ display\ the\ score\ for\ this\ round,\ along\ with\ the\ number\n\ of\ boosters\ the\ player\ gets\ for\ next\ round.\n\ \n\ @author\ Rick\ Li,\ Vanessa\ Huo\n\ @version\ June\ 2024\n
+comment0.text=\n\ EndingScreen\ displays\ a\ user's\ score\ from\ recent\ game,\ along\ with\ the\ number\n\ of\ boosters\ the\ player\ gets\ for\ next\ round.\n\ \n\ @author\ Rick\ Li,\ Vanessa\ Huo\n\ @version\ June\ 2024\n
 comment1.params=score
 comment1.target=EndingScreen(int)
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ EndingScreen.\n
