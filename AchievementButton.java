@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * AchievementButton.
+ * AchievementButton is a button used by the user to switch to achievements screen. 
  * 
  * @author Anya Shah
  * @version June 2024

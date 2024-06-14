@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * HomeButton.
+ * HomeButton is a button used by the user to return to home screen. 
  * 
  * @author Anya Shah
  * @version June 2024

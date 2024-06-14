@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TutorialButton here.
+ * TutorialButton is a button used by the user to return to switch to instructions screen.
  * 
  * @author Anya Shah, Gennie Won
  * @version June 2024
